@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour
             if (enemy.gameObject.activeSelf) continue;
 
             enemy.gameObject.SetActive(true);
-            enemy.transform.position = randomPos;
+            enemy.transform.position = new Vector3(randomPos.x,1.5f, randomPos.y) ;
             enemy.transform.SetParent(null);
             return enemy;
         }

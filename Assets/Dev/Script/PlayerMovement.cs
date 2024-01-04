@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Refs Components")]
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Rigidbody rb;
     [SerializeField] Transform t;
     [SerializeField] Camera cam;
     [Space(5)]
     [Header("Movement Variables")]
     [SerializeField] float speedWalk;
     [SerializeField] float speedRun;
+    [SerializeField] LayerMask layerGround;
     [Space(5)]
     [Header("Dash Variables")]
     public float speedDash;
@@ -20,28 +21,35 @@ public class PlayerMovement : MonoBehaviour
     
     public void Walk()
     {
-        Vector2 dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rb.velocity = dir.normalized * speedWalk * Time.deltaTime * offsetSpeed; ;
+        Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        rb.velocity = dir.normalized * speedWalk * Time.deltaTime * offsetSpeed; 
     }
     public void Run()
     {
-        Vector2 dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rb.velocity = dir.normalized * speedRun * Time.deltaTime * offsetSpeed; ;
+        Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        rb.velocity = dir.normalized * speedRun * Time.deltaTime * offsetSpeed; 
     }
     public void Rotate()
     {
-        Vector3 mousePos = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,-cam.transform.position.z));
-        Vector2 dir = (mousePos - t.position).normalized;
-        t.up = dir;
+
+        //Vector3 mousePos = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,-cam.transform.position.z));
+        Ray rayMouse = cam.ScreenPointToRay(Input.mousePosition);
+        if(Physics.Raycast(rayMouse, out RaycastHit hit, layerGround))
+        {
+            Vector3 mousePos = new Vector3(hit.point.x, t.position.y, hit.point.z);
+            Vector3 dir = (mousePos - t.position).normalized;
+            t.forward = dir;
+        }
+        
     }
     public void DashMove()
     {
         t.gameObject.layer = 6;
 
-        Vector2 posToMove = t.position + t.up * distanceDash;
+        Vector3 posToMove = t.position + t.forward * distanceDash;
 
         LeanTween.value(0, 1, speedDash).setOnUpdate((float value) => { 
-            t.position = Vector2.MoveTowards(t.position, posToMove, value);
+            t.position = Vector3.MoveTowards(t.position, posToMove, value);
         }).setOnComplete(()=> { t.gameObject.layer = 0; });
     }
 

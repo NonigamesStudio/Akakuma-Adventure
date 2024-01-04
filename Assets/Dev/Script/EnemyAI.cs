@@ -57,7 +57,5 @@ public class EnemyAI : MonoBehaviour
     {
         agent.isStopped = false; 
         agent.destination = playert.position;
-        Vector2 dir = (playert.position - t.position).normalized;
-        t.up = dir;
     }
 }

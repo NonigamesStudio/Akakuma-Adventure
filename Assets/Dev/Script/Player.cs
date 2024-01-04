@@ -5,12 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [HideInInspector] public Transform t;
-    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public Rigidbody rb;
     [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public Health healthPlayer;
     [HideInInspector] public Stats stats;
     [HideInInspector] public WeaponInventory inventory;
-    [HideInInspector] public Collider2D playerCollider;
+    [HideInInspector] public Collider playerCollider;
    
 
 
@@ -33,12 +33,12 @@ public class Player : MonoBehaviour
     private void Start()
     {
         t = GetComponent<Transform>();
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         playerMovement = GetComponent<PlayerMovement>();
         healthPlayer = GetComponent<Health>();
         stats = GetComponent<Stats>();
         inventory = GetComponent<WeaponInventory>();
-        playerCollider = GetComponent<Collider2D>();
+        playerCollider = GetComponent<Collider>();
 
         currentWeaponFirstHand = currentWeaponFirstHandObj.GetComponent<IWeapon>();
         currentWeaponSecondHand = currentWeaponSecondHandObj.GetComponent<IWeapon>();
