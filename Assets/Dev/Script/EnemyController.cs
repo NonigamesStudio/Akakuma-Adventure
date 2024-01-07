@@ -12,10 +12,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] List<EnemyAI> enemysPool;
     [Space(10)]
     [Header("Variables Spawn Enemys")]
-    [SerializeField] int initialAmountOfenemysToSpawn;
     [SerializeField] int amountEnemysConstantOnField;
     [SerializeField] float radioAreaToSpawn;
+    [Space(10)]
+    [Header("Variables Waves")]
+    [SerializeField] List<int> numberOfEnemiesPerWave;
 
+    int currentWave = 0;
 
     private void Start()
     {
@@ -26,11 +29,10 @@ public class EnemyController : MonoBehaviour
             enemy.enemyController = this;
         }
 
-        for (int i = 0; i < initialAmountOfenemysToSpawn; i++)
-        {
-            SpawnOneEnemy();
-        }
+        SpawnWave();
     }
+
+
 
     public EnemyAI SpawnOneEnemy()
     {
@@ -56,6 +58,27 @@ public class EnemyController : MonoBehaviour
     {
         enemy.gameObject.SetActive(false);
         enemy.transform.SetParent(transform);
+
+        CheckEnemiesAliveAndStartNewWave();
+    }
+
+    void SpawnWave()
+    {
+        for (int i = 0; i < numberOfEnemiesPerWave[currentWave]; i++)
+        {
+            SpawnOneEnemy();
+        }
+        currentWave++;
+    }
+
+    void CheckEnemiesAliveAndStartNewWave()
+    {
+        foreach (EnemyAI enemy in enemysPool)
+        {
+            if (enemy.gameObject.activeSelf) return;
+        }
+
+        SpawnWave();
     }
 
 

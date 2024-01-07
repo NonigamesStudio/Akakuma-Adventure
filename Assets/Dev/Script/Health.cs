@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] float maxHealth;
     [SerializeField] float actualHealth;
     public System.Action OnDeath;
+    public System.Action OnTakeDmg;
 
     private void OnEnable()
     {
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour
     {
         actualHealth -= dmg;
         CheckIfIsDeath();
+        OnTakeDmg?.Invoke();
         //Debug.Log("Take Dmg: " + dmg + " ", gameObject);
     }
     public void TakeHealth(float health)

@@ -2,36 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody))]
 public class Arrow : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
+    public Rigidbody rb;
     public Bow bow;
     public float dmg;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0;
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
     }
 
     public void ThrowArrow(float force)
     {
+        rb.AddForce(bow.transform.forward * force,ForceMode.Impulse);
         transform.SetParent(null);
-        rb.AddForce(bow.transform.up * force,ForceMode2D.Impulse);
-        transform.up = rb.velocity;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(collision.TryGetComponent<Health>(out Health heatlh))
         {
+            if (collision.gameObject.layer == gameObject.layer) return;
             heatlh.TakeDamage(dmg);
-            bow.ReturnArrowToPool(this);
+            ResetArrow();
         }
+    }
+
+    public void ResetArrow()
+    {
+        rb.velocity = Vector3.zero;
+        transform.SetParent(bow.transform);
+        transform.localPosition = Vector3.zero;
+        transform.localEulerAngles = Vector3.zero;
+        gameObject.SetActive(false);
     }
     private void OnBecameInvisible()
     {
-        bow.ReturnArrowToPool(this);
+        ResetArrow();
     }
 }

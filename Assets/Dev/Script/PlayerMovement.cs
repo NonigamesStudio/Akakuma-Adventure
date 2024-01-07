@@ -17,17 +17,27 @@ public class PlayerMovement : MonoBehaviour
     [Header("Dash Variables")]
     public float speedDash;
     [SerializeField] float distanceDash;
-    float offsetSpeed = 100;
+    float offsetSpeed = 2;
     
     public void Walk()
     {
-        Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        rb.velocity = dir.normalized * speedWalk * Time.deltaTime * offsetSpeed; 
+        Vector3 dir = new Vector3(-Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
+
+        Quaternion rotation = Quaternion.Euler(0, 45, 0);
+        Matrix4x4 matrix = Matrix4x4.Rotate(rotation);
+        dir = matrix.MultiplyPoint3x4(dir);
+
+        rb.MovePosition (t.position + dir.normalized * speedWalk * Time.deltaTime * offsetSpeed); 
     }
     public void Run()
     {
-        Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        rb.velocity = dir.normalized * speedRun * Time.deltaTime * offsetSpeed; 
+        Vector3 dir = new Vector3(-Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
+
+        Quaternion rotation = Quaternion.Euler(0, 45, 0);
+        Matrix4x4 matrix = Matrix4x4.Rotate(rotation);
+        dir = matrix.MultiplyPoint3x4(dir);
+
+        rb.MovePosition(t.position + dir.normalized * speedWalk * Time.deltaTime * offsetSpeed);
     }
     public void Rotate()
     {

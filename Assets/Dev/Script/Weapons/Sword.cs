@@ -6,14 +6,17 @@ public class Sword : MonoBehaviour, IWeapon
 {
     [SerializeField] float damage;
     [SerializeField] float maxDamage;
-    [SerializeField] Collider2D colliderAttack;
+    [SerializeField] BoxCollider colliderAttack;
     [SerializeField] float attackDuration;
     [SerializeField] float tickTimeDmg;
     [SerializeField] float coolDown;
     [SerializeField] GameObject spriteSlash;
     [SerializeField] LayerMask mask;
     bool isOnCoolDown;
-
+    private void Awake()
+    {
+        colliderAttack = GetComponent<BoxCollider>();
+    }
 
     public void Attack(float bonusDmg)
     {
@@ -25,12 +28,13 @@ public class Sword : MonoBehaviour, IWeapon
             LeanTween.delayedCall(coolDown, () => { isOnCoolDown = false; });
             LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
         }
-        else Debug.Log("Is On CoolDown");
+        else { //on cooldown
+               }
     }
 
     public void Skill()
     {
-       
+
     }
 
     public void TurnOnOffWeapon(bool turnOnOff)
@@ -38,20 +42,20 @@ public class Sword : MonoBehaviour, IWeapon
         gameObject.SetActive(turnOnOff);
     }
 
+
     IEnumerator AttackAction(float bonusdmg)
     {
         float time = 0;
-        while(attackDuration > time)
+        while (attackDuration > time)
         {
-            ContactFilter2D filter = new ContactFilter2D().NoFilter();
-            List<Collider2D> results = new List<Collider2D>();
-            Physics2D.OverlapCollider(colliderAttack, filter, results);
+            Collider[] results = Physics.OverlapBox(transform.position, colliderAttack.size,Quaternion.identity, mask);
 
-            foreach (Collider2D objectColli in results)
+
+            foreach (Collider objectColli in results)
             {
                 if (objectColli.TryGetComponent<Health>(out Health health))
                 {
-                    if(objectColli.gameObject.layer != gameObject.layer) health.TakeDamage(damage + bonusdmg);
+                    if(gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage + bonusdmg);
                 }
 
             }
@@ -61,4 +65,11 @@ public class Sword : MonoBehaviour, IWeapon
             yield return new WaitForSeconds(tickTimeDmg);
         }
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawCube(transform.position, colliderAttack.size);
+    //}
 }
+
+

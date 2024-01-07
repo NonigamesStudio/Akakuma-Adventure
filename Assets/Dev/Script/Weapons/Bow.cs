@@ -7,6 +7,7 @@ public class Bow : MonoBehaviour, IWeapon
     [SerializeField] List<Arrow> poolArrows;
     [SerializeField] float dmg;
     [SerializeField] float coolDownTime;
+    [SerializeField] float speedArrow;
 
     bool coolDown= true;
 
@@ -17,12 +18,6 @@ public class Bow : MonoBehaviour, IWeapon
             arrow.dmg = dmg;
             arrow.bow = this;
         }
-    }
-    public void ReturnArrowToPool(Arrow arrow)
-    {
-        arrow.transform.SetParent(transform);
-        arrow.transform.localPosition = Vector2.zero;
-        arrow.gameObject.SetActive(false);
     }
 
     public void Attack(float bonusDmg)
@@ -37,7 +32,7 @@ public class Bow : MonoBehaviour, IWeapon
             if(!arrow.gameObject.activeSelf)
             {
                 arrow.gameObject.SetActive(true);
-                arrow.ThrowArrow(10);
+                arrow.ThrowArrow(speedArrow);
                 break;
             }
         }
