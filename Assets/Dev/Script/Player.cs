@@ -47,18 +47,20 @@ public class Player : MonoBehaviour
 
     private void Update()//Input Detection
     {
-        playerMovement.Rotate();
+        
         if (isStuned) return;
+        playerMovement.Rotate();
         MovementInput();
         DashInput();
         AttackPrincipalWeaponInput();
+        SkillPrincipalWeaponInput();
         AttackSecondaryWeaponInput();
         InventoryInput();
         
     }
     private void FixedUpdate()
     {
-        
+        MovementInput();
     }
 
     private void DashInput()
@@ -87,6 +89,13 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4)) currentWeaponFirstHand = inventory.GetWeaponSelected(3);
     }
 
+    private void SkillPrincipalWeaponInput()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            currentWeaponFirstHand.Skill();
+        }
+    }
     private void AttackPrincipalWeaponInput()
     {
         if (usingyWeapon) return;
@@ -105,8 +114,8 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             usingyWeapon = true;
-            currentWeaponFirstHandObj.SetActive(false);
-            currentWeaponSecondHandObj.SetActive(true);
+            currentWeaponFirstHand.TurnOnOffWeapon(false);
+            currentWeaponSecondHand.TurnOnOffWeapon(true);
         }
         if (Input.GetMouseButton(1)) chargeTime += Time.deltaTime;
         if (Input.GetMouseButtonUp(1))
@@ -114,8 +123,8 @@ public class Player : MonoBehaviour
             currentWeaponSecondHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
             chargeTime = 0;
             usingyWeapon = false;
-            currentWeaponFirstHandObj.SetActive(true);
-            currentWeaponSecondHandObj.SetActive(false);
+            currentWeaponFirstHand.TurnOnOffWeapon(true);
+            currentWeaponSecondHand.TurnOnOffWeapon(false);
         }
     }
 

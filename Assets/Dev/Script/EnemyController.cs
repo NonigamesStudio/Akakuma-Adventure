@@ -17,8 +17,14 @@ public class EnemyController : MonoBehaviour
     [Space(10)]
     [Header("Variables Waves")]
     [SerializeField] List<int> numberOfEnemiesPerWave;
+    [SerializeField] int secsBetweenWavesSpawn;
+
+
+    public static System.Action<float,float> OnEnemyDeath;
+    public static System.Action OnChangeWave;
 
     int currentWave = 0;
+    int enemiesDeathInCurrentWave;
 
     private void Start()
     {
@@ -59,16 +65,23 @@ public class EnemyController : MonoBehaviour
         enemy.gameObject.SetActive(false);
         enemy.transform.SetParent(transform);
 
+        OnEnemyDeath?.Invoke(numberOfEnemiesPerWave[currentWave-1], (numberOfEnemiesPerWave[currentWave - 1]-ReturnHowManyEnemiesStillAlive()));
+
         CheckEnemiesAliveAndStartNewWave();
     }
 
     void SpawnWave()
     {
-        for (int i = 0; i < numberOfEnemiesPerWave[currentWave]; i++)
+        LeanTween.delayedCall(secsBetweenWavesSpawn, () =>
         {
-            SpawnOneEnemy();
-        }
-        currentWave++;
+            OnChangeWave?.Invoke();
+            for (int i = 0; i < numberOfEnemiesPerWave[currentWave]; i++)
+            {
+                SpawnOneEnemy();
+            }
+            currentWave++;
+        });
+        
     }
 
     void CheckEnemiesAliveAndStartNewWave()
@@ -79,6 +92,17 @@ public class EnemyController : MonoBehaviour
         }
 
         SpawnWave();
+    }
+
+    public int ReturnHowManyEnemiesStillAlive()
+    {
+        int count = 0;
+        foreach (EnemyAI enemy in enemysPool)
+        {
+            if (enemy.gameObject.activeSelf) count++;
+        }
+
+        return count;
     }
 
 

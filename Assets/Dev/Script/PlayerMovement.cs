@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         Matrix4x4 matrix = Matrix4x4.Rotate(rotation);
         dir = matrix.MultiplyPoint3x4(dir);
 
-        rb.MovePosition(t.position + dir.normalized * speedWalk * Time.deltaTime * offsetSpeed);
+        rb.MovePosition(t.position + dir.normalized * speedRun * Time.deltaTime * offsetSpeed);
     }
     public void Rotate()
     {

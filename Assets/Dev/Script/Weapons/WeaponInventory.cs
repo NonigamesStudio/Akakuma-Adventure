@@ -6,7 +6,7 @@ public class WeaponInventory : MonoBehaviour
 {
     [SerializeField] List<GameObject> weaponsObj;
     List<IWeapon> weapons = new List<IWeapon>();
-    private void Awake()
+    private void Start()
     {
         foreach (GameObject weapon in weaponsObj)
         {
