@@ -47,7 +47,7 @@ public class AIBossEnemy : MonoBehaviour
 
     void OnDeathEnemy()
     {
-
+        gameObject.SetActive(false);
     }
 
 }

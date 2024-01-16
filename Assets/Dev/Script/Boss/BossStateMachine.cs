@@ -19,12 +19,10 @@ public class BossStateMachine : MonoBehaviour
     private void OnEnable()
     {
         health.OnDeath += OnDeathBoss;
-
     }
 
     private void OnDisable()
     {
-
         health.OnDeath -= OnDeathBoss;
     }
 
@@ -65,8 +63,9 @@ public class BossStateMachine : MonoBehaviour
 
     void OnDeathBoss()
     {
-
+        Destroy(gameObject);
     }
+
 
     
 }

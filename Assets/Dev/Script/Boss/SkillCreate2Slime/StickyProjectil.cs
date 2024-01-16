@@ -14,7 +14,7 @@ public class StickyProjectil : MonoBehaviour
     public void Shoot()
     {
         col.enabled = false;
-        rb.AddForce((transform.forward + Vector3.up) * 10, ForceMode.Impulse);
+        rb.AddForce((transform.forward + Vector3.up) * Random.Range(4f,10f), ForceMode.Impulse);
         StartCoroutine(CoolDownTrigger());
     }
 
