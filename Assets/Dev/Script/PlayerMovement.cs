@@ -69,18 +69,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.CompareTag("Sticky"))
         {
-            speedWalk = speedWalk / 2;
-            speedRun = speedRun / 2;
+            StartCoroutine(Slow());
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    IEnumerator Slow()
     {
-        if (other.CompareTag("Sticky"))
-        {
-            speedWalk = speedWalk * 2;
-            speedRun = speedRun * 2;
-        }
+        speedWalk = speedWalk / 2;
+        speedRun = speedRun / 2;
+        yield return new WaitForSeconds(2);
+        speedWalk = speedWalk * 2;
+        speedRun = speedRun * 2;
     }
 
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyController : MonoBehaviour
 {
     [Header("Refs Components")]
@@ -10,6 +11,7 @@ public class EnemyController : MonoBehaviour
     [Space(10)]
     [Header("Refs Pool Enemy")]
     [SerializeField] List<EnemyAI> enemysPool;
+    [SerializeField] GameObject boss;
     [Space(10)]
     [Header("Variables Spawn Enemys")]
     [SerializeField] int amountEnemysConstantOnField;
@@ -72,6 +74,7 @@ public class EnemyController : MonoBehaviour
 
     void SpawnWave()
     {
+        if (currentWave >= numberOfEnemiesPerWave.Count) { boss.SetActive(true); return; }
         LeanTween.delayedCall(secsBetweenWavesSpawn, () =>
         {
             OnChangeWave?.Invoke();

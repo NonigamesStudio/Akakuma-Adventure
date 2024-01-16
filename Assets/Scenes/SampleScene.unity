@@ -332,6 +332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 116554321}
+  - component: {fileID: 116554322}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -354,6 +355,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &116554322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116554320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd724e9b107b9e444ab79cde643836e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &149390038 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 176254159572259418, guid: dc058dd0c6e72934691e1c0449031d17,
@@ -2758,7 +2771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1573759894
 Transform:
   m_ObjectHideFlags: 0
@@ -2814,9 +2827,10 @@ MonoBehaviour:
   - {fileID: 1078134547}
   - {fileID: 1808802937}
   - {fileID: 1410582373}
+  boss: {fileID: 5928061324752563337}
   amountEnemysConstantOnField: 0
   radioAreaToSpawn: 50
-  numberOfEnemiesPerWave: 0100000002000000030000000400000005000000
+  numberOfEnemiesPerWave: 01000000
   secsBetweenWavesSpawn: 2
 --- !u!114 &1585075208 stripped
 MonoBehaviour:
@@ -3906,6 +3920,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5201764617768802075, guid: 56002457b64f95d4294a42865540c7f0,
+        type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6669388584129242655, guid: 56002457b64f95d4294a42865540c7f0,
         type: 3}
       propertyPath: m_Name
@@ -4090,6 +4109,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 7497302870000870252, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7552146361783932485, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
       propertyPath: playerT
@@ -4110,6 +4134,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4863e75c7a09dd4e9b1217881f0d019, type: 3}
+--- !u!1 &5928061324752563337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7497302870000870252, guid: a4863e75c7a09dd4e9b1217881f0d019,
+    type: 3}
+  m_PrefabInstance: {fileID: 5928061324752563336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7615597032027647137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5913333344290597745, guid: 95d3ee886a5ab3445a7c0847ebc17bdf,
