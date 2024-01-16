@@ -63,4 +63,24 @@ public class PlayerMovement : MonoBehaviour
         }).setOnComplete(()=> { t.gameObject.layer = 0; });
     }
 
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Sticky"))
+        {
+            speedWalk = speedWalk / 2;
+            speedRun = speedRun / 2;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Sticky"))
+        {
+            speedWalk = speedWalk * 2;
+            speedRun = speedRun * 2;
+        }
+    }
+
 }

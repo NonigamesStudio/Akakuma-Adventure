@@ -18,8 +18,10 @@ public class Scythe : MonoBehaviour, IWeapon
     [Header("Skill Attack Refs")]
     [SerializeField] SphereCollider colliderSkill;
     [SerializeField] Transform pivotToSkill;
+    [SerializeField] float coolDownSkill;
     [SerializeField] float skillDuration;
     [SerializeField] float speedRotSkill;
+    [SerializeField] GameObject skillParticle;
 
 
 
@@ -65,8 +67,15 @@ public class Scythe : MonoBehaviour, IWeapon
 
     public void Skill()
     {
+        if (isOnCoolDownSkill) return;
+        isOnCoolDownSkill = true;
         StartCoroutine(SkillAnim());
         StartCoroutine(SkillAction());
+    }
+
+    void SkillCoolDown()
+    {
+        LeanTween.delayedCall(coolDownSkill, () => { isOnCoolDownSkill = false; });
     }
 
     IEnumerator SkillAction()
@@ -90,10 +99,15 @@ public class Scythe : MonoBehaviour, IWeapon
 
             yield return new WaitForSeconds(tickTimeDmg);
         }
+
+        SkillCoolDown();
     }
 
     IEnumerator SkillAnim()
     {
+
+        skillParticle.SetActive(true);
+
         float time = skillDuration;
         float ytemp = 0;
         while (time>0)
@@ -104,6 +118,8 @@ public class Scythe : MonoBehaviour, IWeapon
             yield return null;
         }
         pivotToSkill.localEulerAngles = Vector3.zero;
+
+        skillParticle.SetActive(false);
     }
 
     public void TurnOnOffWeapon(bool turnOnOff)

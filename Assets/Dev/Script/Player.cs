@@ -135,5 +135,4 @@ public class Player : MonoBehaviour
         LeanTween.delayedCall(sec, () => { isStuned = false; });
     }
 
-
 }

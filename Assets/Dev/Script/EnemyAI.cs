@@ -20,6 +20,11 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float attackDmg;
     [SerializeField] float knockBackForce;
 
+    [Space(5)]
+    [Header("Variables Effects")]
+    [SerializeField] GameObject deathParticle;
+    [SerializeField] GameObject coinParticle;
+
     IWeapon currentWeapon;
     bool onKnockBack;
 
@@ -35,6 +40,7 @@ public class EnemyAI : MonoBehaviour
         agent.enabled = true;
         health.OnDeath += Dead;
         health.OnTakeDmg += Knockback;
+        RestartParticles();
     }
     private void OnDisable()
     {
@@ -52,6 +58,7 @@ public class EnemyAI : MonoBehaviour
 
     void Dead()
     {
+        StartParticleDeath();
         enemyController.EnemyDeath(this);
     }
 
@@ -81,5 +88,19 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         onKnockBack = false;
         agent.enabled = true;
+    }
+
+    void StartParticleDeath()
+    {
+        deathParticle.transform.SetParent(null);
+        deathParticle.SetActive(true);
+        Instantiate(coinParticle, transform.position, transform.rotation);
+        LeanTween.delayedCall(2, () => { RestartParticles(); });
+    }
+
+    void RestartParticles()
+    {
+        deathParticle.transform.SetParent(transform);
+        deathParticle.SetActive(false);
     }
 }
