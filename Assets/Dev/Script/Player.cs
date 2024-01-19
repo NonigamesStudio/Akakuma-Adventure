@@ -21,9 +21,10 @@ public class Player : MonoBehaviour
     public float coolDownDashTime;
 
 
-     IWeapon currentWeaponFirstHand;
-     IWeapon currentWeaponSecondHand;
+    IWeapon currentWeaponFirstHand;
+    IWeapon currentWeaponSecondHand;
 
+    public bool onSkill;
 
     bool coolDownDash = true;
     float chargeTime;
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
         playerMovement.Rotate();
         MovementInput();
         DashInput();
+        if (onSkill) return;
         AttackPrincipalWeaponInput();
         SkillPrincipalWeaponInput();
         AttackSecondaryWeaponInput();
@@ -83,6 +85,7 @@ public class Player : MonoBehaviour
 
     private void InventoryInput()
     {
+        
         if (Input.GetKeyDown(KeyCode.Alpha1)) currentWeaponFirstHand = inventory.GetWeaponSelected(0);
         if (Input.GetKeyDown(KeyCode.Alpha2)) currentWeaponFirstHand = inventory.GetWeaponSelected(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) currentWeaponFirstHand = inventory.GetWeaponSelected(2);

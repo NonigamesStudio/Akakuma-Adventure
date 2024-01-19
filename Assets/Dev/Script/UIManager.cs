@@ -8,12 +8,19 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] Slider barEnemiesStillAlive;
     [SerializeField] TextMeshProUGUI coinText_text;
+    [SerializeField] Health playerH;
+    [SerializeField] Health bossH;
+    [SerializeField] GameObject panelLose;
+    [SerializeField] GameObject panelWin;
+
     int score;
 
     private void OnEnable()
     {
         EnemyController.OnEnemyDeath += UpdateBarProgressWave;
         EnemyController.OnChangeWave += RestarBarProgressWave;
+        bossH.OnDeath += WinPanel;
+        playerH.OnDeath += LosePanel;
 
         Coin.OnCoinCollected += UpdateCoinsUI;
     }
@@ -21,6 +28,8 @@ public class UIManager : MonoBehaviour
     {
         EnemyController.OnEnemyDeath -= UpdateBarProgressWave;
         EnemyController.OnChangeWave -= RestarBarProgressWave;
+        bossH.OnDeath -= WinPanel;
+        playerH.OnDeath -= LosePanel;
 
         Coin.OnCoinCollected -= UpdateCoinsUI;
     }
@@ -39,5 +48,16 @@ public class UIManager : MonoBehaviour
     {
         score++;
         coinText_text.text = "Coins: " + score;
+    }
+
+    void WinPanel()
+    {
+        panelWin.SetActive(true);
+        Time.timeScale = 0;
+    }
+    void LosePanel()
+    {
+        panelLose.SetActive(true);
+        Time.timeScale = 0;
     }
 }

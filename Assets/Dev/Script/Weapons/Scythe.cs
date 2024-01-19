@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Scythe : MonoBehaviour, IWeapon
 {
+    public Player player;
+
     [Header("Normal Attack Refs")]
     [SerializeField] float damage;
     [SerializeField] float maxDamage;
@@ -56,7 +58,6 @@ public class Scythe : MonoBehaviour, IWeapon
                 {
                     if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage + bonusdmg);
                 }
-
             }
 
             time += tickTimeDmg;
@@ -80,11 +81,11 @@ public class Scythe : MonoBehaviour, IWeapon
 
     IEnumerator SkillAction()
     {
+        player.onSkill = true;
         float time = 0;
         while (skillDuration > time)
         {
             Collider[] results = Physics.OverlapSphere(transform.position, colliderSkill.radius, mask);
-
 
             foreach (Collider objectColli in results)
             {
@@ -92,20 +93,19 @@ public class Scythe : MonoBehaviour, IWeapon
                 {
                     if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage);
                 }
-
             }
 
             time += tickTimeDmg;
 
             yield return new WaitForSeconds(tickTimeDmg);
         }
-
+        player.onSkill = false;
+        pivotToSkill.localEulerAngles = Vector3.zero;
         SkillCoolDown();
     }
 
     IEnumerator SkillAnim()
     {
-
         skillParticle.SetActive(true);
 
         float time = skillDuration;

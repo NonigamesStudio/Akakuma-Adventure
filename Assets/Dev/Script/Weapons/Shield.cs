@@ -7,12 +7,19 @@ public class Shield : MonoBehaviour,IWeapon
     [SerializeField] float damage;
     [SerializeField] float maxDamage;
     [SerializeField] SphereCollider colliderSkill;
+    [SerializeField] BoxCollider colliderAttack;
     [SerializeField] float skillDuration;
     [SerializeField] float tickTimeDmg;
     [SerializeField] float coolDownSkill;
     [SerializeField] LayerMask mask;
     [SerializeField] GameObject skillParticle;
+    [SerializeField] GameObject spriteSlash;
+    [SerializeField] float coolDown;
+    [SerializeField] float attackDuration;
+
+
     bool isOnCoolDownSkill;
+    bool isOnCoolDownNormalAttack;
     private void Awake()
     {
         colliderSkill = GetComponent<SphereCollider>();
@@ -20,7 +27,39 @@ public class Shield : MonoBehaviour,IWeapon
 
     public void Attack(float bonusDmg)
     {
-        
+        if (!isOnCoolDownNormalAttack)
+        {
+            StartCoroutine(AttackAction(bonusDmg));
+            isOnCoolDownNormalAttack = true;
+            spriteSlash.SetActive(true);
+            LeanTween.delayedCall(coolDown, () => { isOnCoolDownNormalAttack = false; });
+            LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
+        }
+        else
+        { //on cooldown
+        }
+    }
+
+    IEnumerator AttackAction(float bonusdmg)
+    {
+        float time = 0;
+        while (attackDuration > time)
+        {
+            Collider[] results = Physics.OverlapBox(transform.position, colliderAttack.size, Quaternion.identity, mask);
+
+
+            foreach (Collider objectColli in results)
+            {
+                if (objectColli.TryGetComponent<Health>(out Health health))
+                {
+                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage + bonusdmg);
+                }
+            }
+
+            time += tickTimeDmg;
+
+            yield return new WaitForSeconds(tickTimeDmg);
+        }
     }
 
     void SkillCoolDown()

@@ -88,6 +88,17 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         onKnockBack = false;
         agent.enabled = true;
+        StartCoroutine(RestarEnemy());
+    }
+
+    IEnumerator RestarEnemy()
+    {
+        yield return new WaitForSeconds(5);
+        rb.velocity = Vector3.zero;
+        agent.isStopped = true;
+        agent.enabled = false;
+        onKnockBack = false;
+        agent.enabled = true;
     }
 
     void StartParticleDeath()
