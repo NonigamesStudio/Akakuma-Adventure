@@ -12,6 +12,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] Health bossH;
     [SerializeField] GameObject panelLose;
     [SerializeField] GameObject panelWin;
+    [SerializeField] List<GameObject> healthBar;
+    private int listHealth;
+    [SerializeField] GameObject dashBar;
+    [SerializeField] Sprite emptyImg;
+    [SerializeField] GameObject weaponGO;
+    [SerializeField] List<Sprite> weaponSprite;
+
 
     int score;
 
@@ -21,6 +28,7 @@ public class UIManager : MonoBehaviour
         EnemyController.OnChangeWave += RestarBarProgressWave;
         bossH.OnDeath += WinPanel;
         playerH.OnDeath += LosePanel;
+        playerH.OnTakeDmg += LoseHealth;
 
         Coin.OnCoinCollected += UpdateCoinsUI;
     }
@@ -47,7 +55,7 @@ public class UIManager : MonoBehaviour
     void UpdateCoinsUI()
     {
         score++;
-        coinText_text.text = "Coins: " + score;
+        coinText_text.text = "Souls: " + score;
     }
 
     void WinPanel()
@@ -59,5 +67,16 @@ public class UIManager : MonoBehaviour
     {
         panelLose.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    void LoseHealth()
+    {
+        healthBar[listHealth].GetComponent<Image>().sprite = emptyImg;
+        listHealth++;
+    }
+
+    public void ChangeWeaponSpriteAbility(int weaponNumber)
+    {
+        weaponGO.GetComponent<Image>().sprite = weaponSprite[weaponNumber];
     }
 }

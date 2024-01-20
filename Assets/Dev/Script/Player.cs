@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public Stats stats;
     [HideInInspector] public WeaponInventory inventory;
     [HideInInspector] public Collider playerCollider;
-   
 
+    [SerializeField] UIManager uIManager;
 
     [Header("Player Variables")]
     [SerializeField] GameObject currentWeaponFirstHandObj;
@@ -85,11 +85,28 @@ public class Player : MonoBehaviour
 
     private void InventoryInput()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Alpha1)) currentWeaponFirstHand = inventory.GetWeaponSelected(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) currentWeaponFirstHand = inventory.GetWeaponSelected(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) currentWeaponFirstHand = inventory.GetWeaponSelected(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) currentWeaponFirstHand = inventory.GetWeaponSelected(3);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            currentWeaponFirstHand = inventory.GetWeaponSelected(0);
+            uIManager.ChangeWeaponSpriteAbility(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentWeaponFirstHand = inventory.GetWeaponSelected(1);
+            uIManager.ChangeWeaponSpriteAbility(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            currentWeaponFirstHand = inventory.GetWeaponSelected(2);
+            uIManager.ChangeWeaponSpriteAbility(4);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            currentWeaponFirstHand = inventory.GetWeaponSelected(3);
+            uIManager.ChangeWeaponSpriteAbility(6);
+        }
+            
     }
 
     private void SkillPrincipalWeaponInput()
