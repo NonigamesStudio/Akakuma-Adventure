@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent agent;
     public Transform playert;
     public EnemyController enemyController;
+    public Animator anim;
     Rigidbody rb;
     Transform t;
     Health health;
@@ -65,6 +66,11 @@ public class EnemyAI : MonoBehaviour
     void AttackState()
     {
         agent.isStopped = true;
+        
+        anim.SetTrigger("Attack");
+    }
+    public void AttackWeapon()
+    {
         currentWeapon.Attack(attackDmg);
     }
     void FollowState()
@@ -79,6 +85,7 @@ public class EnemyAI : MonoBehaviour
     }
     IEnumerator KnockbackCoroutine()
     {
+        anim.SetTrigger("GetDmg");
         agent.isStopped = true;
         agent.enabled = false;
         rb.AddForce(-t.forward * knockBackForce, ForceMode.Impulse);

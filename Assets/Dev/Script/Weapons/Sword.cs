@@ -19,6 +19,10 @@ public class Sword : MonoBehaviour, IWeapon
     [SerializeField] LayerMask mask;
     bool isOnCoolDown;
     bool isOnCoolDownSkill;
+
+    [SerializeField] bool isEnemy;
+
+
     private void Awake()
     {
         colliderAttack = GetComponent<BoxCollider>();
@@ -30,7 +34,7 @@ public class Sword : MonoBehaviour, IWeapon
         {
             StartCoroutine(AttackAction(bonusDmg));
             isOnCoolDown = true;
-            spriteSlash.SetActive(true);
+            //spriteSlash.SetActive(true);
             LeanTween.delayedCall(coolDown, () => { isOnCoolDown = false; });
             LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
         }
@@ -45,11 +49,14 @@ public class Sword : MonoBehaviour, IWeapon
 
     IEnumerator AttackAction(float bonusdmg)
     {
+        
         float time = 0;
         while (attackDuration > time)
         {
+            if (isEnemy) yield return new WaitForSeconds(0.2f);
             Collider[] results = Physics.OverlapBox(transform.position, colliderAttack.size,Quaternion.identity, mask);
 
+            if (results.Length <= 0) yield return null;
 
             foreach (Collider objectColli in results)
             {
@@ -80,6 +87,8 @@ public class Sword : MonoBehaviour, IWeapon
 
     IEnumerator SkillAction()
     {
+        
+
         float time = 0;
         while (skillDuration > time)
         {

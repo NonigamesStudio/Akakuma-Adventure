@@ -7,31 +7,37 @@ public class Skill2BossState : StateBoss
     [SerializeField] AIBossEnemy[] enemiesPool;
     [SerializeField] List<Transform> refsPos;
     [SerializeField] Transform playerT;
-    
+    [SerializeField] Animator anim;
+
     private void OnEnable()
     {
-        List<Transform> temp = new List<Transform>();
-        for (int i = 0; i < 2; i++)
+        anim.SetTrigger("Invoque");
+
+        LeanTween.delayedCall(0.7f, () =>
         {
-            foreach (AIBossEnemy item in enemiesPool)
+
+            List<Transform> temp = new List<Transform>();
+            for (int i = 0; i < 2; i++)
             {
-                if (!item.gameObject.activeSelf)
+                foreach (AIBossEnemy item in enemiesPool)
                 {
-                    Transform refPos = refsPos[Random.Range(0, refsPos.Count)];
-                    item.transform.position =new Vector3( refPos.position.x,1.5f,refPos.position.z);
-                    item.gameObject.SetActive(true);
-                    temp.Add(refPos);
-                    refsPos.Remove(refPos);
-                    break;
+                    if (!item.gameObject.activeSelf)
+                    {
+                        Transform refPos = refsPos[Random.Range(0, refsPos.Count)];
+                        item.transform.position = new Vector3(refPos.position.x, 1.5f, refPos.position.z);
+                        item.gameObject.SetActive(true);
+                        temp.Add(refPos);
+                        refsPos.Remove(refPos);
+                        break;
+                    }
                 }
             }
-        }
 
-        foreach (Transform item in temp)
-        {
-            refsPos.Add(item);
-        }
-
+            foreach (Transform item in temp)
+            {
+                refsPos.Add(item);
+            }
+        });
         StartCoroutine(ColdDown());
     }
 

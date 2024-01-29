@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Skill1BossState : StateBoss
 {
-    
+
     [SerializeField] Transform[] pointsRefsToShoot;
     [SerializeField] Projectil prefabPorjectil;
     [SerializeField] float dmg;
+    [SerializeField] Animator anim;
 
     
     private void OnEnable()
@@ -24,13 +25,14 @@ public class Skill1BossState : StateBoss
             clonPrefabPorjectil.dmg = dmg;
             clonPrefabPorjectil.Shoot();
         }
-
         
     }
 
     IEnumerator ColdDown()
     {
-        yield return new WaitForSeconds(2);
+        
+        yield return new WaitForSeconds(2f);
+        anim.SetTrigger("Attack");
         Shoot3Projectile();
         yield return new WaitForSeconds(2);
         bossStateMachine.ChangeToWalkState();
