@@ -8,6 +8,7 @@ public class Bow : MonoBehaviour, IWeapon
     [SerializeField] float dmg;
     [SerializeField] float coolDownTime;
     [SerializeField] float speedArrow;
+    [SerializeField] Player player;
 
     bool coolDown= true;
 
@@ -22,6 +23,7 @@ public class Bow : MonoBehaviour, IWeapon
 
     public void Attack(float bonusDmg)
     {
+        player.OnBowRealese?.Invoke();
         if (!coolDown) return;
 
         coolDown = false;

@@ -34,6 +34,7 @@ public class Scythe : MonoBehaviour, IWeapon
         if (!isOnCoolDownNormalAttack)
         {
             StartCoroutine(AttackAction(bonusDmg));
+            player.OnWeaponAttack?.Invoke();
             isOnCoolDownNormalAttack = true;
             spriteSlash.SetActive(true);
             LeanTween.delayedCall(coolDown, () => { isOnCoolDownNormalAttack = false; });
@@ -83,6 +84,7 @@ public class Scythe : MonoBehaviour, IWeapon
     {
         player.onSkill = true;
         float time = 0;
+        player.OnWeaponSkill?.Invoke();
         while (skillDuration > time)
         {
             Collider[] results = Physics.OverlapSphere(transform.position, colliderSkill.radius, mask);

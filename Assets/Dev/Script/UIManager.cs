@@ -65,14 +65,21 @@ public class UIManager : MonoBehaviour
     }
     void LosePanel()
     {
-        panelLose.SetActive(true);
-        Time.timeScale = 0;
+       
+        LeanTween.delayedCall(3, () => {
+            panelLose.SetActive(true);
+            Time.timeScale = 0;
+        });
+        
+
     }
 
     void LoseHealth()
     {
+        
         healthBar[listHealth].GetComponent<Image>().sprite = emptyImg;
         listHealth++;
+        
     }
 
     public void ChangeWeaponSpriteAbility(int weaponNumber)

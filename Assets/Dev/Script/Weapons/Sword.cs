@@ -21,7 +21,7 @@ public class Sword : MonoBehaviour, IWeapon
     bool isOnCoolDownSkill;
 
     [SerializeField] bool isEnemy;
-
+    [SerializeField] Player player;
 
     private void Awake()
     {
@@ -33,6 +33,7 @@ public class Sword : MonoBehaviour, IWeapon
         if (!isOnCoolDown)
         {
             StartCoroutine(AttackAction(bonusDmg));
+            if (!isEnemy) player.OnWeaponAttack?.Invoke();
             isOnCoolDown = true;
             //spriteSlash.SetActive(true);
             LeanTween.delayedCall(coolDown, () => { isOnCoolDown = false; });
@@ -111,6 +112,7 @@ public class Sword : MonoBehaviour, IWeapon
 
     IEnumerator SkillAnim()
     {
+        player.OnWeaponSkill?.Invoke();
         float time = skillDuration;
         while (time > 0)
         {

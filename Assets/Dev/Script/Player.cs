@@ -31,6 +31,12 @@ public class Player : MonoBehaviour
     bool isStuned;
     bool usingyWeapon;
 
+    public System.Action OnWeaponSkill;
+    public System.Action OnWeaponAttack;
+    public System.Action OnBowRealese;
+    public System.Action OnBowReady;
+    public int currentWeapon;
+
     private void Start()
     {
         t = GetComponent<Transform>();
@@ -90,21 +96,25 @@ public class Player : MonoBehaviour
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(0);
             uIManager.ChangeWeaponSpriteAbility(0);
+            currentWeapon = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(1);
             uIManager.ChangeWeaponSpriteAbility(2);
+            currentWeapon = 1;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(2);
             uIManager.ChangeWeaponSpriteAbility(4);
+            currentWeapon = 2;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(3);
             uIManager.ChangeWeaponSpriteAbility(6);
+            currentWeapon = 3;
         }
             
     }
@@ -136,6 +146,7 @@ public class Player : MonoBehaviour
             usingyWeapon = true;
             currentWeaponFirstHand.TurnOnOffWeapon(false);
             currentWeaponSecondHand.TurnOnOffWeapon(true);
+            OnBowReady?.Invoke();
         }
         if (Input.GetMouseButton(1)) chargeTime += Time.deltaTime;
         if (Input.GetMouseButtonUp(1))
