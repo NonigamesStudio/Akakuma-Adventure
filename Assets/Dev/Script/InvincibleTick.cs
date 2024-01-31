@@ -7,12 +7,11 @@ public class InvincibleTick : MonoBehaviour
     Health health;
     [SerializeField] float duration;
     int layer;
-    MeshRenderer meshRenderer;
+    [SerializeField] SkinnedMeshRenderer meshRenderer;
     private void Awake()
     {
         layer = gameObject.layer;
         health = GetComponent<Health>();
-        meshRenderer = GetComponent<MeshRenderer>();
     }
 
     private void OnEnable()

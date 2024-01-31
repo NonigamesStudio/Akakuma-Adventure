@@ -9,6 +9,8 @@ public class StickyProjectil : MonoBehaviour
     [SerializeField] SphereCollider col;
     [SerializeField] float coolDown;
     [SerializeField] float duration;
+    [SerializeField] GameObject VFXAcid;
+    [SerializeField] MeshRenderer meshRenderer;
     
 
     public void Shoot()
@@ -25,6 +27,8 @@ public class StickyProjectil : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
             rb.isKinematic = true; // repos la el objeto para que calce justo con el piso
             col.isTrigger = true;
+            meshRenderer.enabled = false;
+            VFXAcid.SetActive(true);
             StartCoroutine(CoolDown());
         }
     }
