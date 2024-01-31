@@ -17,7 +17,7 @@ public class Arrow : MonoBehaviour
 
     public void ThrowArrow(float force)
     {
-        rb.AddForce(bow.transform.forward * force,ForceMode.Impulse);
+        rb.AddForce(bow.player.transform.forward * force,ForceMode.Impulse);
         transform.SetParent(null);
     }
 

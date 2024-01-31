@@ -7,6 +7,7 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField]private Animator playerAnimator;
     [SerializeField] Health playerH;
     [SerializeField] Player playerW;
+    [SerializeField] PlayerMovement playerMovement;
 
 
     private void OnEnable()
@@ -33,6 +34,8 @@ public class PlayerAnimations : MonoBehaviour
         {
             playerAnimator.SetBool("moving", false);
         }
+        playerAnimator.SetFloat("directionRun",playerMovement.speed*10);
+
     }
 
     private void SkillUse()
@@ -52,4 +55,6 @@ public class PlayerAnimations : MonoBehaviour
                 break;
         }
     }
+
+
 }

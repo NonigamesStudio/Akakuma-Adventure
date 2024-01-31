@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Collider playerCollider;
 
     [SerializeField] UIManager uIManager;
+    [SerializeField] GameObject shieldR;
 
     [Header("Player Variables")]
     [SerializeField] GameObject currentWeaponFirstHandObj;
@@ -95,18 +96,21 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(0);
+            shieldR.SetActive(false);
             uIManager.ChangeWeaponSpriteAbility(0);
             currentWeapon = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(1);
+            shieldR.SetActive(false);
             uIManager.ChangeWeaponSpriteAbility(2);
             currentWeapon = 1;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(2);
+            shieldR.SetActive(true);
             uIManager.ChangeWeaponSpriteAbility(4);
             currentWeapon = 2;
         }
@@ -143,6 +147,7 @@ public class Player : MonoBehaviour
         
         if (Input.GetMouseButtonDown(1))
         {
+            playerMovement.SlowDown(true);
             usingyWeapon = true;
             currentWeaponFirstHand.TurnOnOffWeapon(false);
             currentWeaponSecondHand.TurnOnOffWeapon(true);
@@ -152,10 +157,12 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonUp(1))
         {
             currentWeaponSecondHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
+            playerMovement.SlowDown(false);
             chargeTime = 0;
             usingyWeapon = false;
             currentWeaponFirstHand.TurnOnOffWeapon(true);
             currentWeaponSecondHand.TurnOnOffWeapon(false);
+            
         }
     }
 

@@ -8,9 +8,10 @@ public class Bow : MonoBehaviour, IWeapon
     [SerializeField] float dmg;
     [SerializeField] float coolDownTime;
     [SerializeField] float speedArrow;
-    [SerializeField] Player player;
+    [SerializeField] public Player player;
+    
 
-    bool coolDown= true;
+    bool coolDown = true;
 
     private void Awake()
     {

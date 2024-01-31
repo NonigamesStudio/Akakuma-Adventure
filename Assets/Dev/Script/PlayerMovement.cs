@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [Space(5)]
     [Header("Dash Variables")]
     public float speedDash;
+    [HideInInspector]public float speed;
     [SerializeField] float distanceDash;
     float offsetSpeed = 2;
     
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0, 45, 0);
         Matrix4x4 matrix = Matrix4x4.Rotate(rotation);
         dir = matrix.MultiplyPoint3x4(dir);
-
+        speed = dir.magnitude * speedRun * Time.deltaTime * offsetSpeed;
         rb.MovePosition (t.position + dir.normalized * speedWalk * Time.deltaTime * offsetSpeed); 
     }
     public void Run()
@@ -36,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0, 45, 0);
         Matrix4x4 matrix = Matrix4x4.Rotate(rotation);
         dir = matrix.MultiplyPoint3x4(dir);
-
+        speed = dir.magnitude * speedRun * Time.deltaTime * offsetSpeed;
         rb.MovePosition(t.position + dir.normalized * speedRun * Time.deltaTime * offsetSpeed);
     }
     public void Rotate()
@@ -63,7 +64,19 @@ public class PlayerMovement : MonoBehaviour
         }).setOnComplete(()=> { t.gameObject.layer = 0; });
     }
 
-
+    public void SlowDown(bool state)
+    {
+        if (state)
+        {
+            speedWalk = speedWalk / 2;
+            speedRun = speedRun / 2;
+        }
+        else
+        {
+            speedWalk = speedWalk * 2;
+            speedRun = speedRun * 2;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

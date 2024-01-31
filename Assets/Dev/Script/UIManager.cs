@@ -16,10 +16,11 @@ public class UIManager : MonoBehaviour
     private int listHealth;
     [SerializeField] GameObject dashBar;
     [SerializeField] Sprite emptyImg;
+    
     [SerializeField] GameObject weaponGO;
     [SerializeField] List<Sprite> weaponSprite;
 
-
+    int hpThreshold;
     int score;
 
     private void OnEnable()
@@ -76,10 +77,13 @@ public class UIManager : MonoBehaviour
 
     void LoseHealth()
     {
-        
-        healthBar[listHealth].GetComponent<Image>().sprite = emptyImg;
-        listHealth++;
-        
+
+        for (int i = 0; i < (5-Mathf.RoundToInt(playerH.actualHealth * 5 / 100)); i++)
+        {
+            healthBar[i].GetComponent<Image>().sprite = emptyImg;
+        }
+
+
     }
 
     public void ChangeWeaponSpriteAbility(int weaponNumber)
