@@ -23,10 +23,6 @@ public class Sword : MonoBehaviour, IWeapon
     [SerializeField] bool isEnemy;
     [SerializeField] Player player;
 
-    private void Awake()
-    {
-        colliderAttack = GetComponent<BoxCollider>();
-    }
 
     public void Attack(float bonusDmg)
     {
@@ -35,7 +31,8 @@ public class Sword : MonoBehaviour, IWeapon
             StartCoroutine(AttackAction(bonusDmg));
             if (!isEnemy) player.OnWeaponAttack?.Invoke();
             isOnCoolDown = true;
-            //spriteSlash.SetActive(true);
+            
+            LeanTween.delayedCall(0.4f, () => { spriteSlash.SetActive(true); });
             LeanTween.delayedCall(coolDown, () => { isOnCoolDown = false; });
             LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
         }
@@ -50,12 +47,12 @@ public class Sword : MonoBehaviour, IWeapon
 
     IEnumerator AttackAction(float bonusdmg)
     {
-        
         float time = 0;
         while (attackDuration > time)
         {
             if (isEnemy) yield return new WaitForSeconds(0.2f);
-            Collider[] results = Physics.OverlapBox(transform.position, colliderAttack.size,Quaternion.identity, mask);
+            else { yield return new WaitForSeconds(0.3f); }
+            Collider[] results = Physics.OverlapBox(colliderAttack.transform.position, colliderAttack.size,Quaternion.identity, mask);
 
             if (results.Length <= 0) yield return null;
 
@@ -93,7 +90,7 @@ public class Sword : MonoBehaviour, IWeapon
         float time = 0;
         while (skillDuration > time)
         {
-            Collider[] results = Physics.OverlapBox(transform.position, colliderSkill.size, Quaternion.identity, mask);
+            Collider[] results = Physics.OverlapBox(colliderAttack.transform.position, colliderSkill.size, Quaternion.identity, mask);
 
             foreach (Collider objectColli in results)
             {
@@ -113,6 +110,7 @@ public class Sword : MonoBehaviour, IWeapon
     IEnumerator SkillAnim()
     {
         player.OnWeaponSkill?.Invoke();
+        yield return new WaitForSeconds(0.3f);
         float time = skillDuration;
         while (time > 0)
         {
