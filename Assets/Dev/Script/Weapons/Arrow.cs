@@ -9,6 +9,11 @@ public class Arrow : MonoBehaviour
     public Bow bow;
     public float dmg;
 
+    private void OnEnable()
+    {
+        transform.eulerAngles = bow.player.transform.eulerAngles;
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
