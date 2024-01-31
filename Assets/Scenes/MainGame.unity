@@ -3816,7 +3816,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 592fddfddde924142adb68d3e3571b3d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 1a221efe73ee5104499618b928083a4f, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1528992357
 Transform:
@@ -3908,7 +3908,7 @@ MonoBehaviour:
   boss: {fileID: 5928061324752563337}
   amountEnemysConstantOnField: 0
   radioAreaToSpawn: 50
-  numberOfEnemiesPerWave: 0200000004000000
+  numberOfEnemiesPerWave: 01000000
   secsBetweenWavesSpawn: 2
 --- !u!114 &1585075208 stripped
 MonoBehaviour:
@@ -4826,7 +4826,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7cdafb159eb941a45ac8fb89a05295a9, type: 2}
+  - {fileID: 2100000, guid: b6fa9a3b1c0fbe04a8062cb2e108a6bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4865,8 +4865,8 @@ Transform:
   m_GameObject: {fileID: 2038254288}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 26.4}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 49.9}
+  m_LocalScale: {x: 100, y: 1, z: 148.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
