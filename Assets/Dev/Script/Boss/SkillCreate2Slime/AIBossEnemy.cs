@@ -8,6 +8,7 @@ public class AIBossEnemy : MonoBehaviour
     [SerializeField] Transform bossT;
     [SerializeField] StickyProjectil stickyProjectil;
     Health health;
+    [SerializeField] private Animator minionBossAnimator;
 
     [SerializeField] float fireRate;
     float time = 0;
@@ -40,6 +41,7 @@ public class AIBossEnemy : MonoBehaviour
             time = 0;
             StickyProjectil clon = Instantiate(stickyProjectil, transform.position,transform.rotation);
             clon.Shoot();
+            minionBossAnimator.SetTrigger("onAttack");
         }
     }
 
