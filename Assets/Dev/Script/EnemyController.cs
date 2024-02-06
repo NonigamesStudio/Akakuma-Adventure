@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] List<int> numberOfEnemiesPerWave;
     [SerializeField] int secsBetweenWavesSpawn;
 
+    [SerializeField] Animator rockAnim;
+
 
     public static System.Action<float,float> OnEnemyDeath;
     public static System.Action OnChangeWave;
@@ -74,7 +76,7 @@ public class EnemyController : MonoBehaviour
 
     void SpawnWave()
     {
-        if (currentWave >= numberOfEnemiesPerWave.Count) { boss.SetActive(true); return; }
+        if (currentWave >= numberOfEnemiesPerWave.Count) { rockAnim.Play("New Animation"); return; }
         LeanTween.delayedCall(secsBetweenWavesSpawn, () =>
         {
             OnChangeWave?.Invoke();

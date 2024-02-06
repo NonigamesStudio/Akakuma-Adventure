@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public void RestartLvl()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     [DllImport("__Internal")]
