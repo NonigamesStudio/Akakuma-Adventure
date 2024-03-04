@@ -4,7 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-   
+    public static GameController instances;
+
+
+    private void Awake()
+    {
+        instances = this;
+    }
 
     public void RestartLvl()
     {
@@ -19,7 +25,7 @@ public class GameController : MonoBehaviour
     {
 
 #if UNITY_WEBGL == true && UNITY_EDITOR == false
-    GameOver ();
+    GameOver();
 #endif
     }
 

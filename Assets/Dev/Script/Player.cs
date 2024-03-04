@@ -38,6 +38,14 @@ public class Player : MonoBehaviour
     public System.Action OnBowReady;
     public int currentWeapon;
 
+    private void OnEnable()
+    {
+        healthPlayer.OnDeath += OnDeathPlayer;
+    }
+    private void OnDisable()
+    {
+        healthPlayer.OnDeath -= OnDeathPlayer;
+    }
     private void Start()
     {
         t = GetComponent<Transform>();
@@ -51,6 +59,12 @@ public class Player : MonoBehaviour
         currentWeaponFirstHand = currentWeaponFirstHandObj.GetComponent<IWeapon>();
         currentWeaponSecondHand = currentWeaponSecondHandObj.GetComponent<IWeapon>();
 
+
+    }
+
+    void OnDeathPlayer()
+    {
+        GameController.instances.OnEndGame();
     }
 
     private void Update()//Input Detection
