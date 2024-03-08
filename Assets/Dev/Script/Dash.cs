@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Drawing;
+using System.Collections;
 
 
 public class Dash : MonoBehaviour
@@ -10,7 +12,7 @@ public class Dash : MonoBehaviour
     [SerializeField] float speedDash;
     [SerializeField] float coolDownDashTime;
     bool canDash;
-    float distanceDetection = 0.7f; 
+    
     
     
     void Start()
@@ -20,35 +22,65 @@ public class Dash : MonoBehaviour
     void Update()
     {
         coolDownDashTime -= Time.deltaTime;
-        canDash = !Physics.Raycast(t.position, t.forward, distanceDetection);
+        //canDash = !Physics.Raycast(t.position, t.forward, distanceDetection);
     }    
     private void ManageDash(object sender, EventArgs e)
     {
+        
+
         if (coolDownDashTime > 0) return;
-       
+           
         coolDownDashTime = 1f;
 
         player.isStuned = true;
         
+        StartCoroutine(DashCoroutine());
+       
+    }
+   
 
-        Vector3 posToMove = t.position + t.forward * distanceDash;
+    IEnumerator DashCoroutine()
+    {
+        Vector3 originalPosition = t.position;
+        Vector3 posToMove = Vector3.zero;
 
-    
-        LeanTween.value(0, 1, speedDash).setOnUpdate((float value) => { 
+        canDash = !Physics.Raycast(t.position, t.forward, out RaycastHit hit, distanceDash);
         if (canDash)
         {
-            transform.position = Vector3.MoveTowards(transform.position, posToMove, value);
-            
-        }else
-        {
-            OnDashCompleted();
-            LeanTween.cancelAll();
-
+            posToMove = t.position + t.forward * distanceDash;
         }
-        }).setOnComplete(()=> { OnDashCompleted();});
+        else
+        {
+            posToMove = hit.point;
+        }
+
+        float timeElapsed = 0;
+        
+        while (Vector3.Distance(t.position, posToMove)>0.5f)
+        {
+            
+            
+            timeElapsed += Time.deltaTime;
+
+            float step = Mathf.Lerp(0, 1, Mathf.Clamp(timeElapsed * speedDash, 0, 1));
+
+            if (canDash)
+            {
+               t.position = Vector3.MoveTowards(t.position, posToMove, step);
+            }
+            else
+            {
+                t.position = Vector3.MoveTowards(t.position, hit.point, step);
+            }
+
+            yield return null;
+        }
+
+    OnDashCompleted();
     }
     void OnDashCompleted()
     {
-       player.isStuned = false;
+        player.isStuned = false;
     }
+
 }

@@ -9923,7 +9923,7 @@ MonoBehaviour:
   t: {fileID: 2063582047}
   player: {fileID: 2063582051}
   distanceDash: 8
-  speedDash: 0.3
+  speedDash: 2
   coolDownDashTime: 1
 --- !u!1001 &2093692149
 PrefabInstance:
