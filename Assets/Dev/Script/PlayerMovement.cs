@@ -13,11 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speedWalk;
     [SerializeField] float speedRun;
     [SerializeField] LayerMask layerGround;
-    [Space(5)]
-    [Header("Dash Variables")]
-    public float speedDash;
     [HideInInspector]public float speed;
-    [SerializeField] float distanceDash;
+    
     float offsetSpeed = 2;
     
     public void Walk()
@@ -53,16 +50,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-    public void DashMove()
-    {
-        t.gameObject.layer = 6;
-
-        Vector3 posToMove = t.position + t.forward * distanceDash;
-
-        LeanTween.value(0, 1, speedDash).setOnUpdate((float value) => { 
-            t.position = Vector3.MoveTowards(t.position, posToMove, value);
-        }).setOnComplete(()=> { t.gameObject.layer = 0; });
-    }
+   
 
     public void SlowDown(bool state)
     {

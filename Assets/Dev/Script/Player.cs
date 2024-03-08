@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
+    public event EventHandler OnDash;
     [HideInInspector] public Transform t;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public PlayerMovement playerMovement;
@@ -27,9 +29,8 @@ public class Player : MonoBehaviour
 
     public bool onSkill;
 
-    bool coolDownDash = true;
     float chargeTime;
-    bool isStuned;
+    [HideInInspector] public bool isStuned;
     bool usingyWeapon;
 
     public System.Action OnWeaponSkill;
@@ -90,12 +91,9 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!coolDownDash) { Debug.Log("Dash on Cooldown"); return; }
-            GetStuned(playerMovement.speedDash);
-            coolDownDash = false;
-            LeanTween.delayedCall(coolDownDashTime, () => { coolDownDash = true; });
-            playerMovement.DashMove();
+            OnDash?.Invoke(this, EventArgs.Empty);
         }
+            
     }
 
     private void MovementInput()
@@ -186,5 +184,6 @@ public class Player : MonoBehaviour
         isStuned = true;
         LeanTween.delayedCall(sec, () => { isStuned = false; });
     }
+
 
 }
