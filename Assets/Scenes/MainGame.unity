@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18132825, g: 0.22694321, b: 0.30736718, a: 1}
+  m_IndirectSpecularColor: {r: 0.18132803, g: 0.22694305, b: 0.30736676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2406,6 +2406,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544083713}
   m_CullTransparentMesh: 1
+--- !u!1 &580802248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5790773726783907435, guid: 3b114fe534a22254b9d8890070245e62,
+    type: 3}
+  m_PrefabInstance: {fileID: 3366977123221321934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &598002830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9884,12 +9890,41 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3366977123221321934}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 580802248}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00970fb9bbc59424d8ff171678e829b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2063582051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5222021618656745025, guid: 3b114fe534a22254b9d8890070245e62,
+    type: 3}
+  m_PrefabInstance: {fileID: 3366977123221321934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580802248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 029cdf38301c50445b36e6a7365eb8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2063582062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580802248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5146b67bca6b44fe8e111aeaaec0dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t: {fileID: 2063582047}
+  player: {fileID: 2063582051}
+  distanceDash: 8
+  speedDash: 0.3
+  coolDownDashTime: 1
 --- !u!1001 &2093692149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10372,7 +10407,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5790773726783907435, guid: 3b114fe534a22254b9d8890070245e62,
+        type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 2063582062}
   m_SourcePrefab: {fileID: 100100000, guid: 3b114fe534a22254b9d8890070245e62, type: 3}
 --- !u!1001 &5928061324752563336
 PrefabInstance:
