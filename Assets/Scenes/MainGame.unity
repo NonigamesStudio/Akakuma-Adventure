@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.248576, g: 0.26231092, b: 0.3962264, a: 1}
+  m_AmbientSkyColor: {r: 0.3224012, g: 0.3503949, b: 0.5943396, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -1815,8 +1815,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}
-  m_Intensity: 0.0047187805
+  m_Color: {r: 0.04227483, g: 0.087675035, b: 0.3584906, a: 1}
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1859,7 +1859,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 188.71307
+  m_ColorTemperature: 1500
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -1874,7 +1874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7070799, y: 0.0061705927, z: 0.0061705927, w: 0.7070799}
+  m_LocalRotation: {x: -0.6963643, y: 0.12278781, z: 0.12278781, w: 0.6963643}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8067,52 +8067,52 @@ MonoBehaviour:
   timeSpeed: 0.5
   currentTimeString: 
   sunLight: {fileID: 410087040}
-  sunPosition: 1
+  sunPosition: 20
   sunIntensity: 1
   sunIntensityMultiplier:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.0047187805
-      inSlope: 2.607178
-      outSlope: 2.607178
+      time: -0.0015889215
+      value: -0.004716262
+      inSlope: 0.08600713
+      outSlope: 0.08600713
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.1882301
-      value: 0.49546814
-      inSlope: 2.1040292
-      outSlope: 2.1040292
+      time: 0.19837067
+      value: 0.012481689
+      inSlope: 1.6671362
+      outSlope: 1.6671362
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5029006
-      value: 0.999218
-      inSlope: -0.008966484
-      outSlope: -0.008966484
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3008236
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.79446936
-      value: 0.48923874
-      inSlope: -2.1120985
-      outSlope: -2.1120985
+      time: 0.5023847
+      value: 1
+      inSlope: 0.76383555
+      outSlope: 0.76383555
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.98950195
-      value: 0.006511688
-      inSlope: -2.4751096
-      outSlope: -2.4751096
+      time: 0.7897362
+      value: 0.5055847
+      inSlope: -2.053969
+      outSlope: -2.053969
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99816895
+      value: 0.007984161
+      inSlope: -2.3873436
+      outSlope: -2.3873436
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -8173,16 +8173,16 @@ MonoBehaviour:
     m_RotationOrder: 4
   sunLightColor:
     serializedVersion: 2
-    key0: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}
+    key0: {r: 0.04227483, g: 0.087675035, b: 0.3584906, a: 1}
     key1: {r: 1, g: 0.4142865, b: 0, a: 1}
-    key2: {r: 1, g: 1, b: 1, a: 0}
+    key2: {r: 0.9622642, g: 0.88031745, b: 0.81247777, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 15806
-    ctime1: 32768
+    ctime1: 36623
     ctime2: 65535
     ctime3: 0
     ctime4: 0
@@ -8254,7 +8254,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   ambientColor:
     serializedVersion: 2
-    key0: {r: 0.248576, g: 0.26231092, b: 0.3962264, a: 1}
+    key0: {r: 0.3224012, g: 0.3503949, b: 0.5943396, a: 1}
     key1: {r: 0.9622642, g: 0.6280816, b: 0.5310609, a: 1}
     key2: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}

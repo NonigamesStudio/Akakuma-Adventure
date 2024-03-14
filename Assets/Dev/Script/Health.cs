@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] float maxHealth;
+    [SerializeField] public float maxHealth;
     [SerializeField] public float actualHealth;
     public System.Action OnDeath;
     public System.Action OnTakeDmg;

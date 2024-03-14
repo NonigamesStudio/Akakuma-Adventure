@@ -77,7 +77,7 @@ public class DayAndNightCycle : MonoBehaviour
     void CheckShadowStatus()
     {
         float currentSunRotation = currentTime;
-        if (currentSunRotation >= 6 && currentSunRotation <= 18)
+        if (currentSunRotation >= 5 && currentSunRotation <= 19)
         {
             sunLight.shadows = LightShadows.Soft;
             isDay = true; 
