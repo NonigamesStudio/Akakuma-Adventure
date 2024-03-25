@@ -22,7 +22,7 @@ public class LifeBarUI : MonoBehaviour
     {
         lifePercentage = ((float)health.actualHealth / (float)health.maxHealth);
         barImage.fillAmount = lifePercentage;
-        Debug.Log(lifePercentage);
+        
         if (lifePercentage == 1f|| lifePercentage<=0)
         {
             Hide();
