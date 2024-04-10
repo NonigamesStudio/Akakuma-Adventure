@@ -39,11 +39,11 @@ Material:
     m_Ints: []
     m_Floats:
     - Boolean_9F4422B3: 1
-    - Vector1_4464715: 0.84
+    - Vector1_4464715: 0.07
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - Color_2A7EB63B: {r: 0.00048949925, g: 0.103773594, b: 0.06934557, a: 1}
+    - Color_2A7EB63B: {r: 0, g: 0.41845155, b: 0.8509804, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4440299387561634876
 MonoBehaviour:
