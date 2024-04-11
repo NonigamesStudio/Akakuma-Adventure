@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
         loadingScreen.SetActive(true);
 
         scenesLoading.Add(SceneManager.UnloadSceneAsync("MainMenu"));
-        scenesLoading.Add(SceneManager.LoadSceneAsync("MainGame", LoadSceneMode.Additive));
+         scenesLoading.Add(SceneManager.LoadSceneAsync("DevMainGame", LoadSceneMode.Additive));
+        scenesLoading.Add(SceneManager.LoadSceneAsync("ArtMainGame", LoadSceneMode.Additive));
 
 
         StartCoroutine(GetSceneLoadProgress());
@@ -62,7 +63,8 @@ public class GameManager : MonoBehaviour
         loadingScreen.SetActive(false);
         managerCamera.gameObject.SetActive(false);
         scenesLoading.Clear();
-        SceneManager.UnloadSceneAsync("PersistentScene");
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("DevMainGame"));
+        //SceneManager.UnloadSceneAsync("PersistentScene");
         
     }
     
