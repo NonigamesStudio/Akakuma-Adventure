@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 [RequireComponent(typeof(Health))]
@@ -17,8 +18,9 @@ public class EnemyAI : MonoBehaviour
     [Space(5)]
     [Header("Variables Enemy")]
     [SerializeField] float attackRange;
+    [SerializeField] float detectionRange ;
     [SerializeField] GameObject weapon;
-    [SerializeField] float attackDmg;
+    public float attackDmg;//Cambie el daño de los enemigos accediendo a este valor, no se si es como estaba pensado que deberia ser
     [SerializeField] float knockBackForce;
 
     [Space(5)]
@@ -28,6 +30,21 @@ public class EnemyAI : MonoBehaviour
 
     IWeapon currentWeapon;
     bool onKnockBack;
+    List <Vector2> walkingIdlePoints = new List<Vector2>();
+    float waitTime;
+    int patrolPoints;
+    float timeToChangePatrolPoint;
+
+
+
+    
+
+    private enum State
+    {
+        Idle,
+        Attack
+    }
+        private State currentState;
 
     private void Awake()
     {
@@ -38,10 +55,13 @@ public class EnemyAI : MonoBehaviour
     }
     private void OnEnable()
     {
+        currentState = State.Idle;
         agent.enabled = true;
         health.OnDeath += Dead;
         health.OnTakeDmg += Knockback;
         RestartParticles();
+        walkingIdlePoints.Clear();
+        InvokeRepeating ("RestarEnemy", 0, 0.5f);
     }
     private void OnDisable()
     {
@@ -52,9 +72,45 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+       
         if (onKnockBack) return;
-        if (Vector3.Distance(t.position, playert.position) < attackRange) AttackState(); //Attack
-        else FollowState();
+        // Debug.Log(Vector3.Distance(t.position, playert.position));
+        if (Vector3.Distance(t.position, playert.position) < detectionRange) currentState = State.Attack;
+        else currentState = State.Idle;
+        
+        switch (currentState)
+        {     
+            case State.Idle:
+                {
+               
+                if (Vector3.Distance(transform.position, new Vector3(walkingIdlePoints[patrolPoints].x, t.position.y, walkingIdlePoints[patrolPoints].y)) > 1.5f)
+                {
+                    FollowState(new Vector3(walkingIdlePoints[patrolPoints].x, t.position.y, walkingIdlePoints[patrolPoints].y));
+                    timeToChangePatrolPoint = 0;
+                    waitTime = 0; 
+                }
+                else if (timeToChangePatrolPoint <= waitTime) 
+                {
+                    if (waitTime == 0)
+                    {
+                        waitTime = Random.Range(5,10); 
+                    }
+                    timeToChangePatrolPoint += Time.deltaTime;
+                }
+                else 
+                {
+                    patrolPoints++;
+                }
+                if (patrolPoints >= walkingIdlePoints.Count) patrolPoints = 0; 
+                break;
+                }
+            case State.Attack:
+                if (Vector3.Distance(t.position, playert.position) < attackRange) AttackState(); //Attack
+                else FollowState(playert.position);
+                break;
+        }
+
+        
     }
 
     void Dead()
@@ -73,10 +129,10 @@ public class EnemyAI : MonoBehaviour
     {
         currentWeapon.Attack(attackDmg);
     }
-    void FollowState()
+    void FollowState(Vector3 target)
     {
         agent.isStopped = false; 
-        agent.destination = playert.position;
+        agent.destination = target;
     }
     void Knockback()
     {
@@ -120,5 +176,15 @@ public class EnemyAI : MonoBehaviour
     {
         deathParticle.transform.SetParent(transform);
         deathParticle.SetActive(false);
+    }
+
+    public void SetWalkingIdlePoints(Vector3 spawnPoint)
+    {
+        for (int i = 0; i < Random.Range(2, 5); i++)
+        {
+            Vector2 randomPos = (Random.insideUnitCircle * 5) + new Vector2(spawnPoint.x, spawnPoint.z);
+            walkingIdlePoints.Add(randomPos);
+        }
+        patrolPoints = 0;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class Health : MonoBehaviour
     {
         actualHealth = maxHealth;
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            if (tag!="Player") TakeDamage(actualHealth);
+        }
+    }
+
     public void TakeDamage(float dmg)
     {
         actualHealth -= dmg;
@@ -27,5 +36,11 @@ public class Health : MonoBehaviour
     public void CheckIfIsDeath()
     {
         if (actualHealth <= 0) OnDeath?.Invoke();
+    }
+
+    public void SetMaxHealth(float maxHealth)
+    {
+        this.maxHealth = maxHealth;
+        actualHealth=maxHealth;
     }
 }

@@ -22,13 +22,13 @@ public class WeatherManager : MonoBehaviour
             time = 0;
             if (WheaterChange())
             {
-                Debug.Log("Raining");
+               
                 OnRainStarts?.Invoke();
                 rainFall.SetActive(true);
             }
             else
             {   
-                Debug.Log("Not Raining");
+               
                 OnRainEnds?.Invoke();
                 rainFall.SetActive(false);
             }
