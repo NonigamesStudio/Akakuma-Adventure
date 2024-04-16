@@ -13,15 +13,16 @@ public class EnemyAI : MonoBehaviour
     public Animator anim;
     Rigidbody rb;
     Transform t;
-    Health health;
+    public Health health;
 
     [Space(5)]
     [Header("Variables Enemy")]
     [SerializeField] float attackRange;
-    [SerializeField] float detectionRange ;
+    [SerializeField] float detectionRange;
     [SerializeField] GameObject weapon;
     public float attackDmg;//Cambie el daño de los enemigos accediendo a este valor, no se si es como estaba pensado que deberia ser
     [SerializeField] float knockBackForce;
+    [SerializeField] GameObject[] meshesList;
 
     [Space(5)]
     [Header("Variables Effects")]
@@ -68,6 +69,19 @@ public class EnemyAI : MonoBehaviour
         agent.enabled = false;
         health.OnDeath -= Dead;
         health.OnTakeDmg -= Knockback;
+    }
+
+
+    public void ActiveMesh(int t)
+    {
+        if (t >= meshesList.Length) return;
+
+        foreach (GameObject mesh in meshesList)
+        {
+            mesh.SetActive(false);
+        }
+
+        meshesList[t].SetActive(true);
     }
 
     void Update()

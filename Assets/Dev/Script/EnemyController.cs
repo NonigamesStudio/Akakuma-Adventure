@@ -19,13 +19,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float radioAreaToSpawn;
     [Space(10)]
     [Header("Variables Waves")]
-    [SerializeField] List<int> numberOfEnemiesPerWave;
+    //[SerializeField] List<int> numberOfEnemiesPerWave;
+    [SerializeField] List<DataWaveEnemy> waveDataList;
     [SerializeField] int secsBetweenWavesSpawn;
 
     [SerializeField] Animator rockAnim;
+    //[SerializeField] List<Transform> spanwPoints;
 
-    [SerializeField] List<Transform> spanwPoints;
-
+    Vector3 spanwPointClosest;
 
     public static System.Action<float,float> OnEnemyDeath;
     public static System.Action OnChangeWave;
@@ -41,55 +42,46 @@ public class EnemyController : MonoBehaviour
             enemy.playert = playerTransform;
             enemy.enemyController = this;
         }
-        StartCoroutine(SortSpawnPointsByDistance(playerTransform));
+        //StartCoroutine(SortSpawnPointsByDistance(playerTransform));
         SpawnWave();
     }
 
 
 
-    public EnemyAI SpawnOneEnemy(Vector3 spawnPosition)
-
+    public EnemyAI SpawnOneEnemy(DataTypeSpawnEnemy data)
     {   
-        transform.position=spawnPosition;
         Vector2 randomPos = Random.insideUnitCircle * radioAreaToSpawn;//genera un punto random en un radio de 10 unidades
-        
-       
+        randomPos.x += data.position.position.x;
+        randomPos.y += data.position.position.z;
+
 
         foreach (EnemyAI enemy in enemysPool)
         {
             if (enemy.gameObject.activeSelf) continue;
-            enemy.agent.enabled = false;
+            
             enemy.gameObject.SetActive(true);
-            enemy.transform.position = new Vector3(randomPos.x,1.5f, randomPos.y)+spawnPosition; 
+            enemy.agent.enabled = false;
             enemy.transform.SetParent(null);
+            enemy.transform.position = new Vector3(randomPos.x,5f, randomPos.y); 
             enemy.agent.enabled = true;
-            enemy.SetWalkingIdlePoints(spawnPosition);
-            if (currentWave>2 && currentWave<=4)
-            {
-               SetEnemyForWave(enemy.gameObject,2);
-            }else if (currentWave>4)
-            {
-                SetEnemyForWave(enemy.gameObject,3);
-            }
+            enemy.SetWalkingIdlePoints(data.position.position);
+            SetEnemyForWave(enemy, data.healthMax, data.attackdmg, data.typeEnemy);
 
             return enemy;
         }
+
+
 
         EnemyAI clonEnemy = Instantiate(prefabEnemy, transform);
         enemysPool.Add(clonEnemy);
         clonEnemy.agent.enabled = false;
         clonEnemy.gameObject.SetActive(false);
-        clonEnemy.transform.position = new Vector3(randomPos.x,1.5f, randomPos.y)+spawnPosition;
+        clonEnemy.transform.position = new Vector3(randomPos.x,1.5f, randomPos.y);
         clonEnemy.gameObject.SetActive(true);
         clonEnemy.agent.enabled = true;
-        clonEnemy.SetWalkingIdlePoints(spawnPosition);
-        if (currentWave>2 && currentWave<=4)
-            {
-               SetEnemyForWave(clonEnemy.gameObject,2);
-            }else if (currentWave>4)
-            {
-                SetEnemyForWave(clonEnemy.gameObject,3);
-            }
+        clonEnemy.SetWalkingIdlePoints(data.position.position);
+       
+
         return clonEnemy;
     }
 
@@ -98,7 +90,7 @@ public class EnemyController : MonoBehaviour
         enemy.gameObject.SetActive(false);
         enemy.transform.SetParent(transform);
 
-        OnEnemyDeath?.Invoke(numberOfEnemiesPerWave[currentWave-1], (numberOfEnemiesPerWave[currentWave - 1]-ReturnHowManyEnemiesStillAlive()));
+        //OnEnemyDeath?.Invoke(waveDataList[currentWave-1], (waveDataList[currentWave - 1]-ReturnHowManyEnemiesStillAlive()));
 
         CheckEnemiesAliveAndStartNewWave();
     }
@@ -108,22 +100,12 @@ public class EnemyController : MonoBehaviour
         //if (currentWave >= numberOfEnemiesPerWave.Count) { rockAnim.Play("New Animation"); return; }
         LeanTween.delayedCall(secsBetweenWavesSpawn, () =>
         {
-            spanwPoints.Sort((a, b) => //ordena la lista de puntos de spawn por distancia al jugador
-            {
-            float distA = Vector3.Distance(a.position, playerTransform.position);
-            float distB = Vector3.Distance(b.position, playerTransform.position);
-            return distA.CompareTo(distB);
-            });
             OnChangeWave?.Invoke();
-            currentWave++;
-            for (int i = 0; i < 2; i++)
+            foreach (DataTypeSpawnEnemy enemyData in waveDataList[currentWave].enemyToSpawn)
             {
-                for (int j = 0; j < numberOfEnemiesPerWave[currentWave-1]; j++)
-                {
-                SpawnOneEnemy(spanwPoints[i].position);
-                }
+                SpawnOneEnemy(enemyData);
             }
-            
+            currentWave++;
         });
     }
 
@@ -146,60 +128,52 @@ public class EnemyController : MonoBehaviour
 
         return count;
     }
-    IEnumerator SortSpawnPointsByDistance(Transform target)
-    {
-        while (true)
-        {
+
+
+
+    //IEnumerator SortSpawnPointsByDistance(Transform target)
+    //{
+    //    while (true)
+    //    {
             
-            spanwPoints.Sort((a, b) => 
-            {
-                float distA = Vector3.Distance(a.position, target.position);
-                float distB = Vector3.Distance(b.position, target.position);
-                return distA.CompareTo(distB);
-            });
-            yield return new WaitForSeconds(1f);
-        }
+    //        spanwPoints.Sort((a, b) => 
+    //        {
+    //            float distA = Vector3.Distance(a.position, target.position);
+    //            float distB = Vector3.Distance(b.position, target.position);
+    //            return distA.CompareTo(distB);
+    //        });
+    //        yield return new WaitForSeconds(1f);
+    //    }
+    //}
+
+    void SetEnemyForWave(EnemyAI enemy, float health, float attack, TypeEnemy typeEnemy)
+    {
+        enemy.health.SetMaxHealth(health);
+        enemy.attackDmg = attack;
+        enemy.ActiveMesh((int)typeEnemy);
     }
 
-    void SetEnemyForWave(GameObject enemy, int waveNumber)
-    {
-        if(enemy.TryGetComponent<Health>(out Health health))
-        {
-            if (waveNumber == 2)
-            {
-                health.SetMaxHealth(25);
 
-            }else if (waveNumber == 3)
-            {
-                health.SetMaxHealth(30);
-            }
-            
-        }
-        if(enemy.TryGetComponent<EnemyAI>(out EnemyAI enemyAI))
-        {
-            if (waveNumber == 2)
-            {
-                enemyAI.attackDmg = 2.5f;
-                
-            }else if (waveNumber == 3)
-            {
-                enemyAI.attackDmg = 3f;
-            }
-           
-            
-        }
-        for (int i = 0; i <= 2; i++)
-        {
-            GameObject childObject = enemy.transform.GetChild(i).gameObject;
-            childObject.SetActive(false);
-        }
-        GameObject childObjectToActivate = enemy.transform.GetChild(waveNumber-1).gameObject;
-       
-        childObjectToActivate.SetActive(true);
+}
 
-    }
+[System.Serializable]
+public class DataWaveEnemy
+{
+    public DataTypeSpawnEnemy[] enemyToSpawn;
+}
+[System.Serializable]
+public class DataTypeSpawnEnemy
+{
+    public bool isDistance;
+    public Transform position;
+    public float healthMax;
+    public float attackdmg;
+    public TypeEnemy typeEnemy;
+}
 
-   
-
-
+public enum TypeEnemy //Mantener Orden
+{
+    Verde,
+    Azul,
+    Rojo
 }
