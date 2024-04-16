@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
 
-        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
+        //SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
     }
 
     

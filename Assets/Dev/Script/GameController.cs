@@ -11,6 +11,10 @@ public class GameController : MonoBehaviour
     {
         instances = this;
     }
+    private void Start()
+    {
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("DevMainGame"));
+    }
 
     public void RestartLvl()
     {

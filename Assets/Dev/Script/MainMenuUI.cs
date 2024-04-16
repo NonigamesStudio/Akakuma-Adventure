@@ -1,24 +1,26 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] Button playButton;
     [SerializeField] Button quitButton;
-    
 
-    private void Awake()
+    [SerializeField] Animator animCutOff;
+    public static bool canChangeScene;
+
+    private void Update()
     {
-        playButton.onClick.AddListener(() =>
+        if (Input.anyKeyDown)
         {
-            GameManager.instance.LoadGame();
-        });
-        quitButton.onClick.AddListener(() =>
-        {
-            Application.Quit();
-        });
-
+            if (!canChangeScene) return;
+            animCutOff.Play("RTransitionImgAnim");
+            LeanTween.delayedCall(2f, () => { 
+                SceneManager.LoadScene("ArtMainGame");
+            });
+        }
     }
 
 }

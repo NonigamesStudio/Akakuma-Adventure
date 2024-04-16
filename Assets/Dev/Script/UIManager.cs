@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     int hpThreshold;
     int score;
 
+    public Animator transitionUI;
+
     private void OnEnable()
     {
         EnemyController.OnEnemyDeath += UpdateBarProgressWave;
@@ -32,6 +34,13 @@ public class UIManager : MonoBehaviour
         playerH.OnTakeDmg += LoseHealth;
 
         Coin.OnCoinCollected += UpdateCoinsUI;
+
+        
+    }
+
+    private void Start()
+    {
+        transitionUI.Play("TransitionImgAnim");
     }
     private void OnDisable()
     {
