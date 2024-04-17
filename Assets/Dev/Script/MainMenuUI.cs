@@ -18,7 +18,8 @@ public class MainMenuUI : MonoBehaviour
             if (!canChangeScene) return;
             animCutOff.Play("RTransitionImgAnim");
             LeanTween.delayedCall(2f, () => { 
-                SceneManager.LoadScene("ArtMainGame");
+                // SceneManager.LoadScene("ArtMainGame");
+                GameManager.instance.LoadGame();
             });
         }
     }
