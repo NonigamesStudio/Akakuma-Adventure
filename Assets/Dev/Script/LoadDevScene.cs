@@ -9,8 +9,6 @@ public class LoadDevScene : MonoBehaviour
     void Start()
     {
         SceneManager.LoadSceneAsync("DevMainGame", LoadSceneMode.Additive);
-       
-
     }
 
 }
