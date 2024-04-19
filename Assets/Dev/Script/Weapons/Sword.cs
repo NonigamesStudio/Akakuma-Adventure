@@ -47,6 +47,7 @@ public class Sword : MonoBehaviour, IWeapon
 
     IEnumerator AttackAction(float bonusdmg)
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.wooshSound,this.transform.position);
         float time = 0;
         while (attackDuration > time)
         {

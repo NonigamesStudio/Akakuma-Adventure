@@ -110,27 +110,43 @@ public class Player : MonoBehaviour
             currentWeaponFirstHand = inventory.GetWeaponSelected(0);
             shieldR.SetActive(false);
             uIManager.ChangeWeaponSpriteAbility(0);
+            if (currentWeapon!=0) 
+            {
             currentWeapon = 0;
+            PlayWeaponChangeSound();
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(1);
             shieldR.SetActive(false);
             uIManager.ChangeWeaponSpriteAbility(2);
+            if (currentWeapon!=1) 
+            {
             currentWeapon = 1;
+            PlayWeaponChangeSound();
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(2);
             shieldR.SetActive(true);
             uIManager.ChangeWeaponSpriteAbility(4);
+            if (currentWeapon!=2) 
+            {
             currentWeapon = 2;
+            PlayWeaponChangeSound();
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(3);
             uIManager.ChangeWeaponSpriteAbility(6);
+            if (currentWeapon!=3) 
+            {
             currentWeapon = 3;
+            PlayWeaponChangeSound();
+            }
         }
             
     }
@@ -184,6 +200,9 @@ public class Player : MonoBehaviour
         isStuned = true;
         LeanTween.delayedCall(sec, () => { isStuned = false; });
     }
-
+    private void PlayWeaponChangeSound()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.changeWeapon, t.position);
+    }
 
 }

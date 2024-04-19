@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        if (!IsSceneLoaded(Enum.GetName(typeof(scenes),0)))
+        if (ItsOnlySceneLoaded())
         {
             SceneManager.LoadSceneAsync(Enum.GetName(typeof(scenes),0), LoadSceneMode.Additive);
         }
@@ -78,18 +78,17 @@ public class GameManager : MonoBehaviour
         
         
     }
-    public bool IsSceneLoaded(string sceneName)
+    public bool ItsOnlySceneLoaded()
     {
-        for (int i = 0; i < SceneManager.sceneCount; i++)
+   
+    if (SceneManager.sceneCount > 1)
         {
-            UnityEngine.SceneManagement.Scene scene = SceneManager.GetSceneAt(i);
-            if (scene.name == sceneName)
-            {
-                return true;
-            }
+            return false;
+        }else
+        {
+            return true;
         }
-        return false;
     }
-    
+  
 
 }
