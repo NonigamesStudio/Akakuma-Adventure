@@ -2304,7 +2304,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.98830146
+    m_Strength: 0.9885053
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -6856,7 +6856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1182324636
 Transform:
   m_ObjectHideFlags: 0
@@ -13895,18 +13895,48 @@ MonoBehaviour:
       attackdmg: 2.5
       typeEnemy: 0
     - isDistance: 0
+      position: {fileID: 365573243}
+      healthMax: 25
+      attackdmg: 2.5
+      typeEnemy: 0
+    - isDistance: 0
+      position: {fileID: 365573243}
+      healthMax: 25
+      attackdmg: 2.5
+      typeEnemy: 0
+    - isDistance: 0
+      position: {fileID: 1464197470}
+      healthMax: 25
+      attackdmg: 2.5
+      typeEnemy: 1
+    - isDistance: 0
+      position: {fileID: 1464197470}
+      healthMax: 25
+      attackdmg: 2.5
+      typeEnemy: 1
+    - isDistance: 0
       position: {fileID: 1464197470}
       healthMax: 25
       attackdmg: 2.5
       typeEnemy: 1
   - enemyToSpawn:
     - isDistance: 0
-      position: {fileID: 337931464}
+      position: {fileID: 365573243}
       healthMax: 25
       attackdmg: 2.5
       typeEnemy: 2
     - isDistance: 0
-      position: {fileID: 1368533867}
+      position: {fileID: 365573243}
+      healthMax: 25
+      attackdmg: 2.5
+      typeEnemy: 2
+    - isDistance: 0
+      position: {fileID: 1464197470}
+      healthMax: 25
+      attackdmg: 2.5
+      typeEnemy: 2
+    - isDistance: 0
+      position: {fileID: 1464197470}
       healthMax: 25
       attackdmg: 2.5
       typeEnemy: 2
@@ -21820,6 +21850,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974746589701025920, guid: 3b114fe534a22254b9d8890070245e62,
+        type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974746589701025920, guid: 3b114fe534a22254b9d8890070245e62,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974746589701025920, guid: 3b114fe534a22254b9d8890070245e62,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974746589701025920, guid: 3b114fe534a22254b9d8890070245e62,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974746589701025920, guid: 3b114fe534a22254b9d8890070245e62,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7996166933488270636, guid: 3b114fe534a22254b9d8890070245e62,
         type: 3}

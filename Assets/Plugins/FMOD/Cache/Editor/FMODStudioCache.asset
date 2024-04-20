@@ -106,7 +106,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1462
+  Length: 125
 --- !u!114 &-2074641307783212686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   Path: FMOD Builds/Desktop/SFXs.bank
   Name: Desktop/SFXs
   StudioPath: bank:/SFXs
-  lastModified: 638491790052467054
+  lastModified: 638492355551852032
   FileSizes: []
   Exists: 1
 --- !u!114 &-1872403902232386144
@@ -182,7 +182,7 @@ MonoBehaviour:
   - {fileID: 4887959454794034803}
   StringsBanks:
   - {fileID: 4915073013887812228}
-  cacheTime: 638491790052467054
+  cacheTime: 638492355551852032
   cacheVersion: 131605
 --- !u!114 &1442951453035590062
 MonoBehaviour:
@@ -255,7 +255,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3839
+  Length: 3844
 --- !u!114 &4887959454794034803
 MonoBehaviour:
   m_ObjectHideFlags: 0
