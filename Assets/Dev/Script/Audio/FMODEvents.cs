@@ -11,6 +11,11 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference wooshSound { get; private set; }
     [field: SerializeField] public EventReference dashSound { get; private set; }
     [field: SerializeField] public EventReference changeWeapon { get; private set; }
+
+    [field: Header("Enemy Sounds")]
+    [field: SerializeField] public EventReference smallEnemyDeath { get; private set; }
+    [field: SerializeField] public EventReference smallEnemyTakesDamage { get; private set; }
+    
     [field: Header("Music")]
     [field: SerializeField] public EventReference menuMusic { get; private set; }
     
