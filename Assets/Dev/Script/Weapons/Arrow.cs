@@ -24,6 +24,7 @@ public class Arrow : MonoBehaviour
     {
         rb.AddForce(bow.player.transform.forward * force,ForceMode.Impulse);
         transform.SetParent(null);
+        StartCoroutine(ResetArrowColdDown());
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -44,8 +45,11 @@ public class Arrow : MonoBehaviour
         transform.localEulerAngles = Vector3.zero;
         gameObject.SetActive(false);
     }
-    private void OnBecameInvisible()
+    
+
+    IEnumerator ResetArrowColdDown()
     {
+        yield return new WaitForSeconds(5);
         ResetArrow();
     }
 }
