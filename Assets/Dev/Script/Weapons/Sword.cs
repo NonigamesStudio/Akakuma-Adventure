@@ -61,7 +61,7 @@ public class Sword : MonoBehaviour, IWeapon
             {
                 if (objectColli.TryGetComponent<Health>(out Health health))
                 {
-                    if(gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage + bonusdmg);
+                    if(gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage + bonusdmg,transform.root);
                 }
             }
 
@@ -97,7 +97,7 @@ public class Sword : MonoBehaviour, IWeapon
             {
                 if (objectColli.TryGetComponent<Health>(out Health health))
                 {
-                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage);
+                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage, transform.root);
                 }
             }
 

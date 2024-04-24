@@ -148,17 +148,17 @@ public class EnemyAI : MonoBehaviour
         agent.isStopped = false; 
         agent.destination = target;
     }
-    void Knockback()
+    void Knockback(Transform player)
     {
         onKnockBack = true;
-        StartCoroutine(KnockbackCoroutine());
+        StartCoroutine(KnockbackCoroutine(player));
     }
-    IEnumerator KnockbackCoroutine()
+    IEnumerator KnockbackCoroutine(Transform player)
     {
         anim.SetTrigger("GetDmg");
         agent.isStopped = true;
         agent.enabled = false;
-        rb.AddForce(-t.forward * knockBackForce, ForceMode.Impulse);
+        rb.AddForce(player.forward * knockBackForce, ForceMode.Impulse);
         yield return new WaitForSeconds(0.1f);
         Vector3 temp = rb.velocity;
         LeanTween.value(gameObject, temp, Vector3.zero, 0.1f).setOnUpdate((Vector3 value) => { rb.velocity = value; });

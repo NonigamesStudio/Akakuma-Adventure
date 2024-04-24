@@ -82,7 +82,7 @@ public class Shield : MonoBehaviour,IWeapon
         {
             if (objectColli.TryGetComponent<Health>(out Health health))
             {
-                if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage);
+                if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage, transform.root);
             }
         }
 

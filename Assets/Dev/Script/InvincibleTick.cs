@@ -24,7 +24,7 @@ public class InvincibleTick : MonoBehaviour
         health.OnTakeDmg -= StartInvincible;
     }
 
-    void StartInvincible()
+    void StartInvincible(Transform player)
     {
         StartCoroutine(InvincibleAction());
     }

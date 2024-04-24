@@ -84,7 +84,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    void LoseHealth()
+    void LoseHealth(Transform player)
     {
 
         for (int i = 0; i < (5-Mathf.RoundToInt(playerH.actualHealth * 5 / 100)); i++)

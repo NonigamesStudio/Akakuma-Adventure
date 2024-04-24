@@ -32,7 +32,7 @@ public class Arrow : MonoBehaviour
         if(collision.TryGetComponent<Health>(out Health heatlh))
         {
             if (collision.gameObject.layer == gameObject.layer) return;
-            heatlh.TakeDamage(dmg);
+            heatlh.TakeDamage(dmg, transform.root);
             ResetArrow();
         }
     }

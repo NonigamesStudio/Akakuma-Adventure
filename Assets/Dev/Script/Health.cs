@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     [SerializeField] public float maxHealth;
     [SerializeField] public float actualHealth;
     public System.Action OnDeath;
-    public System.Action OnTakeDmg;
+    public System.Action <Transform> OnTakeDmg;
 
     private void OnEnable()
     {
@@ -24,11 +24,11 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float dmg)
+    public void TakeDamage(float dmg, Transform attacker=null)
     {
         actualHealth -= dmg;
         CheckIfIsDeath();
-        OnTakeDmg?.Invoke();
+        OnTakeDmg?.Invoke(attacker);
         if (tag=="Sticky")
         {
             AudioManager.instance.PlayOneShot(FMODEvents.instance.smallEnemyTakesDamage, transform.position);
