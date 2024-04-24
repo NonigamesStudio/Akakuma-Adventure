@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FloatingIslands : MonoBehaviour
 {
-    [SerializeField] private float moveDistance = 5f;
-    [SerializeField] private float moveTime = 3f;
+    [SerializeField] private float moveDistance;
+    [SerializeField] private float moveTime;
 
     
     void Start()
@@ -16,7 +16,7 @@ public class FloatingIslands : MonoBehaviour
        
         LeanTween.moveY(gameObject, upPosition, moveTime)
             .setEaseInOutSine() 
-            .setLoopPingPong(); 
+            .setLoopPingPong(-1); 
     }
 
   

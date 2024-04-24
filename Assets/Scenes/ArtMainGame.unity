@@ -3562,12 +3562,14 @@ GameObject:
   - component: {fileID: 157749525}
   - component: {fileID: 157749527}
   - component: {fileID: 157749526}
+  - component: {fileID: 157749529}
+  - component: {fileID: 157749528}
   m_Layer: 0
   m_Name: isla_flotante (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &157749525
 Transform:
@@ -3634,6 +3636,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157749524}
   m_Mesh: {fileID: 2232442607633516850, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6, type: 3}
+--- !u!114 &157749528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157749524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865ee0e65464c22a23cf4bd898aa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 5
+  moveTime: 3
+--- !u!114 &157749529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157749524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865ee0e65464c22a23cf4bd898aa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 9
+  moveTime: 2
 --- !u!1001 &182314168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8700,12 +8730,13 @@ GameObject:
   - component: {fileID: 509626767}
   - component: {fileID: 509626769}
   - component: {fileID: 509626768}
+  - component: {fileID: 509626770}
   m_Layer: 0
   m_Name: isla_flotante (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &509626767
 Transform:
@@ -8772,6 +8803,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509626766}
   m_Mesh: {fileID: 2232442607633516850, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6, type: 3}
+--- !u!114 &509626770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509626766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865ee0e65464c22a23cf4bd898aa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 3
+  moveTime: 5
 --- !u!1001 &511073663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12916,12 +12961,13 @@ GameObject:
   - component: {fileID: 754008325}
   - component: {fileID: 754008327}
   - component: {fileID: 754008326}
+  - component: {fileID: 754008328}
   m_Layer: 0
   m_Name: isla_flotante (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &754008325
 Transform:
@@ -12988,6 +13034,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754008324}
   m_Mesh: {fileID: 2232442607633516850, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6, type: 3}
+--- !u!114 &754008328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754008324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865ee0e65464c22a23cf4bd898aa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 3
+  moveTime: 8
 --- !u!1001 &756665633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15511,6 +15571,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 848100985}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &852113325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 581563805719074794, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1540747830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &852113327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852113325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865ee0e65464c22a23cf4bd898aa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 6
+  moveTime: 8
 --- !u!1001 &853158990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18077,12 +18157,13 @@ GameObject:
   - component: {fileID: 1043790522}
   - component: {fileID: 1043790524}
   - component: {fileID: 1043790523}
+  - component: {fileID: 1043790525}
   m_Layer: 0
   m_Name: isla_flotante (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1043790522
 Transform:
@@ -18149,6 +18230,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043790521}
   m_Mesh: {fileID: 2232442607633516850, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6, type: 3}
+--- !u!114 &1043790525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043790521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865ee0e65464c22a23cf4bd898aa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 7
+  moveTime: 1
 --- !u!1 &1044651076
 GameObject:
   m_ObjectHideFlags: 0
@@ -18499,12 +18594,13 @@ GameObject:
   - component: {fileID: 1072763634}
   - component: {fileID: 1072763636}
   - component: {fileID: 1072763635}
+  - component: {fileID: 1072763637}
   m_Layer: 0
   m_Name: isla_flotante (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1072763634
 Transform:
@@ -18571,6 +18667,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072763633}
   m_Mesh: {fileID: 2232442607633516850, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6, type: 3}
+--- !u!114 &1072763637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072763633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865ee0e65464c22a23cf4bd898aa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 8
+  moveTime: 3
 --- !u!1001 &1073824054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22999,12 +23109,13 @@ GameObject:
   - component: {fileID: 1326164937}
   - component: {fileID: 1326164939}
   - component: {fileID: 1326164938}
+  - component: {fileID: 1326164940}
   m_Layer: 0
   m_Name: isla_flotante (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1326164937
 Transform:
@@ -23071,6 +23182,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326164936}
   m_Mesh: {fileID: 2232442607633516850, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6, type: 3}
+--- !u!114 &1326164940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326164936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865ee0e65464c22a23cf4bd898aa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 5
+  moveTime: 3
 --- !u!1001 &1337714754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26711,7 +26836,7 @@ PrefabInstance:
     - target: {fileID: 581563805719074794, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 893517702836907149, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6,
         type: 3}
@@ -26794,7 +26919,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2129107322}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 581563805719074794, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 852113327}
   m_SourcePrefab: {fileID: 100100000, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6, type: 3}
 --- !u!4 &1540747831 stripped
 Transform:
@@ -31947,12 +32076,13 @@ GameObject:
   - component: {fileID: 1847534064}
   - component: {fileID: 1847534066}
   - component: {fileID: 1847534065}
+  - component: {fileID: 1847534067}
   m_Layer: 0
   m_Name: isla_flotante (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1847534064
 Transform:
@@ -32019,6 +32149,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847534063}
   m_Mesh: {fileID: 2232442607633516850, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6, type: 3}
+--- !u!114 &1847534067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847534063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865ee0e65464c22a23cf4bd898aa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 7
+  moveTime: 3
 --- !u!1001 &1849849316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35913,12 +36057,13 @@ GameObject:
   - component: {fileID: 2129107322}
   - component: {fileID: 2129107324}
   - component: {fileID: 2129107323}
+  - component: {fileID: 2129107325}
   m_Layer: 0
   m_Name: isla_flotante2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2129107322
 Transform:
@@ -35985,6 +36130,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129107321}
   m_Mesh: {fileID: -6626950716873022463, guid: 3d88fcdc6892a2f419ac2c4b7134ccb6, type: 3}
+--- !u!114 &2129107325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129107321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865ee0e65464c22a23cf4bd898aa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 4
+  moveTime: 7
 --- !u!1 &2147084166
 GameObject:
   m_ObjectHideFlags: 0

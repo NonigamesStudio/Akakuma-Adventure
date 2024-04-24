@@ -97,7 +97,7 @@ public class EnemyController : MonoBehaviour
 
     void SpawnWave()
     {
-        //if (currentWave >= numberOfEnemiesPerWave.Count) { rockAnim.Play("New Animation"); return; }
+        if (currentWave >= waveDataList.Count) { /*rockAnim.Play("New Animation");*/ return; }
         LeanTween.delayedCall(secsBetweenWavesSpawn, () =>
         {
             OnChangeWave?.Invoke();
@@ -105,6 +105,7 @@ public class EnemyController : MonoBehaviour
             {
                 SpawnOneEnemy(enemyData);
             }
+            
             currentWave++;
         });
     }
