@@ -7,23 +7,15 @@ AvatarMask:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Top
-  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Mask: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_Elements:
   - m_Path: 
     m_Weight: 1
   - m_Path: Armature_A
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001
-    m_Weight: 0
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_FK_torso.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_FK_torso.001/CTRL_FK_torso.002
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_FK_torso.001/CTRL_FK_torso.002/CTRL_FK_torso.003
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_FK_torso.001/CTRL_FK_torso.002/CTRL_FK_torso.003/CTRL_FK_torso.003_end
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001
     m_Weight: 1
@@ -31,19 +23,9 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/CTRL_TailBase.001
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/CTRL_TailBase.001/CTRL_TailTop.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/CTRL_TailBase.001/CTRL_TailTop.001/CTRL_TailTop.001_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/CTRL_TailBase.001/DEF_Tail.001
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/CTRL_TailBase.001/DEF_Tail.001/DEF_Tail.001_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001/CTRL_LegCounterTwist.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001/CTRL_LegCounterTwist.L.001/CTRL_LegCounterTwist.L.001_end
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001/DEF_thigh.L.001
     m_Weight: 1
@@ -55,23 +37,7 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001/DEF_thigh.L.001/DEF_thigh.L.002/DEF_shin.L.001/DEF_foot.L.001/DEF_toes.L.001
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001/DEF_thigh.L.001/DEF_thigh.L.002/DEF_shin.L.001/DEF_foot.L.001/DEF_toes.L.001/DEF_toes.L.001_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001/MCH_IK_thigh.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001/MCH_IK_thigh.L.001/MCH_IK_shin.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001/MCH_IK_thigh.L.001/MCH_IK_shin.L.001/MCH_IK_shin.L.001_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001/MCH_isoRot_Leg.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.L.001/MCH_isoRot_Leg.L.001/MCH_isoRot_Leg.L.001_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001/CTRL_LegCounterTwist.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001/CTRL_LegCounterTwist.R.001/CTRL_LegCounterTwist.R.001_end
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001/DEF_thigh.R.001
     m_Weight: 1
@@ -83,31 +49,9 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001/DEF_thigh.R.001/DEF_thigh.R.002/DEF_shin.R.001/DEF_foot.R.001/DEF_toes.R.001
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001/DEF_thigh.R.001/DEF_thigh.R.002/DEF_shin.R.001/DEF_foot.R.001/DEF_toes.R.001/DEF_toes.R.001_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001/MCH_IK_thigh.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001/MCH_IK_thigh.R.001/MCH_IK_shin.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001/MCH_IK_thigh.R.001/MCH_IK_shin.R.001/MCH_IK_shin.R.001_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001/MCH_isoRot_Leg.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_hips.001/DEF_hips.R.001/MCH_isoRot_Leg.R.001/MCH_isoRot_Leg.R.001_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_spine.001
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/CTRL_Hip.001/DEF_spine.001/DEF_spine.001_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/CTRL_FK_biceps.L
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/CTRL_FK_biceps.L/CTRL_FK_forearm.L
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/CTRL_FK_biceps.L/CTRL_FK_forearm.L/CTRL_FK_hand.L
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/CTRL_FK_biceps.L/CTRL_FK_forearm.L/CTRL_FK_hand.L/CTRL_FK_hand.L_end
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001
     m_Weight: 1
@@ -119,38 +63,6 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_index.L.006
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_index.L.006/CTRL_index.L.007
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_index.L.006/CTRL_index.L.007/CTRL_index.L.008
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_index.L.006/CTRL_index.L.007/CTRL_index.L.008/CTRL_index.L.008_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_mid.L.006
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_mid.L.006/CTRL_mid.L.007
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_mid.L.006/CTRL_mid.L.007/CTRL_mid.L.008
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_mid.L.006/CTRL_mid.L.007/CTRL_mid.L.008/CTRL_mid.L.008_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_pinky.L.006
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_pinky.L.006/CTRL_pinky.L.007
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_pinky.L.006/CTRL_pinky.L.007/CTRL_pinky.L.008
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_pinky.L.006/CTRL_pinky.L.007/CTRL_pinky.L.008/CTRL_pinky.L.008_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_thumb.L.004
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_thumb.L.004/CTRL_thumb.L.005
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_thumb.L.004/CTRL_thumb.L.005/CTRL_thumb.L.006
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/CTRL_thumb.L.004/CTRL_thumb.L.005/CTRL_thumb.L.006/CTRL_thumb.L.006_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_index.L.001
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_index.L.001/DEF_index.L.002
@@ -159,15 +71,11 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_index.L.001/DEF_index.L.002/DEF_index.L.003/DEF_index.L.004
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_index.L.001/DEF_index.L.002/DEF_index.L.003/DEF_index.L.004/DEF_index.L.004_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_index.L.001/DEF_thumb.L.001
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_index.L.001/DEF_thumb.L.001/DEF_thumb.L.002
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_index.L.001/DEF_thumb.L.001/DEF_thumb.L.002/DEF_thumb.L.003
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_index.L.001/DEF_thumb.L.001/DEF_thumb.L.002/DEF_thumb.L.003/DEF_thumb.L.003_end
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_mid.L.001
     m_Weight: 1
@@ -177,8 +85,6 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_mid.L.001/DEF_mid.L.002/DEF_mid.L.003/DEF_mid.L.004
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_mid.L.001/DEF_mid.L.002/DEF_mid.L.003/DEF_mid.L.004/DEF_mid.L.004_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_pinky.L.001
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_pinky.L.001/DEF_pinky.L.002
@@ -187,17 +93,7 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_pinky.L.001/DEF_pinky.L.002/DEF_pinky.L.003/DEF_pinky.L.004
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.L.001/DEF_biceps.L.001/DEF_biceps.L.002/DEF_forearm.L.001/DEF_forearm.L.002/DEF_hand.L.001/DEF_pinky.L.001/DEF_pinky.L.002/DEF_pinky.L.003/DEF_pinky.L.004/DEF_pinky.L.004_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/CTRL_FK_biceps.R
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/CTRL_FK_biceps.R/CTRL_FK_forearm.R
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/CTRL_FK_biceps.R/CTRL_FK_forearm.R/CTRL_FK_hand.R
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/CTRL_FK_biceps.R/CTRL_FK_forearm.R/CTRL_FK_hand.R/CTRL_FK_hand.R_end
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001
     m_Weight: 1
@@ -209,38 +105,6 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_index.R.006
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_index.R.006/CTRL_index.R.007
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_index.R.006/CTRL_index.R.007/CTRL_index.R.008
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_index.R.006/CTRL_index.R.007/CTRL_index.R.008/CTRL_index.R.008_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_mid.R.006
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_mid.R.006/CTRL_mid.R.007
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_mid.R.006/CTRL_mid.R.007/CTRL_mid.R.008
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_mid.R.006/CTRL_mid.R.007/CTRL_mid.R.008/CTRL_mid.R.008_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_pinky.R.006
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_pinky.R.006/CTRL_pinky.R.007
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_pinky.R.006/CTRL_pinky.R.007/CTRL_pinky.R.008
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_pinky.R.006/CTRL_pinky.R.007/CTRL_pinky.R.008/CTRL_pinky.R.008_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_thumb.R.004
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_thumb.R.004/CTRL_thumb.R.005
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_thumb.R.004/CTRL_thumb.R.005/CTRL_thumb.R.006
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/CTRL_thumb.R.004/CTRL_thumb.R.005/CTRL_thumb.R.006/CTRL_thumb.R.006_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_index.R.001
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_index.R.001/DEF_index.R.002
@@ -249,15 +113,11 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_index.R.001/DEF_index.R.002/DEF_index.R.003/DEF_index.R.004
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_index.R.001/DEF_index.R.002/DEF_index.R.003/DEF_index.R.004/DEF_index.R.004_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_index.R.001/DEF_thumb.R.001
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_index.R.001/DEF_thumb.R.001/DEF_thumb.R.002
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_index.R.001/DEF_thumb.R.001/DEF_thumb.R.002/DEF_thumb.R.003
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_index.R.001/DEF_thumb.R.001/DEF_thumb.R.002/DEF_thumb.R.003/DEF_thumb.R.003_end
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_mid.R.001
     m_Weight: 1
@@ -267,8 +127,6 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_mid.R.001/DEF_mid.R.002/DEF_mid.R.003/DEF_mid.R.004
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_mid.R.001/DEF_mid.R.002/DEF_mid.R.003/DEF_mid.R.004/DEF_mid.R.004_end
-    m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_pinky.R.001
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_pinky.R.001/DEF_pinky.R.002
@@ -277,173 +135,27 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_pinky.R.001/DEF_pinky.R.002/DEF_pinky.R.003/DEF_pinky.R.004
     m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_ArmParent.R.001/DEF_biceps.R.001/DEF_biceps.R.002/DEF_forearm.R.001/DEF_forearm.R.002/DEF_hand.R.001/DEF_pinky.R.001/DEF_pinky.R.002/DEF_pinky.R.003/DEF_pinky.R.004/DEF_pinky.R.004_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.L.001/CTRL_FK_thigh.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.L.001/CTRL_FK_thigh.L.001/CTRL_FK_shin.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.L.001/CTRL_FK_thigh.L.001/CTRL_FK_shin.L.001/CTRL_FK_foot.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.L.001/CTRL_FK_thigh.L.001/CTRL_FK_shin.L.001/CTRL_FK_foot.L.001/CTRL_FK_toes.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.L.001/CTRL_FK_thigh.L.001/CTRL_FK_shin.L.001/CTRL_FK_foot.L.001/CTRL_FK_toes.L.001/CTRL_FK_toes.L.001_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.R.001/CTRL_FK_thigh.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.R.001/CTRL_FK_thigh.R.001/CTRL_FK_shin.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.R.001/CTRL_FK_thigh.R.001/CTRL_FK_shin.R.001/CTRL_FK_foot.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.R.001/CTRL_FK_thigh.R.001/CTRL_FK_shin.R.001/CTRL_FK_foot.R.001/CTRL_FK_toes.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_COG.001/MCH_FK_LegParent.R.001/CTRL_FK_thigh.R.001/CTRL_FK_shin.R.001/CTRL_FK_foot.R.001/CTRL_FK_toes.R.001/CTRL_FK_toes.R.001_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_IK_hand.L
-    m_Weight: 0
-  - m_Path: Armature_A/CTRL_global.001/CTRL_IK_hand.L/CTRL_IK_hand.L_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/CTRL_IK_hand.R
-    m_Weight: 0
-  - m_Path: Armature_A/CTRL_global.001/CTRL_IK_hand.R/CTRL_IK_hand.R_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.L.002
-    m_Weight: 0
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.L.002/CTRL_IKpole_Leg.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.L.002/CTRL_IKpole_Leg.L.001/CTRL_IKpole_Leg.L.001_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.L.002/MCH_IK_foot.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.L.002/MCH_IK_foot.L.001/MCH_IK_toes.L.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.L.002/MCH_IK_foot.L.001/MCH_IK_toes.L.001/MCH_IK_toes.L.001_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.R.002
-    m_Weight: 0
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.R.002/CTRL_IKpole_Leg.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.R.002/CTRL_IKpole_Leg.R.001/CTRL_IKpole_Leg.R.001_end
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.R.002/MCH_IK_foot.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.R.002/MCH_IK_foot.R.001/MCH_IK_toes.R.001
-    m_Weight: 1
-  - m_Path: Armature_A/CTRL_global.001/MCH_IK_shin.R.002/MCH_IK_foot.R.001/MCH_IK_toes.R.001/MCH_IK_toes.R.001_end
-    m_Weight: 1
   - m_Path: Armature_A/DEF_spine.002
     m_Weight: 1
   - m_Path: Armature_A/DEF_spine.002/DEF_spine.003
     m_Weight: 1
   - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004
     m_Weight: 1
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/CTRL_neck.002
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/CTRL_neck.002/CTRL_head.002
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/CTRL_neck.002/CTRL_head.002/CTRL_head.002_end
-    m_Weight: 1
   - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001
     m_Weight: 1
   - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001
     m_Weight: 1
   - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001/CTRL_Earbase.L.001
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001/CTRL_Earbase.L.001/DEF_Ear.L.001
     m_Weight: 1
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001/CTRL_Earbase.L.001/DEF_Ear.L.001/DEF_Ear.L.001_end
-    m_Weight: 1
   - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001/CTRL_Earbase.R.001
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001/CTRL_Earbase.R.001/DEF_Ear.R.001
     m_Weight: 1
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001/CTRL_Earbase.R.001/DEF_Ear.R.001/DEF_Ear.R.001_end
-    m_Weight: 1
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001/CTRL_EarTop.L.001
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001/CTRL_EarTop.L.001/CTRL_EarTop.L.001_end
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001/CTRL_EarTop.R.001
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_neck.001/DEF_head.001/CTRL_EarTop.R.001/CTRL_EarTop.R.001_end
-    m_Weight: 0
   - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.L.001
     m_Weight: 1
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.L.001/CTRL_IKpole_elbow.L.001
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.L.001/CTRL_IKpole_elbow.L.001/CTRL_IKpole_elbow.L.001_end
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.L.001/CTRL_ShoulderCounterTwist.L.001
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.L.001/CTRL_ShoulderCounterTwist.L.001/CTRL_ShoulderCounterTwist.L.001_end
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.L.001/MCH_IK_biceps.L
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.L.001/MCH_IK_biceps.L/MCH_IK_forearm.L
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.L.001/MCH_IK_biceps.L/MCH_IK_forearm.L/MCH_IK_forearm.L_end
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.L.001/MCH_isoRot_Arm.L.001
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.L.001/MCH_isoRot_Arm.L.001/MCH_isoRot_Arm.L.001_end
-    m_Weight: 0
   - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.R.001
     m_Weight: 1
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.R.001/CTRL_IKpole_elbow.R.001
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.R.001/CTRL_IKpole_elbow.R.001/CTRL_IKpole_elbow.R.001_end
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.R.001/CTRL_ShoulderCounterTwist.R.001
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.R.001/CTRL_ShoulderCounterTwist.R.001/CTRL_ShoulderCounterTwist.R.001_end
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.R.001/MCH_IK_biceps.R
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.R.001/MCH_IK_biceps.R/MCH_IK_forearm.R
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.R.001/MCH_IK_biceps.R/MCH_IK_forearm.R/MCH_IK_forearm.R_end
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.R.001/MCH_isoRot_Arm.R.001
-    m_Weight: 0
-  - m_Path: Armature_A/DEF_spine.002/DEF_spine.003/DEF_spine.004/DEF_shoulder.R.001/MCH_isoRot_Arm.R.001/MCH_isoRot_Arm.R.001_end
-    m_Weight: 0
-  - m_Path: lowpoly definitivo
-    m_Weight: 0
   - m_Path: Model Final
-    m_Weight: 0
-  - m_Path: WGT_ HEad
-    m_Weight: 0
-  - m_Path: WGT_ NeckTwist
-    m_Weight: 0
-  - m_Path: WGT_ ShouldersTwist
-    m_Weight: 0
-  - m_Path: WGT_ ThighTwist
-    m_Weight: 0
-  - m_Path: WGT_BBones
-    m_Weight: 0
-  - m_Path: WGT_COG
-    m_Weight: 0
-  - m_Path: WGT_elbow.L
-    m_Weight: 0
-  - m_Path: WGT_elbow.R
-    m_Weight: 0
-  - m_Path: WGT_Feet
-    m_Weight: 0
-  - m_Path: WGT_FK.001
-    m_Weight: 0
-  - m_Path: WGT_FK.002
-    m_Weight: 0
-  - m_Path: WGT_FK.003
-    m_Weight: 0
-  - m_Path: WGT_Global
-    m_Weight: 0
-  - m_Path: WGT_Hand
-    m_Weight: 0
-  - m_Path: WGT_Hip
-    m_Weight: 0
-  - m_Path: WGT_Joins.001
-    m_Weight: 0
+    m_Weight: 1
