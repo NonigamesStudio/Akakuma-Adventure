@@ -9,6 +9,10 @@ public class Arrow : MonoBehaviour
     public Bow bow;
     public float dmg;
 
+    [Header("VFX")]
+    public GameObject explosion_Collision;
+    public GameObject arrow_VFX;
+
     private void OnEnable()
     {
         transform.eulerAngles = bow.player.transform.eulerAngles;
@@ -32,13 +36,18 @@ public class Arrow : MonoBehaviour
         if(collision.TryGetComponent<Health>(out Health heatlh))
         {
             if (collision.gameObject.layer == gameObject.layer) return;
+            arrow_VFX.SetActive(false);
+            explosion_Collision.SetActive(true);
+            rb.velocity = Vector3.zero;
+            LeanTween.delayedCall(1, () => { ResetArrow(); });
             heatlh.TakeDamage(dmg, transform.root);
-            ResetArrow();
         }
     }
 
     public void ResetArrow()
     {
+        explosion_Collision.SetActive(false);
+        arrow_VFX.SetActive(true);
         rb.velocity = Vector3.zero;
         transform.SetParent(bow.transform);
         transform.localPosition = Vector3.zero;

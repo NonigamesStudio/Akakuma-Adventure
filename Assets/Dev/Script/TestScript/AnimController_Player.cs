@@ -49,8 +49,8 @@ public class AnimController_Player : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetAxis("Vertical") + Input.GetAxis("Horizontal")!=0) anim.SetFloat("Walk", 1); 
-        else anim.SetFloat("Walk", 0);
+        if(Input.GetAxis("Vertical") + Input.GetAxis("Horizontal")!=0) anim.SetBool("Walk", true); 
+        else anim.SetBool("Walk", false);
 
         if (Input.GetMouseButtonDown(0)) PlayAnim(AnimNamesPlayer.AttackSword);
     }
