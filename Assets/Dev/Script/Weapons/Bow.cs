@@ -40,12 +40,6 @@ public class Bow : MonoBehaviour, IWeapon
             }
         }
     }
-
-    public void Skill()
-    {
-
-    }
-
     public void TurnOnOffWeapon(bool turnOnOff)
     {
         gameObject.SetActive(turnOnOff);

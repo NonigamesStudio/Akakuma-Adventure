@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
         OnTakeDmg?.Invoke(attacker);
         if (tag=="Sticky")
         {
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.smallEnemyTakesDamage, transform.position);
+           if(AudioManager.instance != null) AudioManager.instance.PlayOneShot(FMODEvents.instance.smallEnemyTakesDamage, transform.position);
         }
         //Debug.Log("Take Dmg: " + dmg + " ", gameObject);
     }
@@ -47,7 +47,7 @@ public class Health : MonoBehaviour
 
             if (tag=="Sticky")
             {
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.smallEnemyDeath, transform.position);
+                if (AudioManager.instance != null) AudioManager.instance.PlayOneShot(FMODEvents.instance.smallEnemyDeath, transform.position);
             }
         }
     }

@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
     [Header("Variables Effects")]
     [SerializeField] GameObject deathParticle;
     [SerializeField] GameObject coinParticle;
+    [SerializeField] GameObject getHitParticle;
 
     IWeapon currentWeapon;
     bool onKnockBack;
@@ -150,6 +151,7 @@ public class EnemyAI : MonoBehaviour
     }
     void Knockback(Transform player)
     {
+        getHitParticle.SetActive(true);
         onKnockBack = true;
         StartCoroutine(KnockbackCoroutine(player));
     }
@@ -165,6 +167,7 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         onKnockBack = false;
         agent.enabled = true;
+        getHitParticle.SetActive(false);
         StartCoroutine(RestarEnemy());
     }
 

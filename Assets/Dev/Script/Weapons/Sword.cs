@@ -15,10 +15,8 @@ public class Sword : MonoBehaviour, IWeapon
     [SerializeField] float coolDownSkill;
     [SerializeField] float skillDuration;
     [SerializeField] GameObject spriteSlash;
-    [SerializeField] GameObject spriteSlashSkill;
     [SerializeField] LayerMask mask;
     bool isOnCoolDown;
-    bool isOnCoolDownSkill;
 
     [SerializeField] bool isEnemy;
     [SerializeField] Player player;
@@ -71,56 +69,7 @@ public class Sword : MonoBehaviour, IWeapon
         }
     }
 
-    public void Skill()
-    {
-        if (isOnCoolDownSkill) return;
-        isOnCoolDownSkill = true;
-        StartCoroutine(SkillAnim());
-        StartCoroutine(SkillAction());
-    }
 
-    void SkillCoolDown()
-    {
-        LeanTween.delayedCall(coolDownSkill, () => { isOnCoolDownSkill = false; });
-    }
-
-    IEnumerator SkillAction()
-    {
-        
-
-        float time = 0;
-        while (skillDuration > time)
-        {
-            Collider[] results = Physics.OverlapBox(colliderAttack.transform.position, colliderSkill.size, Quaternion.identity, mask);
-
-            foreach (Collider objectColli in results)
-            {
-                if (objectColli.TryGetComponent<Health>(out Health health))
-                {
-                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage, transform.root);
-                }
-            }
-
-            time += tickTimeDmg;
-
-            yield return new WaitForSeconds(tickTimeDmg);
-        }
-        SkillCoolDown();
-    }
-
-    IEnumerator SkillAnim()
-    {
-        player.OnWeaponSkill?.Invoke();
-        yield return new WaitForSeconds(0.3f);
-        float time = skillDuration;
-        while (time > 0)
-        {
-            spriteSlashSkill.SetActive(true);
-            time -= Time.deltaTime;
-            yield return null;
-        }
-        spriteSlashSkill.SetActive(false);
-    }
 
 }
 

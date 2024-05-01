@@ -10,9 +10,12 @@ public class AnimController_Player : MonoBehaviour
     {
         if (ins != null) Destroy(this);
         else ins = this;
+
+        player = GetComponent<Player>();
     }
 
     [SerializeField] Animator anim;
+    [SerializeField] Player player;
 
     public void PlayAnim(AnimNamesPlayer animToPlay)
     {
@@ -49,10 +52,25 @@ public class AnimController_Player : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetAxis("Vertical") + Input.GetAxis("Horizontal")!=0) anim.SetBool("Walk", true); 
-        else anim.SetBool("Walk", false);
+         anim.SetFloat("Walk", Input.GetAxis("Vertical") + Input.GetAxis("Horizontal")); 
 
-        if (Input.GetMouseButtonDown(0)) PlayAnim(AnimNamesPlayer.AttackSword);
+        if (Input.GetMouseButtonDown(0))
+        {
+            switch (player.currentWeapon)
+            {
+                case 0:
+                    PlayAnim(AnimNamesPlayer.AttackSword);
+                    break;
+                case 1:
+                    PlayAnim(AnimNamesPlayer.AttackScythe);
+                    break;
+                case 2:
+                    PlayAnim(AnimNamesPlayer.AttackShield);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
 

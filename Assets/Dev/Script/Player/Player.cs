@@ -77,7 +77,6 @@ public class Player : MonoBehaviour
         DashInput();
         if (onSkill) return;
         AttackPrincipalWeaponInput();
-        SkillPrincipalWeaponInput();
         AttackSecondaryWeaponInput();
         InventoryInput();
         
@@ -149,14 +148,6 @@ public class Player : MonoBehaviour
             }
         }
             
-    }
-
-    private void SkillPrincipalWeaponInput()
-    {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            currentWeaponFirstHand.Skill();
-        }
     }
     private void AttackPrincipalWeaponInput()
     {
