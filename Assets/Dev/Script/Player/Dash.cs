@@ -11,6 +11,8 @@ public class Dash : MonoBehaviour
     [SerializeField] float distanceDash;
     [SerializeField] float speedDash;
     [SerializeField] float coolDownDashTime;
+    [SerializeField] Animator animator;
+    
     bool canDash;
     
     
@@ -22,7 +24,7 @@ public class Dash : MonoBehaviour
     void Update()
     {
         coolDownDashTime -= Time.deltaTime;
-        //canDash = !Physics.Raycast(t.position, t.forward, distanceDetection);
+        
     }    
     private void ManageDash(object sender, EventArgs e)
     {
@@ -47,8 +49,9 @@ public class Dash : MonoBehaviour
         canDash = !Physics.Raycast(t.position, t.forward, out RaycastHit hit, distanceDash);
         if (canDash)
         {
-            AnimController_Player.ins. PlayAnim(AnimNamesPlayer.Dash);
+            
             posToMove = t.position + t.forward * distanceDash;
+            AnimController_Player.ins.PlayAnim(AnimNamesPlayer.Dash);
         }
         else
         {
@@ -62,7 +65,6 @@ public class Dash : MonoBehaviour
             
             
             timeElapsed += Time.deltaTime;
-
             float step = Mathf.Lerp(0, 1, Mathf.Clamp(timeElapsed * speedDash, 0, 1));
 
             if (canDash)
@@ -76,12 +78,21 @@ public class Dash : MonoBehaviour
 
             yield return null;
         }
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
+        {
+            yield return null;
 
-    OnDashCompleted();
+        }
+        OnDashCompleted();
+        
+
+    
+
     }
     void OnDashCompleted()
-    {
+    { 
         player.isStuned = false;
+        
     }
 
 }

@@ -112,7 +112,9 @@ public class Player : MonoBehaviour
             uIManager.ChangeWeaponSpriteAbility(0);
             if (currentWeapon!=0) 
             {
+            
             currentWeapon = 0;
+            PlayWeaponChangeAnimation(AnimNamesPlayer.DrawSword);
             PlayWeaponChangeSound();
             }
         }
@@ -179,6 +181,7 @@ public class Player : MonoBehaviour
             usingyWeapon = true;
             currentWeaponFirstHand.TurnOnOffWeapon(false);
             currentWeaponSecondHand.TurnOnOffWeapon(true);
+            AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackBow);
             OnBowReady?.Invoke();
         }
         if (Input.GetMouseButton(1)) chargeTime += Time.deltaTime;
@@ -203,6 +206,10 @@ public class Player : MonoBehaviour
     private void PlayWeaponChangeSound()
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.changeWeapon, t.position);
+    }
+    private void PlayWeaponChangeAnimation(AnimNamesPlayer animNamesPlayer)
+    {
+       AnimController_Player.ins.PlayAnim(animNamesPlayer);
     }
 
 }

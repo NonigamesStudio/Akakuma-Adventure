@@ -42,12 +42,14 @@ public class PlayerMovement : MonoBehaviour
 
         //Vector3 mousePos = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,-cam.transform.position.z));
         Ray rayMouse = cam.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(rayMouse, out RaycastHit hit,100, layerGround))
-        {
-            Vector3 mousePos = new Vector3(hit.point.x, t.position.y, hit.point.z);
-            Vector3 dir = (mousePos - t.position).normalized;
-            t.forward = dir;
-        }
+    if(Physics.Raycast(rayMouse, out RaycastHit hit,100, layerGround))
+    {
+        Vector3 mousePos = new Vector3(hit.point.x, t.position.y, hit.point.z);
+        Vector3 dir = (mousePos - t.position).normalized;
+
+        float rotationSpeed = 5f;
+        t.forward = Vector3.Slerp(t.forward, dir, rotationSpeed * Time.deltaTime);
+    }
         
     }
    
