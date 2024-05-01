@@ -196,7 +196,7 @@ public class Player : MonoBehaviour
     }
     private void PlayWeaponChangeSound()
     {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.changeWeapon, t.position);
+       if(AudioManager.instance !=null) AudioManager.instance.PlayOneShot(FMODEvents.instance.changeWeapon, t.position);
     }
     private void PlayWeaponChangeAnimation(AnimNamesPlayer animNamesPlayer)
     {
