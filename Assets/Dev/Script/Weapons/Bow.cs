@@ -25,6 +25,7 @@ public class Bow : MonoBehaviour, IWeapon
     public void Attack(float bonusDmg)
     {
         player.OnBowRealese?.Invoke();
+        AnimController_Player.ins.PlayAnim(AnimNamesPlayer.ReleaseBow);
         if (!coolDown) return;
 
         coolDown = false;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.30861372, g: 0.86077493, b: 0.99661064, a: 1}
+  m_IndirectSpecularColor: {r: 0.30830765, g: 0.8601627, b: 0.9963114, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23971,7 +23971,7 @@ MonoBehaviour:
   t: {fileID: 4630246526981228002}
   player: {fileID: 7404409425341656719}
   distanceDash: 8
-  speedDash: 2
+  speedDash: 0.6
   coolDownDashTime: 1
 --- !u!114 &2080143159 stripped
 MonoBehaviour:
