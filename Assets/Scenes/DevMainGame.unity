@@ -731,7 +731,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 68105b7d66d025f4c9b49d68bba80359, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6888806815857526915, guid: ecc910907ed0a36469f6e415cf78e54d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2792173859628963193}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecc910907ed0a36469f6e415cf78e54d, type: 3}
 --- !u!1 &116554320
@@ -913,6 +917,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139995992}
   m_CullTransparentMesh: 1
+--- !u!4 &144752849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6888806815857526915, guid: ecc910907ed0a36469f6e415cf78e54d,
+    type: 3}
+  m_PrefabInstance: {fileID: 62132019}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &149390038 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 176254159572259418, guid: dc058dd0c6e72934691e1c0449031d17,
@@ -2567,7 +2577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cambia de arma Con '
+  m_text: Change weapons
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4146dafbb242d6a4592356c4eaeffba6, type: 2}
   m_sharedMaterial: {fileID: -1800576164764125433, guid: 4146dafbb242d6a4592356c4eaeffba6,
@@ -3491,7 +3501,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dispara con '
+  m_text: Shoots using
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4146dafbb242d6a4592356c4eaeffba6, type: 2}
   m_sharedMaterial: {fileID: -1800576164764125433, guid: 4146dafbb242d6a4592356c4eaeffba6,
@@ -4917,7 +4927,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ataca Con '
+  m_text: Attack using
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4146dafbb242d6a4592356c4eaeffba6, type: 2}
   m_sharedMaterial: {fileID: -1800576164764125433, guid: 4146dafbb242d6a4592356c4eaeffba6,
@@ -14377,7 +14387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Usa la Habilidad con
+  m_text: Use skills with
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4146dafbb242d6a4592356c4eaeffba6, type: 2}
   m_sharedMaterial: {fileID: -1800576164764125433, guid: 4146dafbb242d6a4592356c4eaeffba6,
@@ -22190,7 +22200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Esquiva con
+  m_text: Dash using
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4146dafbb242d6a4592356c4eaeffba6, type: 2}
   m_sharedMaterial: {fileID: -1800576164764125433, guid: 4146dafbb242d6a4592356c4eaeffba6,
@@ -25977,14 +25987,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842086611267325572}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00000023841488, y: 0.17310137, z: 0.00000005958826, w: 0.98490405}
-  m_LocalPosition: {x: 0.44916254, y: 0.20093584, z: 1.5174316}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.14133005, y: -0.048745923, z: 0.89242697, w: 0.42570385}
+  m_LocalPosition: {x: -0.0030739822, y: -0.0011944915, z: 0.016658332}
+  m_LocalScale: {x: 0.008044785, y: 0.008044786, z: 0.008044784}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7150064731115769576}
   - {fileID: 1904519020}
-  m_Father: {fileID: 4630246526981228002}
+  m_Father: {fileID: 144752849}
   m_LocalEulerAnglesHint: {x: -4.38, y: -81.298, z: 143.63}
 --- !u!1 &2795619732954623055
 GameObject:
@@ -27656,7 +27666,6 @@ Transform:
   m_Children:
   - {fileID: 1245023250}
   - {fileID: 6836389169563905147}
-  - {fileID: 2792173859628963193}
   - {fileID: 4996217348566270543}
   - {fileID: 3852553067140986133}
   - {fileID: 595525438587995637}
