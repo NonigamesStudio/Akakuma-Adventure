@@ -29,11 +29,13 @@ public class Health : MonoBehaviour
         actualHealth -= dmg;
         CheckIfIsDeath();
         OnTakeDmg?.Invoke(attacker);
-        if (tag=="Sticky")
+        if (TryGetComponent<EnemyAI>(out EnemyAI enemyAI))
         {
-           if(AudioManager.instance != null) AudioManager.instance.PlayOneShot(FMODEvents.instance.smallEnemyTakesDamage, transform.position);
+            enemyAI.SwitchToAttackState();
+            enemyAI.SearchAndSetNearbyAllys();
+            if(AudioManager.instance != null) AudioManager.instance.PlayOneShot(FMODEvents.instance.smallEnemyTakesDamage, transform.position);
         }
-        //Debug.Log("Take Dmg: " + dmg + " ", gameObject);
+        
     }
     public void TakeHealth(float health)
     {

@@ -47,11 +47,12 @@ public class Dash : MonoBehaviour
         Vector3 posToMove = Vector3.zero;
 
         canDash = !Physics.Raycast(t.position, t.forward, out RaycastHit hit, distanceDash);
+        AnimController_Player.ins.PlayAnim(AnimNamesPlayer.Dash);
         if (canDash)
         {
             
             posToMove = t.position + t.forward * distanceDash;
-            AnimController_Player.ins.PlayAnim(AnimNamesPlayer.Dash);
+            
         }
         else
         {

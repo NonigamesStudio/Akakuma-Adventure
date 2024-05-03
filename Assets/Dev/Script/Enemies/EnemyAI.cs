@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,9 +19,10 @@ public class EnemyAI : MonoBehaviour
     [Space(5)]
     [Header("Variables Enemy")]
     [SerializeField] float attackRange;
-    [SerializeField] float detectionRange;
+    [SerializeField] float maxDistDetection = 15;
+    [SerializeField] float waitTimeUntilLostPlayer = 7;
     [SerializeField] GameObject weapon;
-    public float attackDmg;//Cambie el daño de los enemigos accediendo a este valor, no se si es como estaba pensado que deberia ser
+    public float attackDmg;
     [SerializeField] float knockBackForce;
     [SerializeField] GameObject[] meshesList;
 
@@ -36,6 +38,9 @@ public class EnemyAI : MonoBehaviour
     float waitTime;
     int patrolPoints;
     float timeToChangePatrolPoint;
+    Vector3 playerLastDetectedPosition;
+    float timeSinceLastDetection;
+    int layerMask;
 
 
 
@@ -46,7 +51,7 @@ public class EnemyAI : MonoBehaviour
         Idle,
         Attack
     }
-        private State currentState;
+    private State currentState;
 
     private void Awake()
     {
@@ -64,6 +69,8 @@ public class EnemyAI : MonoBehaviour
         RestartParticles();
         walkingIdlePoints.Clear();
         InvokeRepeating ("RestarEnemy", 0, 0.5f);
+        layerMask = 1 << LayerMask.NameToLayer("Enemy");
+        layerMask = ~layerMask; 
     }
     private void OnDisable()
     {
@@ -89,9 +96,13 @@ public class EnemyAI : MonoBehaviour
     {
        
         if (onKnockBack) return;
-        // Debug.Log(Vector3.Distance(t.position, playert.position));
-        if (Vector3.Distance(t.position, playert.position) < detectionRange) currentState = State.Attack;
-        else currentState = State.Idle;
+        
+        if (Vector3.Distance(t.position, playert.position) < maxDistDetection)
+        { 
+            timeSinceLastDetection=0;
+            currentState = State.Attack;
+        }
+       
         
         switch (currentState)
         {     
@@ -120,8 +131,24 @@ public class EnemyAI : MonoBehaviour
                 break;
                 }
             case State.Attack:
-                if (Vector3.Distance(t.position, playert.position) < attackRange) AttackState(); //Attack
-                else FollowState(playert.position);
+
+                if (Physics.Raycast(transform.position,playert.position-transform.position,out RaycastHit hit, maxDistDetection, layerMask))
+                {   
+                    if (hit.transform.CompareTag("Player")&& Vector3.Distance(transform.position, playert.position) <= maxDistDetection) 
+                    {
+                    playerLastDetectedPosition=playert.position;
+                    timeSinceLastDetection=0;   
+                    }
+                }
+
+                if(timeSinceLastDetection<waitTimeUntilLostPlayer)
+                {
+                    timeSinceLastDetection += Time.deltaTime;
+                    FollowState(playerLastDetectedPosition);
+                }else 
+                {
+                    currentState = State.Idle;   
+                }
                 break;
         }
 
@@ -179,6 +206,7 @@ public class EnemyAI : MonoBehaviour
         agent.enabled = false;
         onKnockBack = false;
         agent.enabled = true;
+
     }
 
     void StartParticleDeath()
@@ -203,5 +231,36 @@ public class EnemyAI : MonoBehaviour
             walkingIdlePoints.Add(randomPos);
         }
         patrolPoints = 0;
+    }
+
+    public void SwitchToAttackState()
+    {
+        playerLastDetectedPosition=playert.position;
+        timeSinceLastDetection=0;
+        currentState = State.Attack;
+        
+    }
+
+    public void SearchAndSetNearbyAllys()
+    {
+       
+        float radius = 7;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.TryGetComponent<EnemyAI>(out EnemyAI enemyAI) && hitCollider.gameObject != gameObject)
+            {
+                
+                enemyAI.SwitchToAttackState();
+            }
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 7);
+        
+      
     }
 }
