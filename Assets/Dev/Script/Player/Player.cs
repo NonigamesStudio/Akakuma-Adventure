@@ -70,14 +70,14 @@ public class Player : MonoBehaviour
 
     private void Update()//Input Detection
     {
-        
+        AttackSecondaryWeaponInput();
         if (isStuned) return;
         playerMovement.Rotate();
         MovementInput();
         DashInput();
         if (onSkill) return;
         AttackPrincipalWeaponInput();
-        AttackSecondaryWeaponInput();
+        
         InventoryInput();
         
     }
@@ -164,18 +164,7 @@ public class Player : MonoBehaviour
         }
     }
     private void AttackSecondaryWeaponInput()
-    {
-        
-        if (Input.GetMouseButtonDown(1))
-        {
-            playerMovement.SlowDown(true);
-            usingyWeapon = true;
-            currentWeaponFirstHand.TurnOnOffWeapon(false);
-            currentWeaponSecondHand.TurnOnOffWeapon(true);
-            AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackBow);
-            OnBowReady?.Invoke();
-        }
-        if (Input.GetMouseButton(1)) chargeTime += Time.deltaTime;
+    {   
         if (Input.GetMouseButtonUp(1))
         {
             currentWeaponSecondHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
@@ -186,6 +175,18 @@ public class Player : MonoBehaviour
             currentWeaponSecondHand.TurnOnOffWeapon(false);
             
         }
+        if (isStuned) return;
+        if (Input.GetMouseButtonDown(1))
+        {
+            playerMovement.SlowDown(true);
+            usingyWeapon = true;
+            currentWeaponFirstHand.TurnOnOffWeapon(false);
+            currentWeaponSecondHand.TurnOnOffWeapon(true);
+            AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackBow);
+            OnBowReady?.Invoke();
+        }
+        if (Input.GetMouseButton(1)) chargeTime += Time.deltaTime;
+        
     }
 
     public void GetStuned(float sec)

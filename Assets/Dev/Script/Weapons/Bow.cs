@@ -9,6 +9,7 @@ public class Bow : MonoBehaviour, IWeapon
     [SerializeField] float coolDownTime;
     [SerializeField] float speedArrow;
     [SerializeField] public Player player;
+    [SerializeField] GameObject bowMesh;
     
 
     bool coolDown = true;
@@ -43,6 +44,7 @@ public class Bow : MonoBehaviour, IWeapon
     }
     public void TurnOnOffWeapon(bool turnOnOff)
     {
-        gameObject.SetActive(turnOnOff);
+        
+        bowMesh.SetActive(turnOnOff);
     }
 }

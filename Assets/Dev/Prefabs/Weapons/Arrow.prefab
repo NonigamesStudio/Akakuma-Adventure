@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8497741998469697872}
   - component: {fileID: 7204964670549330458}
   - component: {fileID: 2532647509502760605}
-  - component: {fileID: 3957149998985719902}
-  m_Layer: 0
+  - component: {fileID: 5589599865315320494}
+  m_Layer: 12
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,8 +90,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2593457682856142588}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!136 &3957149998985719902
-CapsuleCollider:
+--- !u!135 &5589599865315320494
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,10 +108,8 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.12
-  m_Height: 1.03
-  m_Direction: 1
+  serializedVersion: 3
+  m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4456588543696067172
 GameObject:
@@ -123,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2640650375591531155}
   - component: {fileID: 7484181311131326170}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,13 +204,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7417684574764661987}
     m_Modifications:
+    - target: {fileID: 152670, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 153540, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 153912, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
       propertyPath: m_Name
       value: FrostExplosion
       objectReference: {fileID: 0}
     - target: {fileID: 153912, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 153912, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 157652, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 176996, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 197538, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 459530, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
       propertyPath: m_LocalPosition.x
@@ -333,6 +355,18 @@ PrefabInstance:
     - target: {fileID: 1550477657380252, guid: b754cb6e007692245bcdfa629b37e171, type: 3}
       propertyPath: m_Name
       value: SharpMissileBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550477657380252, guid: b754cb6e007692245bcdfa629b37e171, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901841321192174, guid: b754cb6e007692245bcdfa629b37e171, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983811055577964, guid: b754cb6e007692245bcdfa629b37e171, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4985825594347044, guid: b754cb6e007692245bcdfa629b37e171, type: 3}
       propertyPath: m_LocalScale.x

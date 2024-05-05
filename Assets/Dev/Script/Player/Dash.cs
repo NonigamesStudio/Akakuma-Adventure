@@ -26,8 +26,10 @@ public class Dash : MonoBehaviour
     }
     void Update()
     {
-        coolDownDashTime -= Time.deltaTime;
-        
+        if (coolDownDashTime > 0)
+        {
+            coolDownDashTime -= Time.deltaTime;
+        }
         
     }    
     private void ManageDash(object sender, EventArgs e)
@@ -69,27 +71,31 @@ public class Dash : MonoBehaviour
        
         while (Vector3.Distance(t.position, posToMove) > 0.5f&&timeElapsed<.5f)
         {
+            
             timeElapsed += Time.deltaTime;
             float step = Mathf.Lerp(0, 1, Mathf.Clamp(timeElapsed * speedDash, 0, 1));
             if (canDash)
             {
              
                 t.position = Vector3.MoveTowards(t.position, posToMove, step);
+               
                 if (!Physics.Raycast(transform.position, Vector3.down, 1.5f, LayerMask.GetMask("Ground")))
                 {
                    t.position = Vector3.MoveTowards(t.position, t.position + Vector3.down, step);
+                   
                 }
                 
             }
             else
             {
                 t.position = Vector3.MoveTowards(t.position, posToMove, step);
+                
                 if (!Physics.Raycast(transform.position, Vector3.down, 1.5f, LayerMask.GetMask("Ground")))
                 {
                    t.position = Vector3.MoveTowards(t.position, t.position + Vector3.down, step);
                 }
             }
-             yield return null;
+            yield return null;
         }
        
         OnDashCompleted();

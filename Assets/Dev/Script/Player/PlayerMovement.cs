@@ -52,11 +52,15 @@ public class PlayerMovement : MonoBehaviour
         Ray rayMouse = cam.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(rayMouse, out RaycastHit hit,100, layerGround))
         {
+            
             Vector3 mousePos = new Vector3(hit.point.x, t.position.y, hit.point.z);
             Vector3 dir = (mousePos - t.position).normalized;
 
-            float rotationSpeed = 5f;
+            float rotationSpeed = 20f;
             t.forward = Vector3.Slerp(t.forward, dir, rotationSpeed * Time.deltaTime);
+            t.eulerAngles = new Vector3(0, t.eulerAngles.y, 0);
+           
+            
         }
         
     }
@@ -66,13 +70,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (state)
         {
-            speedWalk = speedWalk / 2;
-            speedRun = speedRun / 2;
+            speedWalk = 2;
+            speedRun = 3;
         }
         else
         {
-            speedWalk = speedWalk * 2;
-            speedRun = speedRun * 2;
+            speedWalk = 4;
+            speedRun = 6;
         }
     }
 
@@ -86,11 +90,11 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Slow()
     {
-        speedWalk = speedWalk / 2;
-        speedRun = speedRun / 2;
+        speedWalk = 2;
+        speedRun = 3;
         yield return new WaitForSeconds(2);
-        speedWalk = speedWalk * 2;
-        speedRun = speedRun * 2;
+        speedWalk = 4;
+        speedRun = 6;
     }
     void Update()
     {
