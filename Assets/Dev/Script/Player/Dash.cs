@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Collections;
 
 
+
 public class Dash : MonoBehaviour
 {
     [SerializeField] private Transform t;
@@ -12,6 +13,8 @@ public class Dash : MonoBehaviour
     [SerializeField] float speedDash;
     [SerializeField] float coolDownDashTime;
     [SerializeField] Animator animator;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] AnimationClip dashAnimationClip;
     
     bool canDash;
     
@@ -25,6 +28,7 @@ public class Dash : MonoBehaviour
     {
         coolDownDashTime -= Time.deltaTime;
         
+        
     }    
     private void ManageDash(object sender, EventArgs e)
     {
@@ -35,6 +39,7 @@ public class Dash : MonoBehaviour
         coolDownDashTime = 1f;
 
         player.isStuned = true;
+        AnimController_Player.ins.PlayAnim(AnimNamesPlayer.Dash);
         
         StartCoroutine(DashCoroutine());
        
@@ -47,7 +52,7 @@ public class Dash : MonoBehaviour
         Vector3 posToMove = Vector3.zero;
 
         canDash = !Physics.Raycast(t.position, t.forward, out RaycastHit hit, distanceDash);
-        AnimController_Player.ins.PlayAnim(AnimNamesPlayer.Dash);
+        
         if (canDash)
         {
             
@@ -60,35 +65,35 @@ public class Dash : MonoBehaviour
         }
 
         float timeElapsed = 0;
-        
-        while (Vector3.Distance(t.position, posToMove)>0.5f)
+       
+       
+        while (Vector3.Distance(t.position, posToMove) > 0.5f&&timeElapsed<.5f)
         {
-            
-            
             timeElapsed += Time.deltaTime;
             float step = Mathf.Lerp(0, 1, Mathf.Clamp(timeElapsed * speedDash, 0, 1));
-
             if (canDash)
             {
-               t.position = Vector3.MoveTowards(t.position, posToMove, step);
+             
+                t.position = Vector3.MoveTowards(t.position, posToMove, step);
+                if (!Physics.Raycast(transform.position, Vector3.down, 1.5f, LayerMask.GetMask("Ground")))
+                {
+                   t.position = Vector3.MoveTowards(t.position, t.position + Vector3.down, step);
+                }
+                
             }
             else
             {
-                t.position = Vector3.MoveTowards(t.position, hit.point, step);
+                t.position = Vector3.MoveTowards(t.position, posToMove, step);
+                if (!Physics.Raycast(transform.position, Vector3.down, 1.5f, LayerMask.GetMask("Ground")))
+                {
+                   t.position = Vector3.MoveTowards(t.position, t.position + Vector3.down, step);
+                }
             }
-
-            yield return null;
+             yield return null;
         }
-        while (animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
-        {
-            yield return null;
-
-        }
+       
         OnDashCompleted();
         
-
-    
-
     }
     void OnDashCompleted()
     { 

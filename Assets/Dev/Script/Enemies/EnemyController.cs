@@ -26,6 +26,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Animator rockAnim;
     //[SerializeField] List<Transform> spanwPoints;
 
+    [SerializeField] GameObject doorA;
+    [SerializeField] GameObject doorB;
+
     Vector3 spanwPointClosest;
 
     public static System.Action<float,float> OnEnemyDeath;
@@ -97,17 +100,23 @@ public class EnemyController : MonoBehaviour
 
     void SpawnWave()
     {
-        if (currentWave >= waveDataList.Count) { /*rockAnim.Play("New Animation");*/ return; }
-        LeanTween.delayedCall(secsBetweenWavesSpawn, () =>
+        if (currentWave >= waveDataList.Count) 
+        { 
+            AnimDoor(); 
+        }
+        else
         {
-            OnChangeWave?.Invoke();
-            foreach (DataTypeSpawnEnemy enemyData in waveDataList[currentWave].enemyToSpawn)
+            LeanTween.delayedCall(secsBetweenWavesSpawn, () =>
             {
-                SpawnOneEnemy(enemyData);
-            }
-            
-            currentWave++;
-        });
+                OnChangeWave?.Invoke();
+                foreach (DataTypeSpawnEnemy enemyData in waveDataList[currentWave].enemyToSpawn)
+                {
+                    SpawnOneEnemy(enemyData);
+                }
+                
+                currentWave++;
+            });
+        }
     }
 
     void CheckEnemiesAliveAndStartNewWave()
@@ -153,7 +162,12 @@ public class EnemyController : MonoBehaviour
         enemy.attackDmg = attack;
         enemy.ActiveMesh((int)typeEnemy);
     }
-
+    public void AnimDoor()
+    {
+        Debug.Log("AnimDoor");
+        LeanTween.rotateY(doorA, -220, 0.5f);
+        LeanTween.rotateY(doorB, 220, 0.5f);
+    }
 
 }
 
