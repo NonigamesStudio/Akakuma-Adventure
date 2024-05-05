@@ -14,8 +14,14 @@ public class Bow : MonoBehaviour, IWeapon
 
     bool coolDown = true;
 
-    private void Awake()
+    private void Awake ()
     {
+        foreach (Transform item in transform)
+        {
+            poolArrows.Add(item.GetComponent<Arrow>());
+        }
+
+
         foreach (Arrow arrow in poolArrows)
         {
             arrow.dmg = dmg;
@@ -44,7 +50,6 @@ public class Bow : MonoBehaviour, IWeapon
     }
     public void TurnOnOffWeapon(bool turnOnOff)
     {
-        
         bowMesh.SetActive(turnOnOff);
     }
 }
