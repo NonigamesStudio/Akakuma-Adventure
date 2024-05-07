@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject currentWeaponSecondHandObj;
     public float bonusDamageToCharge;
     public float coolDownDashTime;
+    private bool boolCharging=false;
+    private Coroutine coroutine;
 
 
     IWeapon currentWeaponFirstHand;
@@ -165,27 +168,42 @@ public class Player : MonoBehaviour
     }
     private void AttackSecondaryWeaponInput()
     {   
+        if (Input.GetMouseButton(1)) chargeTime += Time.deltaTime;
+        if (isStuned) return;
         if (Input.GetMouseButtonUp(1))
         {
-            currentWeaponSecondHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
-            playerMovement.SlowDown(false);
-            chargeTime = 0;
-            usingyWeapon = false;
-            currentWeaponFirstHand.TurnOnOffWeapon(true);
-            currentWeaponSecondHand.TurnOnOffWeapon(false);
-            
+           
+           //coroutine = StartCoroutine(RepositionBowCorrutine(chargeTime));
+           if(chargeTime>0.5f)
+           {
+               BowRealese();
+           }
+           else
+           {
+            LeanTween.delayedCall(0.5f-chargeTime, () => {BowRealese();});
+           }
+           
         }
-        if (isStuned) return;
+        if (boolCharging) return;
+        if (chargeTime<0.5f) return;
         if (Input.GetMouseButtonDown(1))
-        {
+        {   
+            if (coroutine!=null)
+            {
+                StopCoroutine(coroutine);
+            }
+            boolCharging=true;
+            chargeTime=0;
             playerMovement.SlowDown(true);
             usingyWeapon = true;
             currentWeaponFirstHand.TurnOnOffWeapon(false);
             currentWeaponSecondHand.TurnOnOffWeapon(true);
             AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackBow);
-            OnBowReady?.Invoke();
+            OnBowReady?.Invoke(); 
+           
         }
-        if (Input.GetMouseButton(1)) chargeTime += Time.deltaTime;
+       
+       
         
     }
 
@@ -202,6 +220,22 @@ public class Player : MonoBehaviour
     private void PlayWeaponChangeAnimation(AnimNamesPlayer animNamesPlayer)
     {
        AnimController_Player.ins.PlayAnim(animNamesPlayer);
+    }
+    // IEnumerator RepositionBowCorrutine(float elapsedTime)
+    // {
+    //     yield return new WaitForSeconds(0.5f-elapsedTime);
+    //     BowRealese();
+    // }
+    private void BowRealese()
+    {
+        currentWeaponSecondHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
+        AnimController_Player.ins.PlayAnim(AnimNamesPlayer.ReleaseBow);
+        playerMovement.SlowDown(false);
+        chargeTime = 0;
+        usingyWeapon = false;
+        currentWeaponFirstHand.TurnOnOffWeapon(true);
+        currentWeaponSecondHand.TurnOnOffWeapon(false);
+        boolCharging=false;
     }
 
 }

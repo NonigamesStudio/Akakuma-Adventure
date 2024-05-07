@@ -33,7 +33,7 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.gameObject.name);
+        
         if (collision.TryGetComponent<Health>(out Health heatlh))
         {
             if (collision.gameObject.layer == gameObject.layer) return;

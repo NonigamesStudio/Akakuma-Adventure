@@ -58,7 +58,10 @@ public class AnimController_Player : MonoBehaviour
                 anim.SetTrigger("AttackBow");
                 break;
             case AnimNamesPlayer.ReleaseBow:
-                anim.SetTrigger("ReleaseBow");
+
+                anim.SetBool("ReleaseBow 0", true);
+                LeanTween.delayedCall(0.1f, () => { anim.SetBool("ReleaseBow 0", false); });
+                // anim.SetBool("ReleaseBow 0", false);
                 break;
             default:
                 break;
