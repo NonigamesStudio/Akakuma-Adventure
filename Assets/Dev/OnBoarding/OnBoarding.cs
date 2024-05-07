@@ -26,46 +26,123 @@ public class OnBoarding : MonoBehaviour
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(0.5f);
-        currentStep = 0;
-        ChangeStepOnBoarding((OnBoardingSteps)currentStep);
+
+
+        AnimPanels(true, asdwStep_Panel);
+        yield return new WaitForSeconds(2f);
+        bool asdw = true;
+        while (asdw)
+        {
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W)) asdw = false;
+            Debug.Log("Wait ASDW");
+            yield return null;
+        }
+        AnimPanels(false, asdwStep_Panel);
+
+
+        yield return new WaitForSeconds(2f);
+
+
+        AnimPanels(true, attackStep_Panel);
+        yield return new WaitForSeconds(1f);
+        while (!Input.GetMouseButtonDown(0))
+        {
+            yield return null;
+        }
+        AnimPanels(false, attackStep_Panel);
+
+
+        yield return new WaitForSeconds(2f);
+
+
+        AnimPanels(true, attackBowStep_Panel);
+        yield return new WaitForSeconds(1f);
+        while (!Input.GetMouseButtonDown(1))
+        {
+            yield return null;
+        }
+        AnimPanels(false, attackBowStep_Panel);
+
+
+        yield return new WaitForSeconds(2f);
+
+
+        AnimPanels(true, changeWeaponStep_Panel);
+        yield return new WaitForSeconds(2f);
+        bool changeWeaponStep = true;
+        while (changeWeaponStep)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)) changeWeaponStep = false;
+            yield return null;
+        }
+        AnimPanels(false, changeWeaponStep_Panel);
+
+
+        yield return new WaitForSeconds(2f);
+
+
+        AnimPanels(true, useSkillStep_Panel);
+        yield return new WaitForSeconds(1f);
+        while (!Input.GetKeyDown(KeyCode.F))
+        {
+            yield return null;
+        }
+        AnimPanels(false, useSkillStep_Panel);
+
+
+        yield return new WaitForSeconds(2f);
+
+
+        AnimPanels(true, useDashStep_Panel);
+        yield return new WaitForSeconds(1f);
+        while (!Input.GetKeyDown(KeyCode.Space))
+        {
+            yield return null;
+        }
+        AnimPanels(false, useDashStep_Panel);
+
+        yield return new WaitForSeconds(1f);
+        AnimDoor();
+        onBoardingEventFinished = true;
+
     }
 
     private void Update()
     {
-        if (onBoardingEventFinished) return;
-        if (animReady) return;
+        //if (onBoardingEventFinished) return;
+        //if (animReady) return;
 
-        switch ((OnBoardingSteps)currentStep)
-        {
-            case OnBoardingSteps.Move:
-                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W)) { NextStep(); }
+        //switch ((OnBoardingSteps)currentStep)
+        //{
+        //    case OnBoardingSteps.Move:
+        //        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W)) { NextStep(); }
 
-                break;
-            case OnBoardingSteps.Attack:
-                if(Input.GetMouseButtonDown(0)) { NextStep(); }
+        //        break;
+        //    case OnBoardingSteps.Attack:
+        //        if(Input.GetMouseButtonDown(0)) { NextStep(); }
                 
-                break;
-            case OnBoardingSteps.Arrow:
-                if (Input.GetMouseButtonDown(1)) { NextStep(); }
+        //        break;
+        //    case OnBoardingSteps.Arrow:
+        //        if (Input.GetMouseButtonDown(1)) { NextStep(); }
 
-                break;
-            case OnBoardingSteps.ChangeWeapon:
-                if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)) { NextStep(); }
+        //        break;
+        //    case OnBoardingSteps.ChangeWeapon:
+        //        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)) { NextStep(); }
                 
-                break;
-            case OnBoardingSteps.Skill:
-                if(Input.GetKeyDown(KeyCode.F)) { NextStep(); }
+        //        break;
+        //    case OnBoardingSteps.Skill:
+        //        if(Input.GetKeyDown(KeyCode.F)) { NextStep(); }
                 
-                break;
-            case OnBoardingSteps.Dash:
-                if (Input.GetKeyDown(KeyCode.Space)) { NextStep(); }
+        //        break;
+        //    case OnBoardingSteps.Dash:
+        //        if (Input.GetKeyDown(KeyCode.Space)) { NextStep(); }
                 
-                break;
-            default:
-                AnimDoor();
-                onBoardingEventFinished = true;
-                break;
-        }
+        //        break;
+        //    default:
+        //        AnimDoor();
+        //        onBoardingEventFinished = true;
+        //        break;
+        //}
     }
 
     void NextStep()
@@ -120,18 +197,21 @@ public class OnBoarding : MonoBehaviour
     #region Anims
     public void AnimPanels(bool onOff, GameObject panel)
     {
+        LeanTween.cancel(panel);
+
         if (onOff)
         {
-            LeanTween.delayedCall(2f, () =>
-            {
                 LeanTween.moveY(panel, 0, 1f).setEaseOutBack().setOnComplete(() =>
                 {
                     LeanTween.moveY(panel, 20f, 1f).setLoopPingPong(-1);
                 });
-            });
+            
 
         }
-        else { LeanTween.moveY(panel, -400, 1f).setEaseInBack().setOnComplete(()=> { LeanTween.cancel(panel); });  }
+        else { 
+           
+            LeanTween.moveY(panel, -400, 1f).setEaseInBack();  
+        }
 
     }
 

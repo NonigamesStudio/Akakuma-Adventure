@@ -10,6 +10,7 @@ public class Bow : MonoBehaviour, IWeapon
     [SerializeField] float speedArrow;
     [SerializeField] public Player player;
     [SerializeField] GameObject bowMesh;
+    [SerializeField] bool isEnemy;
     
 
     bool coolDown = true;
@@ -32,7 +33,7 @@ public class Bow : MonoBehaviour, IWeapon
     public void Attack(float bonusDmg)
     {
         
-        player.OnBowRealese?.Invoke();
+        if(!isEnemy) player.OnBowRealese?.Invoke();
        
         if (!coolDown) return;
 
@@ -51,6 +52,6 @@ public class Bow : MonoBehaviour, IWeapon
     }
     public void TurnOnOffWeapon(bool turnOnOff)
     {
-        bowMesh.SetActive(turnOnOff);
+      if(!isEnemy)  bowMesh.SetActive(turnOnOff);
     }
 }

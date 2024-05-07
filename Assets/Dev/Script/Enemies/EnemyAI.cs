@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     Rigidbody rb;
     Transform t;
     public Health health;
+    [SerializeField] SkinnedMeshRenderer meshRenderer;
 
     [Space(5)]
     [Header("Variables Enemy")]
@@ -24,13 +25,15 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] GameObject weapon;
     public float attackDmg;
     [SerializeField] float knockBackForce;
-    [SerializeField] GameObject[] meshesList;
+    [SerializeField] Material[] matsList;
 
     [Space(5)]
     [Header("Variables Effects")]
     [SerializeField] GameObject deathParticle;
     [SerializeField] GameObject coinParticle;
     [SerializeField] GameObject getHitParticle;
+
+
 
     IWeapon currentWeapon;
     bool onKnockBack;
@@ -82,20 +85,17 @@ public class EnemyAI : MonoBehaviour
 
     public void ActiveMesh(int t)
     {
-        if (t >= meshesList.Length) return;
+        if (t >= matsList.Length) return;
 
-        foreach (GameObject mesh in meshesList)
-        {
-            mesh.SetActive(false);
-        }
-
-        meshesList[t].SetActive(true);
+        meshRenderer.material = matsList[t];
     }
 
     void Update()
     {
        
         if (onKnockBack) return;
+        anim.SetFloat("Walk", agent.velocity.magnitude);
+
         
         if (Vector3.Distance(t.position, playert.position) < maxDistDetection)
         { 
@@ -132,12 +132,18 @@ public class EnemyAI : MonoBehaviour
                 }
             case State.Attack:
 
+                if(Vector3.Distance(t.position, playert.position) < attackRange)
+                {
+                    AttackState();
+                    break;
+                }
+
                 if (Physics.Raycast(transform.position,playert.position-transform.position,out RaycastHit hit, maxDistDetection, layerMask))
                 {   
                     if (hit.transform.CompareTag("Player")&& Vector3.Distance(transform.position, playert.position) <= maxDistDetection) 
                     {
-                    playerLastDetectedPosition=playert.position;
-                    timeSinceLastDetection=0;   
+                        playerLastDetectedPosition=playert.position;
+                        timeSinceLastDetection=0;   
                     }
                 }
 
@@ -151,8 +157,6 @@ public class EnemyAI : MonoBehaviour
                 }
                 break;
         }
-
-        
     }
 
     void Dead()
@@ -163,8 +167,8 @@ public class EnemyAI : MonoBehaviour
 
     void AttackState()
     {
+        transform.LookAt(playert.position);
         agent.isStopped = true;
-        
         anim.SetTrigger("Attack");
     }
     public void AttackWeapon()
@@ -260,7 +264,5 @@ public class EnemyAI : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 7);
-        
-      
     }
 }

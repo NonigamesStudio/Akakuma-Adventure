@@ -9,9 +9,11 @@ public class EnemyController : MonoBehaviour
     [Header("Refs Components")]
     [SerializeField] Transform playerTransform;
     [SerializeField] EnemyAI prefabEnemy;
+    [SerializeField] EnemyAI prefabEnemyDist;
     [Space(10)]
     [Header("Refs Pool Enemy")]
     [SerializeField] List<EnemyAI> enemysPool;
+    [SerializeField] List<EnemyAI> enemysDistancesPool;
     [SerializeField] GameObject boss;
     [Space(10)]
     [Header("Variables Spawn Enemys")]
@@ -44,7 +46,16 @@ public class EnemyController : MonoBehaviour
             enemy.gameObject.SetActive(false);
             enemy.playert = playerTransform;
             enemy.enemyController = this;
+        }   
+        
+        foreach (EnemyAI enemy in enemysDistancesPool)
+        {
+            enemy.gameObject.SetActive(false);
+            enemy.playert = playerTransform;
+            enemy.enemyController = this;
         }
+
+
         //StartCoroutine(SortSpawnPointsByDistance(playerTransform));
         SpawnWave();
     }
@@ -57,15 +68,32 @@ public class EnemyController : MonoBehaviour
         randomPos.x += data.position.position.x;
         randomPos.y += data.position.position.z;
 
+        if(data.isDistance)
+        {
+            foreach (EnemyAI enemy in enemysDistancesPool)
+            {
+                if (enemy.gameObject.activeSelf) continue;
+
+                enemy.gameObject.SetActive(true);
+                enemy.agent.enabled = false;
+                enemy.transform.SetParent(null);
+                enemy.transform.position = new Vector3(randomPos.x, 5f, randomPos.y);
+                enemy.agent.enabled = true;
+                enemy.SetWalkingIdlePoints(data.position.position);
+                SetEnemyForWave(enemy, data.healthMax, data.attackdmg, data.typeEnemy);
+
+                return enemy;
+            }
+        }
 
         foreach (EnemyAI enemy in enemysPool)
         {
             if (enemy.gameObject.activeSelf) continue;
-            
+
             enemy.gameObject.SetActive(true);
             enemy.agent.enabled = false;
             enemy.transform.SetParent(null);
-            enemy.transform.position = new Vector3(randomPos.x,5f, randomPos.y); 
+            enemy.transform.position = new Vector3(randomPos.x, 5f, randomPos.y);
             enemy.agent.enabled = true;
             enemy.SetWalkingIdlePoints(data.position.position);
             SetEnemyForWave(enemy, data.healthMax, data.attackdmg, data.typeEnemy);

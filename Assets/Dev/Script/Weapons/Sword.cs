@@ -50,7 +50,7 @@ public class Sword : MonoBehaviour, IWeapon
         float time = 0;
         while (attackDuration > time)
         {
-            AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackSword);
+            if (!isEnemy) AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackSword);
             if (isEnemy) yield return new WaitForSeconds(0.2f);
             else { yield return new WaitForSeconds(0.3f); }
             Collider[] results = Physics.OverlapBox(colliderAttack.transform.position, colliderAttack.size,Quaternion.identity, mask);
