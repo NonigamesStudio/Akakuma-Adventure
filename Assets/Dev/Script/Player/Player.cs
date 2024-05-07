@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject currentWeaponSecondHandObj;
     public float bonusDamageToCharge;
     public float coolDownDashTime;
-    private bool boolCharging=false;
+    
     private Coroutine coroutine;
 
 
@@ -32,7 +32,10 @@ public class Player : MonoBehaviour
 
     public bool onSkill;
 
-    float chargeTime;
+    public float chargeTime;
+    public bool boolCharging = false;
+    public bool shooting;
+    public bool canClick;
     [HideInInspector] public bool isStuned;
     bool usingyWeapon;
 
@@ -167,44 +170,44 @@ public class Player : MonoBehaviour
         }
     }
     private void AttackSecondaryWeaponInput()
-    {   
-        if (Input.GetMouseButton(1)) chargeTime += Time.deltaTime;
+    {
+        chargeTime += Time.deltaTime;
+
+       
+
+        if (Input.GetMouseButton(1)) 
+
+
         if (isStuned) return;
+        
         if (Input.GetMouseButtonUp(1))
         {
-           
-           //coroutine = StartCoroutine(RepositionBowCorrutine(chargeTime));
-           if(chargeTime>0.5f)
-           {
-               BowRealese();
-           }
-           else
-           {
-            LeanTween.delayedCall(0.5f-chargeTime, () => {BowRealese();});
-           }
-           
+            boolCharging = true;
         }
-        if (boolCharging) return;
-        if (chargeTime<0.5f) return;
+
         if (Input.GetMouseButtonDown(1))
-        {   
-            if (coroutine!=null)
-            {
-                StopCoroutine(coroutine);
-            }
-            boolCharging=true;
-            chargeTime=0;
+        {
+            if (!shooting) shooting = true;
+            else return;
+            boolCharging = false;
+            chargeTime = 0;
             playerMovement.SlowDown(true);
             usingyWeapon = true;
             currentWeaponFirstHand.TurnOnOffWeapon(false);
             currentWeaponSecondHand.TurnOnOffWeapon(true);
             AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackBow);
-            OnBowReady?.Invoke(); 
-           
+            OnBowReady?.Invoke();
         }
-       
-       
+
+
+        if (chargeTime < 1f)  return;
         
+        if (boolCharging) { 
+            BowRealese();
+            return; 
+        }
+
+
     }
 
     public void GetStuned(float sec)
@@ -236,6 +239,7 @@ public class Player : MonoBehaviour
         currentWeaponFirstHand.TurnOnOffWeapon(true);
         currentWeaponSecondHand.TurnOnOffWeapon(false);
         boolCharging=false;
+        shooting = false ;
     }
 
 }
