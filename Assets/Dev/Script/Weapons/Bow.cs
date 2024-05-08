@@ -32,6 +32,7 @@ public class Bow : MonoBehaviour, IWeapon
 
     public void Attack(float bonusDmg)
     {
+
         
         if(!isEnemy) player.OnBowRealese?.Invoke();
        

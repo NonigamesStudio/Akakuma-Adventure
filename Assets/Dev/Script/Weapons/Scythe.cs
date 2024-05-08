@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,28 +9,18 @@ public class Scythe : MonoBehaviour, IWeapon
 
     [Header("Normal Attack Refs")]
     [SerializeField] float damage;
-    [SerializeField] float maxDamage;
-    [SerializeField] BoxCollider colliderAttack;
+    
+    [SerializeField] List <BoxCollider> colliderAttack;
     [SerializeField] float attackDuration;
     [SerializeField] float tickTimeDmg;
     [SerializeField] float coolDown;
     [SerializeField] GameObject PacticleSlash;
     [SerializeField] LayerMask mask;
-
-    [Space(5)]
-    [Header("Skill Attack Refs")]
-    [SerializeField] SphereCollider colliderSkill;
-    [SerializeField] Transform pivotToSkill;
-    [SerializeField] float coolDownSkill;
-    [SerializeField] float skillDuration;
-    [SerializeField] float speedRotSkill;
-    [SerializeField] GameObject skillParticle;
     [SerializeField] bool isEnemy;
 
 
 
     bool isOnCoolDownNormalAttack;
-    bool isOnCoolDownSkill;
     public void Attack(float bonusDmg)
     {
         if (!isOnCoolDownNormalAttack)
@@ -39,9 +30,8 @@ public class Scythe : MonoBehaviour, IWeapon
             StartCoroutine(SkillAnim());
             if (!isEnemy) player.OnWeaponAttack?.Invoke();
             isOnCoolDownNormalAttack = true;
-            //spriteSlash.SetActive(true);
             LeanTween.delayedCall(coolDown, () => { isOnCoolDownNormalAttack = false; });
-            //LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
+            
         }
         else
         { //on cooldown
@@ -54,20 +44,20 @@ public class Scythe : MonoBehaviour, IWeapon
         
         while (attackDuration > time)
         {
-            Collider[] results = Physics.OverlapBox(transform.position, colliderAttack.size, Quaternion.identity, mask);
+            yield return new WaitForSeconds(0.2f);
+            Collider[] results = Physics.OverlapBox(transform.position, colliderAttack[i].size, Quaternion.identity, mask);
 
 
             foreach (Collider objectColli in results)
             {
-                if (objectColli.TryGetComponent<Health>(out Health health))
+                    if (objectColli.TryGetComponent<Health>(out Health health))
                 {
-                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage + bonusdmg, transform.root);
+                    
+                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage((float)Math.Round((damage + bonusdmg)/(i+1)), transform.root);
                 }
             }
 
-            time += tickTimeDmg;
-
-            yield return new WaitForSeconds(tickTimeDmg);
+             
         }
         PacticleSlash.SetActive(false); ;
     }

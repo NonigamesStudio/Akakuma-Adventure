@@ -40,8 +40,10 @@ public class Arrow : MonoBehaviour
             arrow_VFX.SetActive(false);
             explosion_Collision.SetActive(true);
             rb.velocity = Vector3.zero;
-            LeanTween.delayedCall(1, () => { ResetArrow(); });
+            //LeanTween.delayedCall(1, () => { ResetArrow(); });
+
             heatlh.TakeDamage(dmg, transform.root);
+            ResetArrow();
         }
     }
 

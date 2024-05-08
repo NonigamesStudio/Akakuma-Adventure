@@ -47,7 +47,7 @@ public class Health : MonoBehaviour
         {
             OnDeath?.Invoke();
 
-            if (tag=="Sticky")
+            if (tag=="Enemy")
             {
                 if (AudioManager.instance != null) AudioManager.instance.PlayOneShot(FMODEvents.instance.smallEnemyDeath, transform.position);
             }
