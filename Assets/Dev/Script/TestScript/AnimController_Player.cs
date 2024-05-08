@@ -49,10 +49,10 @@ public class AnimController_Player : MonoBehaviour
                 anim.SetTrigger("SwordAttack");
                 break;
             case AnimNamesPlayer.AttackScythe:
-                anim.Play("Guadania");
+                anim.Play("Guadana");
                 break;
             case AnimNamesPlayer.AttackShield:
-                anim.Play("Ataque escudos");
+                anim.SetTrigger("ShieldPower");
                 break;
             case AnimNamesPlayer.AttackBow:
                 anim.SetTrigger("AttackBow");

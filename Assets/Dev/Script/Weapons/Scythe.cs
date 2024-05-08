@@ -24,6 +24,7 @@ public class Scythe : MonoBehaviour, IWeapon
     [SerializeField] float skillDuration;
     [SerializeField] float speedRotSkill;
     [SerializeField] GameObject skillParticle;
+    [SerializeField] bool isEnemy;
 
 
 
@@ -33,12 +34,13 @@ public class Scythe : MonoBehaviour, IWeapon
     {
         if (!isOnCoolDownNormalAttack)
         {
+            if (!isEnemy) AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackScythe);
             StartCoroutine(AttackAction(bonusDmg));
             player.OnWeaponAttack?.Invoke();
             isOnCoolDownNormalAttack = true;
-            spriteSlash.SetActive(true);
+            //spriteSlash.SetActive(true);
             LeanTween.delayedCall(coolDown, () => { isOnCoolDownNormalAttack = false; });
-            LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
+            //LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
         }
         else
         { //on cooldown

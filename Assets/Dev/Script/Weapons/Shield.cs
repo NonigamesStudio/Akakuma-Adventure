@@ -17,6 +17,7 @@ public class Shield : MonoBehaviour,IWeapon
     [SerializeField] float coolDown;
     [SerializeField] float attackDuration;
     [SerializeField] Player player;
+    [SerializeField] bool isEnemy;
 
 
     bool isOnCoolDownSkill;
@@ -30,12 +31,13 @@ public class Shield : MonoBehaviour,IWeapon
     {
         if (!isOnCoolDownNormalAttack)
         {
+            if (!isEnemy) AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackShield);
             StartCoroutine(AttackAction(bonusDmg));
             player.OnWeaponAttack?.Invoke();
             isOnCoolDownNormalAttack = true;
-            spriteSlash.SetActive(true);
+            //spriteSlash.SetActive(true);
             LeanTween.delayedCall(coolDown, () => { isOnCoolDownNormalAttack = false; });
-            LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
+            //LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
         }
         else
         { //on cooldown
