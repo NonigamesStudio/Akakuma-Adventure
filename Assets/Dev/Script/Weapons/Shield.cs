@@ -14,7 +14,7 @@ public class Shield : MonoBehaviour,IWeapon
     [SerializeField] float coolDownSkill;
     [SerializeField] LayerMask mask;
     [SerializeField] GameObject skillParticle;
-    [SerializeField] GameObject spriteSlash;
+    [SerializeField] GameObject lightPaticle;
     [SerializeField] float coolDown;
     [SerializeField] float attackDuration;
     [SerializeField] Player player;
@@ -33,15 +33,15 @@ public class Shield : MonoBehaviour,IWeapon
         if (!isOnCoolDownNormalAttack)
         {
             if (!isEnemy) AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackShield);
-            player.GetStuned(1.5f);
+            player.GetStuned(1.8f);
+            lightPaticle.SetActive(true);
             StartCoroutine(AttackAction(bonusDmg));
             player.OnWeaponAttack?.Invoke();
             isOnCoolDownNormalAttack = true;
-            LeanTween.delayedCall(1, () => {;skillParticle.SetActive(true);});
-            LeanTween.delayedCall(2, () => {;skillParticle.SetActive(false);});
-            LeanTween.delayedCall(2, () => {;skillParticle.SetActive(false);});
+            LeanTween.delayedCall(1, () => {skillParticle.SetActive(true); lightPaticle.SetActive(false); });
+            LeanTween.delayedCall(1.8f, () => {skillParticle.SetActive(false);});
             //spriteSlash.SetActive(true);
-            LeanTween.delayedCall(1.5f, () => { player.TakeBackSword(); });
+            LeanTween.delayedCall(2f, () => { player.TakeBackSword(); isOnCoolDownNormalAttack = false ; });
             
             //LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
         }
