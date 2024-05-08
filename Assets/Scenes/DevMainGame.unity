@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.101704866, g: 0.71455556, b: 0.79727155, a: 1}
+  m_IndirectSpecularColor: {r: 0.1021378, g: 0.7146, b: 0.7974457, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2968,7 +2968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 341944189}
   - component: {fileID: 341944190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CollidersScythe (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2984,7 +2984,7 @@ Transform:
   m_GameObject: {fileID: 341944188}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -4.4617643e-12, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 1.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4204,7 +4204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477764643}
   - component: {fileID: 477764644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CollidersScythe (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4220,7 +4220,7 @@ Transform:
   m_GameObject: {fileID: 477764642}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -4.4617643e-12, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0000014600528, y: -0.0000001556059, z: 2.3099988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4245,7 +4245,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.75, y: 2.69, z: 1.54}
+  m_Size: {x: 4.91, y: 2.69, z: 1.54}
   m_Center: {x: -6.9394776e-12, y: -0.095096946, z: 2.87}
 --- !u!1 &494603640
 GameObject:
@@ -4256,7 +4256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 494603641}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColidersSchyte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4477,7 +4477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 523160075}
   - component: {fileID: 523160076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CollidersScythe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4493,7 +4493,7 @@ Transform:
   m_GameObject: {fileID: 523160074}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -4.4617643e-12, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0000014600528, y: -0.0000001556059, z: 0.92999876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5602,10 +5602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7404409425341656719}
   damage: 10
-  colliderAttack:
-  - {fileID: 523160076}
-  - {fileID: 341944190}
-  - {fileID: 477764644}
+  colliderAttack: []
   attackDuration: 0.2
   tickTimeDmg: 0.5
   coolDown: 0.5
@@ -25300,6 +25297,9 @@ MonoBehaviour:
   animator: {fileID: 1119942567}
   rb: {fileID: 105506583482859281}
   dashAnimationClip: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 7927
 --- !u!1001 &2087820520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29189,8 +29189,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 4.8198853, y: 1, z: 6.8078346}
-  m_Center: {x: -0.034544945, y: -3.3776378e-11, z: 4.1322894}
+  m_Size: {x: 4.8198853, y: 1, z: 1.7856021}
+  m_Center: {x: -0.034544945, y: -9.454599e-12, z: 1.6211871}
 --- !u!1 &3798343173075388160
 GameObject:
   m_ObjectHideFlags: 0

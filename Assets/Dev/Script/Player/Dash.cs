@@ -15,6 +15,7 @@ public class Dash : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody rb;
     [SerializeField] AnimationClip dashAnimationClip;
+    [SerializeField] LayerMask mask;
     
     bool canDash;
     
@@ -53,7 +54,7 @@ public class Dash : MonoBehaviour
         Vector3 originalPosition = t.position;
         Vector3 posToMove = Vector3.zero;
 
-        canDash = !Physics.Raycast(t.position, t.forward, out RaycastHit hit, distanceDash);
+        canDash = !Physics.Raycast(t.position, t.forward, out RaycastHit hit, distanceDash, mask);
         
         if (canDash)
         {

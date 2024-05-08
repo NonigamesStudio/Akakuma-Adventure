@@ -17,7 +17,6 @@ public class CoinParticle : MonoBehaviour
             coin.rb.AddForce(tCoin.forward * 8, ForceMode.Impulse);
             coin.rb.AddTorque(coin.transform.forward *10, ForceMode.Acceleration);
         }
-
         Destroy(gameObject);
     }
 
