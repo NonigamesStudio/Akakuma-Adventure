@@ -13,7 +13,7 @@ public class Scythe : MonoBehaviour, IWeapon
     [SerializeField] float attackDuration;
     [SerializeField] float tickTimeDmg;
     [SerializeField] float coolDown;
-    [SerializeField] GameObject spriteSlash;
+    [SerializeField] GameObject PacticleSlash;
     [SerializeField] LayerMask mask;
 
     [Space(5)]
@@ -36,7 +36,8 @@ public class Scythe : MonoBehaviour, IWeapon
         {
             if (!isEnemy) AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackScythe);
             StartCoroutine(AttackAction(bonusDmg));
-            player.OnWeaponAttack?.Invoke();
+            StartCoroutine(SkillAnim());
+            if (!isEnemy) player.OnWeaponAttack?.Invoke();
             isOnCoolDownNormalAttack = true;
             //spriteSlash.SetActive(true);
             LeanTween.delayedCall(coolDown, () => { isOnCoolDownNormalAttack = false; });
@@ -50,6 +51,7 @@ public class Scythe : MonoBehaviour, IWeapon
     IEnumerator AttackAction(float bonusdmg)
     {
         float time = 0;
+        
         while (attackDuration > time)
         {
             Collider[] results = Physics.OverlapBox(transform.position, colliderAttack.size, Quaternion.identity, mask);
@@ -67,6 +69,7 @@ public class Scythe : MonoBehaviour, IWeapon
 
             yield return new WaitForSeconds(tickTimeDmg);
         }
+        PacticleSlash.SetActive(false); ;
     }
 
     public void Skill()
@@ -110,20 +113,26 @@ public class Scythe : MonoBehaviour, IWeapon
 
     IEnumerator SkillAnim()
     {
-        skillParticle.SetActive(true);
+        player.GetStuned(1f);
+        yield return new WaitForSeconds(0.5f);
+        PacticleSlash.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        PacticleSlash.SetActive(false);
 
-        float time = skillDuration;
-        float ytemp = 0;
-        while (time>0)
-        {
-            pivotToSkill.localEulerAngles =new Vector3(0, ytemp*10, 0);
-            ytemp += Time.deltaTime * speedRotSkill;
-            time -= Time.deltaTime;
-            yield return null;
-        }
-        pivotToSkill.localEulerAngles = Vector3.zero;
+        //skillParticle.SetActive(true);
 
-        skillParticle.SetActive(false);
+        //float time = skillDuration;
+        //float ytemp = 0;
+        //while (time>0)
+        //{
+        //    pivotToSkill.localEulerAngles =new Vector3(0, ytemp*10, 0);
+        //    ytemp += Time.deltaTime * speedRotSkill;
+        //    time -= Time.deltaTime;
+        //    yield return null;
+        //}
+        //pivotToSkill.localEulerAngles = Vector3.zero;
+
+        //skillParticle.SetActive(false);
     }
 
     public void TurnOnOffWeapon(bool turnOnOff)

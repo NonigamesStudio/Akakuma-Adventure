@@ -89,6 +89,7 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (isStuned) return;
         MovementInput();
     }
 
