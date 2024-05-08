@@ -16704,6 +16704,74 @@ MonoBehaviour:
   rockAnim: {fileID: 0}
   doorA: {fileID: 4358021906799200913}
   doorB: {fileID: 469107542}
+--- !u!1001 &1574588007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.18
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -110.14
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dde41f51efcb71243a04526ed6724468,
+        type: 3}
+      propertyPath: m_Name
+      value: Slime_Boos.002
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dde41f51efcb71243a04526ed6724468, type: 3}
 --- !u!114 &1585075208 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 176254159572259418, guid: dc058dd0c6e72934691e1c0449031d17,
@@ -33923,3 +33991,4 @@ SceneRoots:
   - {fileID: 5928061324752563336}
   - {fileID: 504083764}
   - {fileID: 1845486906}
+  - {fileID: 1574588007}
