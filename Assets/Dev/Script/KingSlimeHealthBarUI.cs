@@ -8,7 +8,7 @@ public class KingSlimeHealthBarUI : MonoBehaviour
 {
     [SerializeField] private Health health;
     [SerializeField] private Image barImage;
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private GameObject canvas;
     public float lifePercentage; 
 
 
@@ -30,12 +30,12 @@ public class KingSlimeHealthBarUI : MonoBehaviour
 
     public void Show()
     {
-        canvas.enabled = true;
+        canvas.SetActive(true);
     }
 
     public void Hide()
     {
-        canvas.enabled = false;
+        canvas.SetActive(false);
     }
 
 }

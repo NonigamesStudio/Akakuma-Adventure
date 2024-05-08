@@ -5,13 +5,21 @@ using UnityEngine;
 public class TriggerBoss : MonoBehaviour
 {
     [SerializeField] GameObject boss;
+    [SerializeField] KingSlimeHealthBarUI kingSlimeHealthBarUI;
+    [SerializeField] EnemyController enemyController;
+    // Start is called before the first frame update
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
+
             boss.SetActive(true);
-            gameObject.SetActive(false);
+            kingSlimeHealthBarUI.Show();
+            enemyController.AnimDoorClose();
+            Destroy(gameObject);
+
         }
     }
 }

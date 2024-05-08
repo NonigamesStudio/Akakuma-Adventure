@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class DayAndNightCycle : MonoBehaviour
 {
+
+    [SerializeField] Material skybox;
+    [SerializeField] AnimationCurve skyboxCurve;
     [SerializeField] bool isDay;
     [SerializeField] bool isRaining = false;
     [Header("Time Settings")]
@@ -20,6 +23,7 @@ public class DayAndNightCycle : MonoBehaviour
     [SerializeField] float sunPosition = 1;
     [SerializeField] float sunIntensity = 1;
     [SerializeField] AnimationCurve sunIntensityMultiplier;
+    
     
 
     [Header("Sun Color (All gradients must have the same amount of color keys)")]
@@ -44,6 +48,7 @@ public class DayAndNightCycle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         CheckShadowStatus();
         weatherManager.OnRainStarts += OnRainStarts;
         weatherManager.OnRainEnds += OnRainEnds;
@@ -52,6 +57,8 @@ public class DayAndNightCycle : MonoBehaviour
 
     private void OnRainStarts()
     {
+        
+
         isRaining = true;
         StartCoroutine(ChangeSunLightColor(sunLightColorWhenRaining, ambientWhenRaining));
 
@@ -104,7 +111,10 @@ public class DayAndNightCycle : MonoBehaviour
         float ambientColorMultiplier = ambientColorCurve.Evaluate(nomalizedTime);
         RenderSettings.ambientLight =  ambientColor.Evaluate(ambientColorMultiplier);
 
-        
+        float asd = skyboxCurve.Evaluate(nomalizedTime);
+        skybox.SetFloat("_Exposure", asd);
+
+
     }
 
 //se activan y desactivan sombras, tanto cuando llueve como cuando es de noche

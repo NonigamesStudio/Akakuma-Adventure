@@ -8,6 +8,7 @@ public class Arrow : MonoBehaviour
     public Rigidbody rb;
     public Bow bow;
     public float dmg;
+    public SphereCollider arrowCollider;
 
     [Header("VFX")]
     public GameObject explosion_Collision;
@@ -21,6 +22,7 @@ public class Arrow : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        arrowCollider = GetComponent<SphereCollider>();
         rb.useGravity = false;
     }
 
@@ -37,19 +39,21 @@ public class Arrow : MonoBehaviour
         if (collision.TryGetComponent<Health>(out Health heatlh))
         {
             if (collision.gameObject.layer == gameObject.layer) return;
+           
             arrow_VFX.SetActive(false);
             explosion_Collision.SetActive(true);
             rb.velocity = Vector3.zero;
-            //LeanTween.delayedCall(1, () => { ResetArrow(); });
+            arrowCollider.enabled = false;
+            LeanTween.delayedCall(1, () => { ResetArrow(); });
 
             heatlh.TakeDamage(dmg, transform.root);
-            ResetArrow();
+           
         }
     }
 
     public void ResetArrow()
     {
-
+        arrowCollider.enabled = true;
         explosion_Collision.SetActive(false);
         arrow_VFX.SetActive(true);
         rb.velocity = Vector3.zero;

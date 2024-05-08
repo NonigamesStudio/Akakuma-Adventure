@@ -71,7 +71,7 @@ public class OnBoarding : MonoBehaviour
         bool changeWeaponStep = true;
         while (changeWeaponStep)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)) changeWeaponStep = false;
+            if (Input.GetKeyDown(KeyCode.Q)) changeWeaponStep = false;
             yield return null;
         }
         AnimPanels(false, changeWeaponStep_Panel);
@@ -82,7 +82,7 @@ public class OnBoarding : MonoBehaviour
 
         AnimPanels(true, useSkillStep_Panel);
         yield return new WaitForSeconds(1f);
-        while (!Input.GetKeyDown(KeyCode.F))
+        while (!Input.GetKeyDown(KeyCode.E))
         {
             yield return null;
         }
@@ -216,7 +216,7 @@ public class OnBoarding : MonoBehaviour
 
     public void AnimDoor()
     {
-        LeanTween.rotateY(door, -45, 0.5f).setOnComplete(()=> { gameObject.SetActive(false); });
+        LeanTween.rotateY(door, 0, 0.5f).setOnComplete(()=> { gameObject.SetActive(false); });
     }
     #endregion
 

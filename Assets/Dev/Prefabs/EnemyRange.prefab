@@ -148,6 +148,7 @@ MonoBehaviour:
   rb: {fileID: 6238204154626854003}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 901330489248715024}
   arrow_VFX: {fileID: 2553645166277436246}
 --- !u!54 &6238204154626854003
@@ -258,6 +259,7 @@ MonoBehaviour:
   rb: {fileID: 7579774832129856237}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 7361558699731066813}
   arrow_VFX: {fileID: 2880232520242627685}
 --- !u!54 &7579774832129856237
@@ -10239,6 +10241,7 @@ MonoBehaviour:
   rb: {fileID: 9120915917137819387}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 5655902521354541738}
   arrow_VFX: {fileID: 32537575224854730}
 --- !u!54 &9120915917137819387
@@ -10872,6 +10875,7 @@ MonoBehaviour:
   rb: {fileID: 383302320537148964}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 4833713026618260255}
   arrow_VFX: {fileID: 5688887089508466283}
 --- !u!54 &383302320537148964
@@ -15969,6 +15973,7 @@ MonoBehaviour:
   rb: {fileID: 8530878663961238802}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 5987667863192731836}
   arrow_VFX: {fileID: 381356443403157322}
 --- !u!54 &8530878663961238802
@@ -16056,7 +16061,7 @@ Transform:
   m_GameObject: {fileID: 3421099216347495437}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.07}
+  m_LocalPosition: {x: 0, y: 0, z: 0.327}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -16079,6 +16084,7 @@ MonoBehaviour:
   rb: {fileID: 8032964507086262507}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 5961246190036999659}
   arrow_VFX: {fileID: 7872060140784115648}
 --- !u!54 &8032964507086262507
@@ -21323,6 +21329,7 @@ MonoBehaviour:
   rb: {fileID: 1559750149857654390}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 5848994169363462551}
   arrow_VFX: {fileID: 4481082549307479036}
 --- !u!54 &1559750149857654390
@@ -21433,6 +21440,7 @@ MonoBehaviour:
   rb: {fileID: 5461422655361510776}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 3172510299426845816}
   arrow_VFX: {fileID: 7704561727376828449}
 --- !u!54 &5461422655361510776
@@ -26803,6 +26811,7 @@ MonoBehaviour:
   rb: {fileID: 6001150028162804661}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 854634938215770983}
   arrow_VFX: {fileID: 8620585801625986944}
 --- !u!54 &6001150028162804661
@@ -27009,6 +27018,7 @@ MonoBehaviour:
   rb: {fileID: 3482174295929428535}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 1730010007724019775}
   arrow_VFX: {fileID: 8138551511018506583}
 --- !u!54 &3482174295929428535
@@ -27150,6 +27160,7 @@ MonoBehaviour:
   rb: {fileID: 3392832153809006342}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 716632127746376961}
   arrow_VFX: {fileID: 4001638112689723897}
 --- !u!54 &3392832153809006342
@@ -32336,6 +32347,7 @@ MonoBehaviour:
   rb: {fileID: 7334288696378866670}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 8820900029511256923}
   arrow_VFX: {fileID: 485183479402589106}
 --- !u!54 &7334288696378866670
@@ -37399,6 +37411,7 @@ MonoBehaviour:
   rb: {fileID: 6813475155871817002}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 1510419948641474279}
   arrow_VFX: {fileID: 849970269190228573}
 --- !u!54 &6813475155871817002
@@ -42458,6 +42471,7 @@ MonoBehaviour:
   rb: {fileID: 1703615547321037623}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 3142675747187393151}
   arrow_VFX: {fileID: 9040346942684645154}
 --- !u!54 &1703615547321037623
@@ -42904,6 +42918,7 @@ MonoBehaviour:
   rb: {fileID: 1780273043788723167}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 4054247957600615561}
   arrow_VFX: {fileID: 270409627946209986}
 --- !u!54 &1780273043788723167
@@ -43046,6 +43061,7 @@ MonoBehaviour:
   rb: {fileID: 1684730197612361442}
   bow: {fileID: 0}
   dmg: 0
+  arrowCollider: {fileID: 0}
   explosion_Collision: {fileID: 2841431274688112749}
   arrow_VFX: {fileID: 355494418986190350}
 --- !u!54 &1684730197612361442
