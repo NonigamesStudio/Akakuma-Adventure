@@ -108,7 +108,20 @@ public class Player : MonoBehaviour
         else playerMovement.Walk();
     }
 
-    private void InventoryInput()
+    public void TakeBackSword()
+    {
+        currentWeaponFirstHand = inventory.GetWeaponSelected(0);
+        foreach (GameObject shield in shields)
+        { shield.SetActive(false); }
+        uIManager.ChangeWeaponSpriteAbility(0);
+        if (currentWeapon != 0)
+        {
+            currentWeapon = 0;
+            PlayWeaponChangeAnimation(AnimNamesPlayer.DrawSword);
+            PlayWeaponChangeSound();
+        }
+    }
+    public void InventoryInput()
     {
 
         
@@ -126,7 +139,7 @@ public class Player : MonoBehaviour
             PlayWeaponChangeSound();
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(1);
             foreach (GameObject shield in shields)
@@ -136,9 +149,13 @@ public class Player : MonoBehaviour
             {
             currentWeapon = 1;
             PlayWeaponChangeSound();
+              
             }
+            currentWeaponFirstHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
+            chargeTime = 0;
+            usingyWeapon = false;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(2);
             foreach (GameObject shield in shields)
@@ -149,6 +166,9 @@ public class Player : MonoBehaviour
             currentWeapon = 2;
             PlayWeaponChangeSound();
             }
+            currentWeaponFirstHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
+            chargeTime = 0;
+            usingyWeapon = false;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {

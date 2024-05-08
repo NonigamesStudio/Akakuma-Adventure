@@ -59,11 +59,12 @@ public class Scythe : MonoBehaviour, IWeapon
 
     IEnumerator SkillAnim()
     {
-        player.GetStuned(1.2f);
+        player.GetStuned(1.3f);
         yield return new WaitForSeconds(0.5f);
         PacticleSlash.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.7f);
         PacticleSlash.SetActive(false);
+        player.TakeBackSword();
 
     }
 

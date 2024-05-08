@@ -33,14 +33,15 @@ public class Shield : MonoBehaviour,IWeapon
         if (!isOnCoolDownNormalAttack)
         {
             if (!isEnemy) AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackShield);
-            player.GetStuned(1f);
+            player.GetStuned(1.5f);
             StartCoroutine(AttackAction(bonusDmg));
             player.OnWeaponAttack?.Invoke();
             isOnCoolDownNormalAttack = true;
             LeanTween.delayedCall(1, () => {;skillParticle.SetActive(true);});
             LeanTween.delayedCall(2, () => {;skillParticle.SetActive(false);});
+            LeanTween.delayedCall(2, () => {;skillParticle.SetActive(false);});
             //spriteSlash.SetActive(true);
-            LeanTween.delayedCall(coolDown, () => { isOnCoolDownNormalAttack = false; });
+            LeanTween.delayedCall(1.5f, () => { player.TakeBackSword(); });
             
             //LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
         }

@@ -1264,10 +1264,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ecc910907ed0a36469f6e415cf78e54d,
-        type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1904519020}
     - targetCorrespondingSourceObject: {fileID: 4058852915679833821, guid: ecc910907ed0a36469f6e415cf78e54d,
         type: 3}
       insertIndex: 0
@@ -3145,6 +3141,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1750399261}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &378734790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1140404083555214, guid: e66bddc96394d4a45b8c8fd1ed37a43d,
+    type: 3}
+  m_PrefabInstance: {fileID: 612921460}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &381293197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4272,7 +4274,7 @@ Transform:
   m_GameObject: {fileID: 494603640}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4493,7 +4495,7 @@ Transform:
   m_GameObject: {fileID: 523160074}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -4.4617643e-12, w: 1}
-  m_LocalPosition: {x: -0.0000014600528, y: -0.0000001556059, z: 0.92999876}
+  m_LocalPosition: {x: -0, y: -0, z: -0.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4518,8 +4520,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 2.8098063, z: 1.6744208}
-  m_Center: {x: -6.9394776e-12, y: -0.095096946, z: 0.33721495}
+  m_Size: {x: 3, y: 2.8098063, z: 2.618775}
+  m_Center: {x: -8.002689e-12, y: -0.095096946, z: 0.80939513}
 --- !u!1 &544083713
 GameObject:
   m_ObjectHideFlags: 0
@@ -5602,13 +5604,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7404409425341656719}
   damage: 10
-  colliderAttack: []
+  colliderAttack:
+  - {fileID: 523160076}
+  - {fileID: 341944190}
+  - {fileID: 477764644}
   attackDuration: 0.2
   tickTimeDmg: 0.5
   coolDown: 0.5
   mask:
     serializedVersion: 2
     m_Bits: 128
+  PacticleSlash: {fileID: 378734790}
   isEnemy: 0
 --- !u!114 &720684207 stripped
 MonoBehaviour:
@@ -9974,7 +9980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 187952, guid: c05e92eaee7a00844867e5edc8e0dde1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 424984, guid: c05e92eaee7a00844867e5edc8e0dde1, type: 3}
       propertyPath: m_LocalScale.x
@@ -9994,11 +10000,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 424984, guid: c05e92eaee7a00844867e5edc8e0dde1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 424984, guid: c05e92eaee7a00844867e5edc8e0dde1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.75
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 424984, guid: c05e92eaee7a00844867e5edc8e0dde1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24728,7 +24734,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1119942566}
+    m_TransformParent: {fileID: 4630246526981228002}
     m_Modifications:
     - target: {fileID: 124808, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_Name
@@ -24740,27 +24746,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458114, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.23
+      value: 2.5379996
       objectReference: {fileID: 0}
     - target: {fileID: 458114, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5.6400027
+      value: 3.3840013
       objectReference: {fileID: 0}
     - target: {fileID: 458114, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.23
+      value: 2.5379996
       objectReference: {fileID: 0}
     - target: {fileID: 458114, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.42005607
+      value: 0.25203365
       objectReference: {fileID: 0}
     - target: {fileID: 458114, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1682253
+      value: 0.2009353
       objectReference: {fileID: 0}
     - target: {fileID: 458114, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.0631695
+      value: 1.2379017
       objectReference: {fileID: 0}
     - target: {fileID: 458114, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24768,11 +24774,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458114, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.03844692
+      value: -0.038446918
       objectReference: {fileID: 0}
     - target: {fileID: 458114, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.706061
+      value: 0.70606107
       objectReference: {fileID: 0}
     - target: {fileID: 458114, guid: 2d051abfebeda054eac2b6a15edf6d4e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -30114,6 +30120,7 @@ Transform:
   m_Children:
   - {fileID: 1890976493}
   - {fileID: 476280467}
+  - {fileID: 1904519020}
   - {fileID: 1245023250}
   - {fileID: 6836389169563905147}
   - {fileID: 8162187868814698116}
@@ -31285,7 +31292,7 @@ PrefabInstance:
     - target: {fileID: 7497302870000870252, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7552146361783932485, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
@@ -32624,7 +32631,8 @@ MonoBehaviour:
   inventory: {fileID: 7674397508232338577}
   playerCollider: {fileID: 0}
   uIManager: {fileID: 1182324637}
-  shields: []
+  shields:
+  - {fileID: 218542881282940751}
   currentWeaponFirstHandObj: {fileID: 842086611267325572}
   currentWeaponSecondHandObj: {fileID: 5764527393623983396}
   bonusDamageToCharge: 2
