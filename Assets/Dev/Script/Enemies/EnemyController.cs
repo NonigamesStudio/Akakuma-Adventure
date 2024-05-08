@@ -31,6 +31,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] GameObject doorA;
     [SerializeField] GameObject doorB;
 
+    [SerializeField] KingSlimeHealthBarUI kingSlimeHealthBarUI;
+
     Vector3 spanwPointClosest;
 
     public static System.Action<float,float> OnEnemyDeath;
@@ -41,6 +43,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        boss.SetActive(false);
         foreach (EnemyAI enemy in enemysPool)
         {
             enemy.gameObject.SetActive(false);
@@ -130,7 +133,9 @@ public class EnemyController : MonoBehaviour
     {
         if (currentWave >= waveDataList.Count) 
         { 
-            AnimDoor(); 
+            AnimDoorOpen(); 
+            
+
         }
         else
         {
@@ -190,13 +195,17 @@ public class EnemyController : MonoBehaviour
         enemy.attackDmg = attack;
         enemy.ActiveMesh((int)typeEnemy);
     }
-    public void AnimDoor()
+    public void AnimDoorOpen()
     {
-        Debug.Log("AnimDoor");
-        LeanTween.rotateY(doorA, -220, 0.5f);
-        LeanTween.rotateY(doorB, 220, 0.5f);
+       
+        LeanTween.rotateLocal(doorA, new Vector3(0, -135, 0), 0.5f);
+        LeanTween.rotateLocal(doorB, new Vector3(0, 135, 0), 0.5f);
     }
-
+    public void AnimDoorClose()
+    {
+        LeanTween.rotateLocal(doorA, new Vector3(0, 0, 0), 0.5f);
+        LeanTween.rotateLocal(doorB, new Vector3(0, 0, 0), 0.5f);
+    }
 }
 
 [System.Serializable]
