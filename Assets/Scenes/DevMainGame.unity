@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.30861372, g: 0.86077493, b: 0.99661064, a: 1}
+  m_IndirectSpecularColor: {r: 0.101704866, g: 0.71455556, b: 0.79727155, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -30884,6 +30884,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3348044639643872708, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348044639643872708, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348044639643872708, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348044639643872708, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.64
       objectReference: {fileID: 0}
@@ -30932,10 +30947,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3348044639643872708, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3384092452476139515, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
       propertyPath: maxHealth
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3726635666568797619, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.23
       objectReference: {fileID: 0}
     - target: {fileID: 3806930881704149943, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
@@ -30962,16 +30987,41 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5462795767600994285, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462795767600994285, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.19
+      objectReference: {fileID: 0}
     - target: {fileID: 5823710276093449315, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
       propertyPath: maxHealth
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248317458764167999, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.28
       objectReference: {fileID: 0}
     - target: {fileID: 6265242210353427605, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
       propertyPath: playerT
       value: 
       objectReference: {fileID: 4630246526981228002}
+    - target: {fileID: 6270842563937386570, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6270842563937386570, guid: a4863e75c7a09dd4e9b1217881f0d019,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.79
+      objectReference: {fileID: 0}
     - target: {fileID: 6362396243317900478, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
       propertyPath: maxHealth
@@ -31005,7 +31055,7 @@ PrefabInstance:
     - target: {fileID: 7497302870000870252, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7552146361783932485, guid: a4863e75c7a09dd4e9b1217881f0d019,
         type: 3}
@@ -32344,9 +32394,7 @@ MonoBehaviour:
   inventory: {fileID: 7674397508232338577}
   playerCollider: {fileID: 0}
   uIManager: {fileID: 1182324637}
-  shields:
-  - {fileID: 218542881282940751}
-  - {fileID: 8119059221675406450}
+  shields: []
   currentWeaponFirstHandObj: {fileID: 842086611267325572}
   currentWeaponSecondHandObj: {fileID: 5764527393623983396}
   bonusDamageToCharge: 2
