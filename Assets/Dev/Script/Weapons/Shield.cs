@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,8 +37,11 @@ public class Shield : MonoBehaviour,IWeapon
             StartCoroutine(AttackAction(bonusDmg));
             player.OnWeaponAttack?.Invoke();
             isOnCoolDownNormalAttack = true;
+            LeanTween.delayedCall(1, () => {;skillParticle.SetActive(true);});
+            LeanTween.delayedCall(2, () => {;skillParticle.SetActive(false);});
             //spriteSlash.SetActive(true);
             LeanTween.delayedCall(coolDown, () => { isOnCoolDownNormalAttack = false; });
+            
             //LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
         }
         else
@@ -47,17 +51,25 @@ public class Shield : MonoBehaviour,IWeapon
 
     IEnumerator AttackAction(float bonusdmg)
     {
+        yield return new WaitForSeconds(1f);
         float time = 0;
         while (attackDuration > time)
         {
+
             Collider[] results = Physics.OverlapBox(transform.position, colliderAttack.size, Quaternion.identity, mask);
 
 
             foreach (Collider objectColli in results)
             {
+                if (objectColli.TryGetComponent<EnemyAI>(out EnemyAI enemyAI))
+                {
+                   
+                enemyAI.SlowDown(5f);
+                
+                }
                 if (objectColli.TryGetComponent<Health>(out Health health))
                 {
-                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage + bonusdmg);
+                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage + bonusdmg, transform.root);
                 }
             }
 

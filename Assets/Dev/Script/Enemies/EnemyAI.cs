@@ -32,6 +32,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] GameObject deathParticle;
     [SerializeField] GameObject coinParticle;
     [SerializeField] GameObject getHitParticle;
+    [SerializeField] GameObject slowParticle;
 
 
 
@@ -258,6 +259,14 @@ public class EnemyAI : MonoBehaviour
                 enemyAI.SwitchToAttackState();
             }
         }
+    }
+
+    public void SlowDown(float duration)
+    {
+        agent.speed = 1.5f;
+        slowParticle.SetActive(true);
+
+        LeanTween.delayedCall(duration, () => { agent.speed = 3.5f;slowParticle.SetActive(false);});
     }
 
     void OnDrawGizmos()
