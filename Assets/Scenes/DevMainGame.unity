@@ -32158,7 +32158,9 @@ MonoBehaviour:
   inventory: {fileID: 7674397508232338577}
   playerCollider: {fileID: 0}
   uIManager: {fileID: 1182324637}
-  shieldR: {fileID: 218542881282940751}
+  shields:
+  - {fileID: 218542881282940751}
+  - {fileID: 8119059221675406450}
   currentWeaponFirstHandObj: {fileID: 842086611267325572}
   currentWeaponSecondHandObj: {fileID: 5764527393623983396}
   bonusDamageToCharge: 2

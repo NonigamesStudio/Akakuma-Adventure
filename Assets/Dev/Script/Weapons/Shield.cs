@@ -32,6 +32,7 @@ public class Shield : MonoBehaviour,IWeapon
         if (!isOnCoolDownNormalAttack)
         {
             if (!isEnemy) AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackShield);
+            player.GetStuned(1f);
             StartCoroutine(AttackAction(bonusDmg));
             player.OnWeaponAttack?.Invoke();
             isOnCoolDownNormalAttack = true;

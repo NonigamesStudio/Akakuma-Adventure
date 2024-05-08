@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Collider playerCollider;
 
     [SerializeField] UIManager uIManager;
-    [SerializeField] GameObject shieldR;
+    [SerializeField] List <GameObject>  shields;
 
     [Header("Player Variables")]
     [SerializeField] GameObject currentWeaponFirstHandObj;
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     public bool boolCharging = false;
     public bool shooting;
     public bool canClick;
-    [HideInInspector] public bool isStuned;
+    public bool isStuned;
     bool usingyWeapon;
 
     public System.Action OnWeaponSkill;
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
         AttackSecondaryWeaponInput();
         if (isStuned) return;
         playerMovement.Rotate();
-        MovementInput();
+        //MovementInput();
         DashInput();
         if (onSkill) return;
         AttackPrincipalWeaponInput();
@@ -89,6 +89,7 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(isStuned) return;
         MovementInput();
     }
 
@@ -110,10 +111,12 @@ public class Player : MonoBehaviour
     private void InventoryInput()
     {
 
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(0);
-            shieldR.SetActive(false);
+            foreach (GameObject shield in shields)
+            {shield.SetActive(false);}
             uIManager.ChangeWeaponSpriteAbility(0);
             if (currentWeapon!=0) 
             {
@@ -126,7 +129,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(1);
-            shieldR.SetActive(false);
+            foreach (GameObject shield in shields)
+            {shield.SetActive(false);}
             uIManager.ChangeWeaponSpriteAbility(2);
             if (currentWeapon!=1) 
             {
@@ -137,7 +141,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             currentWeaponFirstHand = inventory.GetWeaponSelected(2);
-            shieldR.SetActive(true);
+            foreach (GameObject shield in shields)
+            {shield.SetActive(true);}
             uIManager.ChangeWeaponSpriteAbility(4);
             if (currentWeapon!=2) 
             {
