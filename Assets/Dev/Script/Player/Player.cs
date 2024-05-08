@@ -205,7 +205,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (chargeTime < 1f)  return;
+        if (chargeTime < 0.6f)  return;
         
         if (boolCharging) { 
             BowRealese();

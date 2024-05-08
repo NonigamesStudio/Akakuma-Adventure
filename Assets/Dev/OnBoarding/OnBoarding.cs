@@ -34,7 +34,7 @@ public class OnBoarding : MonoBehaviour
         while (asdw)
         {
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W)) asdw = false;
-            Debug.Log("Wait ASDW");
+           
             yield return null;
         }
         AnimPanels(false, asdwStep_Panel);
