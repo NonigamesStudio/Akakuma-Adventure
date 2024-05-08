@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 mousePos = new Vector3(hit.point.x, t.position.y, hit.point.z);
             Vector3 dir = (mousePos - t.position).normalized;
 
-            float rotationSpeed = 50f;
+            float rotationSpeed = 10f;
             t.forward = Vector3.Slerp(t.forward, dir, rotationSpeed * Time.deltaTime);
             t.eulerAngles = new Vector3(0, t.eulerAngles.y, 0);
            

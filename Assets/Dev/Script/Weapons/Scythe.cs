@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,39 +9,29 @@ public class Scythe : MonoBehaviour, IWeapon
 
     [Header("Normal Attack Refs")]
     [SerializeField] float damage;
-    [SerializeField] float maxDamage;
-    [SerializeField] BoxCollider colliderAttack;
+    
+    [SerializeField] List <BoxCollider> colliderAttack;
     [SerializeField] float attackDuration;
     [SerializeField] float tickTimeDmg;
     [SerializeField] float coolDown;
-    [SerializeField] GameObject spriteSlash;
     [SerializeField] LayerMask mask;
-
-    [Space(5)]
-    [Header("Skill Attack Refs")]
-    [SerializeField] SphereCollider colliderSkill;
-    [SerializeField] Transform pivotToSkill;
-    [SerializeField] float coolDownSkill;
-    [SerializeField] float skillDuration;
-    [SerializeField] float speedRotSkill;
-    [SerializeField] GameObject skillParticle;
+    [SerializeField] GameObject PacticleSlash;
     [SerializeField] bool isEnemy;
 
 
 
     bool isOnCoolDownNormalAttack;
-    bool isOnCoolDownSkill;
     public void Attack(float bonusDmg)
     {
         if (!isOnCoolDownNormalAttack)
         {
             if (!isEnemy) AnimController_Player.ins.PlayAnim(AnimNamesPlayer.AttackScythe);
             StartCoroutine(AttackAction(bonusDmg));
-            player.OnWeaponAttack?.Invoke();
+            StartCoroutine(SkillAnim());
+            if (!isEnemy) player.OnWeaponAttack?.Invoke();
             isOnCoolDownNormalAttack = true;
-            //spriteSlash.SetActive(true);
             LeanTween.delayedCall(coolDown, () => { isOnCoolDownNormalAttack = false; });
-            //LeanTween.delayedCall(attackDuration, () => { spriteSlash.SetActive(false); });
+            
         }
         else
         { //on cooldown
@@ -49,82 +40,34 @@ public class Scythe : MonoBehaviour, IWeapon
 
     IEnumerator AttackAction(float bonusdmg)
     {
-        float time = 0;
-        while (attackDuration > time)
-        {
-            Collider[] results = Physics.OverlapBox(transform.position, colliderAttack.size, Quaternion.identity, mask);
+        yield return new WaitForSeconds(0.5f);
 
+        for (int i = 0; i < colliderAttack.Count; i++)
+        {
+            Collider[] results = Physics.OverlapBox(colliderAttack[i].transform.position, colliderAttack[i].size, Quaternion.identity, mask);
 
             foreach (Collider objectColli in results)
             {
                 if (objectColli.TryGetComponent<Health>(out Health health))
                 {
-                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage + bonusdmg, transform.root);
+                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage((float)Math.Round((damage + bonusdmg)/(i+1)), transform.root);
                 }
             }
-
-            time += tickTimeDmg;
-
-            yield return new WaitForSeconds(tickTimeDmg);
+            yield return new WaitForSeconds(0.1f);
         }
-    }
-
-    public void Skill()
-    {
-        if (isOnCoolDownSkill) return;
-        isOnCoolDownSkill = true;
-        StartCoroutine(SkillAnim());
-        StartCoroutine(SkillAction());
-    }
-
-    void SkillCoolDown()
-    {
-        LeanTween.delayedCall(coolDownSkill, () => { isOnCoolDownSkill = false; });
-    }
-
-    IEnumerator SkillAction()
-    {
-        player.onSkill = true;
-        float time = 0;
-        player.OnWeaponSkill?.Invoke();
-        while (skillDuration > time)
-        {
-            Collider[] results = Physics.OverlapSphere(transform.position, colliderSkill.radius, mask);
-
-            foreach (Collider objectColli in results)
-            {
-                if (objectColli.TryGetComponent<Health>(out Health health))
-                {
-                    if (gameObject.layer != objectColli.gameObject.layer) health.TakeDamage(damage, transform.root);
-                }
-            }
-
-            time += tickTimeDmg;
-
-            yield return new WaitForSeconds(tickTimeDmg);
-        }
-        player.onSkill = false;
-        pivotToSkill.localEulerAngles = Vector3.zero;
-        SkillCoolDown();
     }
 
     IEnumerator SkillAnim()
     {
-        skillParticle.SetActive(true);
+        player.GetStuned(1.3f);
+        yield return new WaitForSeconds(0.5f);
+        PacticleSlash.SetActive(true);
+        yield return new WaitForSeconds(0.7f);
+        PacticleSlash.SetActive(false);
+        player.TakeBackSword();
 
-        float time = skillDuration;
-        float ytemp = 0;
-        while (time>0)
-        {
-            pivotToSkill.localEulerAngles =new Vector3(0, ytemp*10, 0);
-            ytemp += Time.deltaTime * speedRotSkill;
-            time -= Time.deltaTime;
-            yield return null;
-        }
-        pivotToSkill.localEulerAngles = Vector3.zero;
-
-        skillParticle.SetActive(false);
     }
+
 
     public void TurnOnOffWeapon(bool turnOnOff)
     {

@@ -24,7 +24,7 @@ public class Skill2BossState : StateBoss
                     if (!item.gameObject.activeSelf)
                     {
                         Transform refPos = refsPos[Random.Range(0, refsPos.Count)];
-                        item.transform.position = new Vector3(refPos.position.x, 1.5f, refPos.position.z);
+                        item.transform.position = new Vector3(refPos.position.x, transform.position.y, refPos.position.z);
                         item.gameObject.SetActive(true);
                         temp.Add(refPos);
                         refsPos.Remove(refPos);
