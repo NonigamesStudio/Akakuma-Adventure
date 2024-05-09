@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     }
     private void Start()
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("DevMainGame"));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("PersistentScene"));
     }
 
     public void RestartLvl()
