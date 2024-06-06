@@ -40,6 +40,7 @@ public class Health : MonoBehaviour
     public void TakeHealth(float health)
     {
         actualHealth += health;
+        
     }
     public void CheckIfIsDeath()
     {
