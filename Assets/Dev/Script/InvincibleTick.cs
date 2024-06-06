@@ -8,10 +8,12 @@ public class InvincibleTick : MonoBehaviour
     [SerializeField] float duration;
     int layer;
     [SerializeField] SkinnedMeshRenderer meshRenderer;
+    Color color;
     private void Awake()
     {
         layer = gameObject.layer;
         health = GetComponent<Health>();
+        color = meshRenderer.material.color;
     }
 
     private void OnEnable()
@@ -32,7 +34,6 @@ public class InvincibleTick : MonoBehaviour
     IEnumerator InvincibleAction()
     {
         gameObject.layer = 6;// dash
-        Color color = meshRenderer.material.color;
         meshRenderer.material.color = new Color(50, color.g, color.b);
         yield return new WaitForSeconds(duration);
         gameObject.layer = layer;

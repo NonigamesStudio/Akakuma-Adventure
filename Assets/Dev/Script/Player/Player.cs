@@ -76,8 +76,9 @@ public class Player : MonoBehaviour
 
     private void Update()//Input Detection
     {
-        AttackSecondaryWeaponInput();
+       
         if (isStuned) return;
+        AttackSecondaryWeaponInput();
         playerMovement.Rotate();
         //MovementInput();
         DashInput();
