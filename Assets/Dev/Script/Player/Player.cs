@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] UIManager uIManager;
     [SerializeField] List <GameObject>  shields;
+    [SerializeField] PlayerInventoryUIManager playerInventoryUIManager;
 
     [Header("Player Variables")]
     [SerializeField] GameObject currentWeaponFirstHandObj;
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
     public bool boolCharging = false;
     public bool shooting;
     public bool canClick;
-    public bool isStuned;
+    public bool isStuned=false;
     bool usingyWeapon;
 
     public System.Action OnWeaponSkill;
@@ -77,14 +78,15 @@ public class Player : MonoBehaviour
     private void Update()//Input Detection
     {
         AttackSecondaryWeaponInput();
+        InventoryInput();
         if (isStuned) return;
         playerMovement.Rotate();
         //MovementInput();
         DashInput();
         if (onSkill) return;
         AttackPrincipalWeaponInput();
+
         
-        InventoryInput();
         
     }
     private void FixedUpdate()
@@ -123,7 +125,21 @@ public class Player : MonoBehaviour
     }
     public void InventoryInput()
     {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (!playerInventoryUIManager.isUIOpen)
+            {
+            playerInventoryUIManager.gameObject.SetActive(true);
+            playerInventoryUIManager.isUIOpen=true;
+            GetStuned();
 
+            }else
+            {
+            playerInventoryUIManager.gameObject.SetActive(false);
+            playerInventoryUIManager.isUIOpen=false;
+            RemoveStun();
+            }
+        }
         
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -235,11 +251,17 @@ public class Player : MonoBehaviour
 
     }
 
-    public void GetStuned(float sec)
+    public void GetStuned(float sec=0)
     {
         rb.velocity = Vector2.zero;
         isStuned = true;
+        if (sec == 0) return;
         LeanTween.delayedCall(sec, () => { isStuned = false; });
+    }
+    public void RemoveStun()
+    {
+        rb.velocity = Vector2.zero;
+        isStuned = false;
     }
     private void PlayWeaponChangeSound()
     {

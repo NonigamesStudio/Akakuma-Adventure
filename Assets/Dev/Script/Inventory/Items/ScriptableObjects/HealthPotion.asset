@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2dd66043435c459385107620358cd0d, type: 3}
-  m_Name: ManaPotionSO
+  m_Script: {fileID: 11500000, guid: b57bb3532ecc341dab39842852f4639b, type: 3}
+  m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  price: 20
-  itemName: Mana Potion
-  itemSprite: {fileID: 0}
+  price: 10
+  itemName: HealthPotion
+  itemSprite: {fileID: 21300000, guid: 6810b50225a9b96418703ac7495575f4, type: 3}
+  itemPrefab: {fileID: 0}
