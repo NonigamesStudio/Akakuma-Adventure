@@ -7,6 +7,7 @@ public class TransactionUI : MonoBehaviour
 {
     [SerializeField]List<List<Button>> buttons = new List<List<Button>>(); //dimension 1: shop, 2: transaction, 3: player
     [SerializeField] GameObject[] panels = new GameObject[3];
+    [SerializeField] TransactionManager transactionManager;
     
     
     void Start()
@@ -40,13 +41,21 @@ public class TransactionUI : MonoBehaviour
     }   
     public void UpdateInventory(List<List<ItemSO>> itemsInTransaction)
     {
-        
         for (int i = 0; i < itemsInTransaction.Count; i++)
         {
+            if (itemsInTransaction[i] == null) continue;
             for (int j = 0; j < itemsInTransaction[i].Count; j++)
             {
-                Debug.Log(itemsInTransaction[i][j]);
-                buttons[i][j].GetComponent<InventoryButtons>().UpdateImage(itemsInTransaction[i][j].itemSprite);
+                if (itemsInTransaction[i][j] == null) continue;
+                if (buttons[i][j].TryGetComponent(out InventoryButtons inventoryButtons))
+                {
+                   
+                    inventoryButtons.UpdateImage(itemsInTransaction[i][j].itemSprite);
+                    inventoryButtons.UpdateItem(itemsInTransaction[i][j]);
+                    inventoryButtons.slotImage.enabled = true;
+                    
+                    
+                }
             }
         }
     }

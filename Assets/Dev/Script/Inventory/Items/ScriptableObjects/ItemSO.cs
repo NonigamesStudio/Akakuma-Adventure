@@ -9,7 +9,7 @@ public class ItemSO : ScriptableObject
     public string itemName = "";
     public Sprite itemSprite = null;
     public GameObject itemPrefab = null;
-    public Inventory inventory;
+    public Inventory inventory=null;
    
     public virtual void Use(object parameters=null)
     {
