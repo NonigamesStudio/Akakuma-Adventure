@@ -18,7 +18,12 @@ public class Player : MonoBehaviour
     [SerializeField] UIManager uIManager;
     [SerializeField] List <GameObject>  shields;
     [SerializeField] PlayerInventoryUIManager playerInventoryUIManager;
+    [SerializeField] Camera cam;
+    private RaycastHit hit;
+    [SerializeField] private LayerMask interactableLayer;
+    
 
+    
     [Header("Player Variables")]
     [SerializeField] GameObject currentWeaponFirstHandObj;
     [SerializeField] GameObject currentWeaponSecondHandObj;
@@ -27,6 +32,7 @@ public class Player : MonoBehaviour
     
     private Coroutine coroutine;
 
+   
 
     IWeapon currentWeaponFirstHand;
     IWeapon currentWeaponSecondHand;
@@ -44,6 +50,7 @@ public class Player : MonoBehaviour
     public System.Action OnWeaponAttack;
     public System.Action OnBowRealese;
     public System.Action OnBowReady;
+    public System.Action OnSCPPress;
     public int currentWeapon;
 
     private void OnEnable()
@@ -140,6 +147,8 @@ public class Player : MonoBehaviour
             RemoveStun();
             }
         }
+
+
         
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -154,6 +163,10 @@ public class Player : MonoBehaviour
             PlayWeaponChangeAnimation(AnimNamesPlayer.DrawSword);
             PlayWeaponChangeSound();
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnSCPPress?.Invoke();
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -205,9 +218,23 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButton(0)) chargeTime += Time.deltaTime;
         if (Input.GetMouseButtonUp(0))
         {
+            Ray rayMouse = cam.ScreenPointToRay(Input.mousePosition);
+            if(Physics.Raycast(rayMouse, out RaycastHit hit,100,interactableLayer))
+            {
+                this.hit = hit;
+            }
+            int interactionDistance = 3;
+            if (hit.transform != null && Vector3.Distance(hit.transform.position, this.transform.position)<interactionDistance && hit.transform.TryGetComponent(out Interactable interactable))
+            {
+                interactable.Interact();
+            }else{
+
             currentWeaponFirstHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
             chargeTime = 0;
             usingyWeapon = false;
+            }
+            
+            
         }
     }
     private void AttackSecondaryWeaponInput()

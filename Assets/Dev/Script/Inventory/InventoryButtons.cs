@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,18 @@ using UnityEngine.UI;
 public class InventoryButtons : MonoBehaviour
 {
 
+    public event Action OnClick;
     public Button slotButton;
     public Image slotImage;
     public ItemSO item;
     public GameObject player;
+    [SerializeField] private PlayerInventoryUIManager playerInventoryUIManager;
+
    
 
     void Start ()
-    {   
-        slotButton.onClick.AddListener(UseItem);
+    {  
+        slotButton.onClick.AddListener(ButtonClicked);
     }
 
     public void UpdateImage(Sprite sprite)
@@ -27,16 +31,13 @@ public class InventoryButtons : MonoBehaviour
         this.item=item;
     }
 
-    private void UseItem()
+    private void ButtonClicked()
     {
-        if (item == null)
+        if (item != null)
         {
-            Debug.Log("No item ");
-            return;
+            playerInventoryUIManager.UseItem(item);
         }
-        Debug.Log("Usando " + item.itemName);
-        item.Use();
     }
-
+    
 
 }

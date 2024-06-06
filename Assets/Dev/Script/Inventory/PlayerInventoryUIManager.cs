@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -69,6 +70,11 @@ public class PlayerInventoryUIManager : MonoBehaviour
                 inventoryButtons.slotImage.enabled = true;
             }
         }
+    }
+
+    public void UseItem(ItemSO item)
+    {
+        item.Use();
     }
     
 
