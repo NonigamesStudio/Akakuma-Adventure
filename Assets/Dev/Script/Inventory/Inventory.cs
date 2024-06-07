@@ -8,7 +8,8 @@ public class Inventory : MonoBehaviour
     public event Action OnItemListChange;
     public int inventorySize;
     public int soulsCount;
-    [NonSerialized]public List<ItemSO> items = new List<ItemSO>();
+    public List<ItemSO> items = new List<ItemSO>();
+    [SerializeField] ItemSO healthPotion;
    
     public virtual bool AddItem(ItemSO item)
     {
@@ -33,5 +34,11 @@ public class Inventory : MonoBehaviour
     {
         soulsCount -= souls;
     }
+
+    [ContextMenu("Add Health Potion")]
+    public void AddHealthPotion()
+    {
+        AddItem(healthPotion);
+    }   
 
 }

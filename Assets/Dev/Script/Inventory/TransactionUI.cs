@@ -10,7 +10,7 @@ public class TransactionUI : MonoBehaviour
     [SerializeField] TransactionManager transactionManager;
     
     
-    void Start()
+    void Awake()
     {
         InitializeTransaction();
     }
@@ -40,23 +40,73 @@ public class TransactionUI : MonoBehaviour
         }
     }   
     public void UpdateInventory(List<List<ItemSO>> itemsInTransaction)
-    {
-        for (int i = 0; i < itemsInTransaction.Count; i++)
-        {
-            if (itemsInTransaction[i] == null) continue;
-            for (int j = 0; j < itemsInTransaction[i].Count; j++)
+    {           
+        for (int i = 0; i < buttons.Count; i++)
+        {   for (int j = 0; j < buttons[i].Count; j++)
             {
-                if (itemsInTransaction[i][j] == null) continue;
                 if (buttons[i][j].TryGetComponent(out InventoryButtons inventoryButtons))
                 {
-                   
-                    inventoryButtons.UpdateImage(itemsInTransaction[i][j].itemSprite);
-                    inventoryButtons.UpdateItem(itemsInTransaction[i][j]);
-                    inventoryButtons.slotImage.enabled = true;
-                    
-                    
+                    inventoryButtons.UpdateImage(null);
+                    inventoryButtons.UpdateItem(null);
+                    inventoryButtons.slotImage.enabled = false;
+                }
+            }
+        }
+        for (int i = 0; i < itemsInTransaction.Count; i++)
+        {       
+            if (itemsInTransaction[i] == null) continue;
+            for (int j = 0; j < itemsInTransaction[i].Count; j++)
+            {   
+                if (buttons[i][j].TryGetComponent(out InventoryButtons inventoryButtons))
+                {
+                if (itemsInTransaction[i][j] == null) continue;
+                
+                inventoryButtons.UpdateImage(itemsInTransaction[i][j].itemSprite);
+                inventoryButtons.UpdateItem(itemsInTransaction[i][j]);
+                inventoryButtons.slotImage.enabled = true;
                 }
             }
         }
     }
+
+    public void MoveItem(ItemSO item, Button button)
+    {
+        int listIndex = 0;
+        int buttonIndex = 0;
+    
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            for (int j = 0; j < buttons[i].Count; j++)
+            {
+                if (buttons[i][j] == button)
+                {
+                    listIndex = i;
+                    buttonIndex = j;
+                    break;
+                }
+            }
+    
+        }
+    
+        if (listIndex == 0)
+        {
+            transactionManager.MoveItem(item, 0);
+        }
+        else if (listIndex == 1)
+        {
+            if (buttonIndex % 2 == 0)
+            {
+                transactionManager.MoveItem(item, 1);
+            }
+            else
+            {
+                transactionManager.MoveItem(item, 2);
+            }
+        }
+        else if (listIndex == 2)
+        {
+            transactionManager.MoveItem(item, 3);
+        }
+    }
+    
 }
