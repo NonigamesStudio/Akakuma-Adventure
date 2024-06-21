@@ -26,12 +26,12 @@ public class TransactionManager : MonoBehaviour
         for (int i = 0; i < itemsInTransactionShop.Count; i++)
         {
             
-            itemsInTransaction[(i*2)+1] =itemsInTransactionShop[i];
+            itemsInTransaction[i*2] =itemsInTransactionShop[i];
              
         }
         for (int i = 0; i < itemsInTransactionPlayer.Count; i++)
         {
-            itemsInTransaction[i*2] =itemsInTransactionPlayer[i];
+            itemsInTransaction[i*2+1] =itemsInTransactionPlayer[i];
         }
         #endregion
         if (shopInventory != null)
@@ -65,6 +65,38 @@ public class TransactionManager : MonoBehaviour
     public void InitializeTransaction(Inventory shopInventory)
     {
         this.shopInventory = shopInventory;
+        itemsInTransactionPlayer.Clear();
+        itemsInTransactionShop.Clear(); 
+
+        UpdateUI();
+    }
+
+    public void MoveItem(ItemSO item, int list)
+    {
+        Debug.Log(list);
+        Debug.Log(item.itemName);
+        if (list == 0)
+        {
+            shopInventory.RemoveItem(item);
+            itemsInTransactionShop.Add(item);
+        }
+        else if (list == 1)
+        {
+            itemsInTransactionShop.Remove(item);
+            shopInventory.items.Add(item);
+        }
+        else if (list == 2)
+        {
+            itemsInTransactionPlayer.Remove(item);
+            playerInventory.items.Add(item);
+        }
+        else if (list == 3)
+        {
+            playerInventory.RemoveItem(item);
+            itemsInTransactionPlayer.Add(item);
+        }
+
+
         UpdateUI();
     }
     

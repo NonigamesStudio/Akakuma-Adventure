@@ -13,6 +13,7 @@ public class InventoryButtons : MonoBehaviour
     public ItemSO item;
     public GameObject player;
     [SerializeField] private PlayerInventoryUIManager playerInventoryUIManager;
+    [SerializeField] private TransactionUI transactionUI;
 
    
 
@@ -35,7 +36,17 @@ public class InventoryButtons : MonoBehaviour
     {
         if (item != null)
         {
-            playerInventoryUIManager.UseItem(item);
+            if (transactionUI != null)
+            {
+                transactionUI.MoveItem(item, slotButton);
+            }
+
+
+            if (playerInventoryUIManager != null)
+            {
+                playerInventoryUIManager.UseItem(item);
+            }
+            
         }
     }
     

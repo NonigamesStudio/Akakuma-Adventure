@@ -166,6 +166,13 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (playerInventoryUIManager.isUIOpen)
+                {
+                playerInventoryUIManager.gameObject.SetActive(false);
+                playerInventoryUIManager.isUIOpen=false;
+                RemoveStun();
+                }
+        
             OnSCPPress?.Invoke();
         }
         if (Input.GetKeyDown(KeyCode.Q))
