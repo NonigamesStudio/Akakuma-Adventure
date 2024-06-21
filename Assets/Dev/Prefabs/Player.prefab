@@ -6911,6 +6911,7 @@ GameObject:
   - component: {fileID: 560655770998029439}
   - component: {fileID: 4082737676847508944}
   - component: {fileID: 1345483025935606848}
+  - component: {fileID: 6876699531502352746}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7012,6 +7013,11 @@ MonoBehaviour:
   uIManager: {fileID: 0}
   shields:
   - {fileID: 3306667965060696821}
+  playerInventoryUIManager: {fileID: 0}
+  cam: {fileID: 0}
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   currentWeaponFirstHandObj: {fileID: 6453608334606562343}
   currentWeaponSecondHandObj: {fileID: 3198620330300322812}
   bonusDamageToCharge: 2
@@ -7227,6 +7233,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6876699531502352746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666530616543135664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f9b3d3a01a94c849b81839d6d1be28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 0
+  soulsCount: 0
+  item: {fileID: 11400000, guid: 58b73a4f978fd49b6946fec47a8b0c27, type: 2}
 --- !u!1 &7751233529620921225
 GameObject:
   m_ObjectHideFlags: 0

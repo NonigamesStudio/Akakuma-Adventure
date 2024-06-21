@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
 
         currentWeaponFirstHand = currentWeaponFirstHandObj.GetComponent<IWeapon>();
         currentWeaponSecondHand = currentWeaponSecondHandObj.GetComponent<IWeapon>();
-
+        if (cam == null) cam = Camera.main;
 
     }
 

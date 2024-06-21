@@ -1,9 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-
-[RequireComponent(typeof(Rigidbody))]
 public class Coin : MonoBehaviour
 {
     [SerializeField] int value;
@@ -15,5 +13,6 @@ public class Coin : MonoBehaviour
     {
         if (other.CompareTag("Player")) { OnCoinCollected?.Invoke(); Destroy(gameObject); }
     }
+
 
 }

@@ -17,10 +17,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speedToReachGround = 3.0f;
 
     [SerializeField] float groundDetectionDistance = 0.5f;
-    
+
+    private void Awake()
+    {
+        if (cam == null) cam = Camera.main;
+    }
 
 
-    
     float offsetSpeed = 2;
     
     public void Walk()
