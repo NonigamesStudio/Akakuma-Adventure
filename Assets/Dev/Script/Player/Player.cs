@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] PlayerInventoryUIManager playerInventoryUIManager;
     [SerializeField] Camera cam;
     private RaycastHit hit;
+    private Interactable interactingObject=null;
     [SerializeField] private LayerMask interactableLayer;
     
 
@@ -234,6 +235,13 @@ public class Player : MonoBehaviour
             if (hit.transform != null && Vector3.Distance(hit.transform.position, this.transform.position)<interactionDistance && hit.transform.TryGetComponent(out Interactable interactable))
             {
                 interactable.Interact();
+                if (interactable.interactableType == InteractableType.Shop)
+                {
+                    
+                    GetStuned();
+                    interactable.OnCloseInteraction += RemoveStun;
+                    interactingObject = interactable;
+                }
             }else{
 
             currentWeaponFirstHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
@@ -296,6 +304,11 @@ public class Player : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         isStuned = false;
+        if (interactingObject != null)
+        {
+            interactingObject.OnCloseInteraction -= RemoveStun;
+            interactingObject = null;
+        }
     }
     private void PlayWeaponChangeSound()
     {
