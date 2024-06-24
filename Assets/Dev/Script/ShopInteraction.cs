@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class ShopInteraction :MonoBehaviour, Interactable
 {
+    public event System.Action OnCloseInteraction;
     [SerializeField] TransactionManager transactionManager;
     [SerializeField] Inventory inventory;
     private bool isTransactionOpen;
     [SerializeField] Player player;
+    public InteractableType interactableType {get =>InteractableType.Shop; }
+
     public void Start()
     {
         player.OnSCPPress += CloseInteraction;
@@ -26,6 +29,7 @@ public class ShopInteraction :MonoBehaviour, Interactable
         {
         transactionManager.gameObject.SetActive(false);
         isTransactionOpen=false;
+        OnCloseInteraction?.Invoke();
         }
         
     }

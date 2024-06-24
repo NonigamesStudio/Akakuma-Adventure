@@ -16,12 +16,12 @@ public class UIManager : MonoBehaviour
     private int listHealth;
     [SerializeField] GameObject dashBar;
     [SerializeField] Sprite emptyImg;
-    
+    [SerializeField] Inventory playerInventory;
     [SerializeField] GameObject weaponGO;
     [SerializeField] List<Sprite> weaponSprite;
 
     int hpThreshold;
-    int score;
+    //int score;
 
     public Animator transitionUI;
 
@@ -64,8 +64,8 @@ public class UIManager : MonoBehaviour
 
     void UpdateCoinsUI()
     {
-        score++;
-        coinText_text.text = "Souls: " + score;
+        //score++;
+        coinText_text.text = "Souls: " + playerInventory.soulsCount.ToString();
     }
 
     void WinPanel()
