@@ -12,7 +12,7 @@ public class PlayerInventoryUIManager : MonoBehaviour
 
     
    
-    List <Button> buttons= new List<Button>(); 
+    List <Button> buttons; 
     [SerializeField] GameObject panel;
     [SerializeField] GameObject playerInventoryUI;
     [SerializeField] Inventory inventory;
@@ -20,6 +20,12 @@ public class PlayerInventoryUIManager : MonoBehaviour
     public bool isUIOpen=false;
     void OnEnable()
     {
+
+        if (buttons == null)
+        {
+            InitializeButtons();
+        }   
+        UpdateInventory();
         inventory.OnItemListChange += UpdateInventory;
         
     }
@@ -30,6 +36,13 @@ public class PlayerInventoryUIManager : MonoBehaviour
 
     void Start()
     {
+        InitializeButtons();
+        UpdateInventory();
+    }
+
+    private void InitializeButtons()
+    {
+        buttons = new List<Button>();
         Transform parent = panel.transform;
 
         for (int i = 0; i < parent.childCount; i++)
@@ -43,11 +56,9 @@ public class PlayerInventoryUIManager : MonoBehaviour
                 inventoryButtons.slotImage.enabled = false;
             }
         }
-
     }
 
-    
-    
+
     public void UpdateInventory()
     {
         

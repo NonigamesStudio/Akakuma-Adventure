@@ -71,6 +71,7 @@ public class TransactionUI : MonoBehaviour
 
     public void MoveItem(ItemSO item, Button button)
     {
+        
         int listIndex = 0;
         int buttonIndex = 0;
     

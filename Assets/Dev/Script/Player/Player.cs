@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
             playerInventoryUIManager.gameObject.SetActive(true);
             playerInventoryUIManager.isUIOpen=true;
             GetStuned();
-
+            
             }else
             {
             playerInventoryUIManager.gameObject.SetActive(false);

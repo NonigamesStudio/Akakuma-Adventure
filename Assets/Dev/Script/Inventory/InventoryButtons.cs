@@ -38,6 +38,7 @@ public class InventoryButtons : MonoBehaviour
         {
             if (transactionUI != null)
             {
+                Debug.Log("TransactionUI");
                 transactionUI.MoveItem(item, slotButton);
             }
 
