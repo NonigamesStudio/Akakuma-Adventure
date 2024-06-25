@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9109369611649844307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Builds/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638491788791011100
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-8594435907870594781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFXs/WeaponChange
+  m_EditorClassIdentifier: 
+  Path: event:/SFXs/WeaponChange
+  Guid:
+    Data1: 432919554
+    Data2: 1289516157
+    Data3: -1813438589
+    Data4: -1631171921
+  Banks:
+  - {fileID: -4850300387015841115}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 968
 --- !u!114 &-7882979949023430283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19,7 +64,7 @@ MonoBehaviour:
     Data3: -160378952
     Data4: 154343654
   Banks:
-  - {fileID: 5871373979312236551}
+  - {fileID: 447679084122535217}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -53,7 +98,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-3887771404170638216
+--- !u!114 &-5832861832109603068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,15 +108,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/Master.bank
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: FMOD Builds/Desktop/Master.bank
-  Name: Desktop/Master
-  StudioPath: bank:/Master
-  lastModified: 638491788791011100
-  FileSizes: []
+  Path: FMOD Builds/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638491788791015841
+  FileSizes:
+  - Name: 
+    Value: 1264
   Exists: 1
---- !u!114 &-2883391217430847333
+--- !u!114 &-5182437109682943433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFXs/SmallEnemyDamage
+  m_EditorClassIdentifier: 
+  Path: event:/SFXs/SmallEnemyDamage
+  Guid:
+    Data1: -1004764690
+    Data2: 1128348692
+    Data3: -850688070
+    Data4: 1191136349
+  Banks:
+  - {fileID: -4850300387015841115}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 125
+--- !u!114 &-4850300387015841115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,14 +155,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/SFXs.bank
+  m_Name: bank:/SFXs.bank
   m_EditorClassIdentifier: 
   Path: FMOD Builds/Desktop/SFXs.bank
-  Name: Desktop/SFXs
+  Name: SFXs
   StudioPath: bank:/SFXs
-  lastModified: 638492355551852032
+  lastModified: 638549124791152220
   FileSizes: []
   Exists: 1
+--- !u!114 &-2405329381077524472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFXs/SmallEnemyDeath
+  m_EditorClassIdentifier: 
+  Path: event:/SFXs/SmallEnemyDeath
+  Guid:
+    Data1: 2131727426
+    Data2: 1185492831
+    Data3: -662033247
+    Data4: 128381375
+  Banks:
+  - {fileID: -4850300387015841115}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3844
 --- !u!114 &-1872403902232386144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +209,7 @@ MonoBehaviour:
     Data3: 399130282
     Data4: -521181216
   Banks:
-  - {fileID: -3887771404170638216}
+  - {fileID: -9109369611649844307}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -116,7 +217,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
---- !u!114 &-906064499171964831
+--- !u!114 &-941797658553179257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,17 +226,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/Master.strings.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFXs/Dash
   m_EditorClassIdentifier: 
-  Path: FMOD Builds/Desktop/Master.strings.bank
-  Name: Desktop/Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638491788791015841
-  FileSizes:
-  - Name: 
-    Value: 1264
-  Exists: 1
+  Path: event:/SFXs/Dash
+  Guid:
+    Data1: 856358362
+    Data2: 1154773980
+    Data3: 437041045
+    Data4: -77941982
+  Banks:
+  - {fileID: -4850300387015841115}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1097
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,26 +257,26 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -906064499171964831}
-  - {fileID: -3887771404170638216}
-  - {fileID: 5871373979312236551}
-  - {fileID: -2883391217430847333}
+  - {fileID: -5832861832109603068}
+  - {fileID: -9109369611649844307}
+  - {fileID: 447679084122535217}
+  - {fileID: -4850300387015841115}
   EditorEvents:
   - {fileID: -1872403902232386144}
   - {fileID: -7882979949023430283}
   - {fileID: 1442951453035590062}
-  - {fileID: 1020657757858703881}
-  - {fileID: 3802821154166843591}
-  - {fileID: 6417183724464737023}
-  - {fileID: 8311413499638551996}
+  - {fileID: -8594435907870594781}
+  - {fileID: -2405329381077524472}
+  - {fileID: -941797658553179257}
+  - {fileID: -5182437109682943433}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -3887771404170638216}
+  - {fileID: -9109369611649844307}
   StringsBanks:
-  - {fileID: -906064499171964831}
-  cacheTime: 638496018553860222
+  - {fileID: -5832861832109603068}
+  cacheTime: 638549124791152220
   cacheVersion: 131605
---- !u!114 &1020657757858703881
+--- !u!114 &447679084122535217
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,24 +285,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFXs/WeaponChange
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Menu.bank
   m_EditorClassIdentifier: 
-  Path: event:/SFXs/WeaponChange
-  Guid:
-    Data1: 432919554
-    Data2: 1289516157
-    Data3: -1813438589
-    Data4: -1631171921
-  Banks:
-  - {fileID: -2883391217430847333}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1000
+  Path: FMOD Builds/Desktop/Menu.bank
+  Name: Menu
+  StudioPath: bank:/Menu
+  lastModified: 638496018553860222
+  FileSizes: []
+  Exists: 1
 --- !u!114 &1442951453035590062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +313,7 @@ MonoBehaviour:
     Data3: -1954889297
     Data4: 1824867712
   Banks:
-  - {fileID: -2883391217430847333}
+  - {fileID: -4850300387015841115}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -222,51 +321,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1330
---- !u!114 &3802821154166843591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFXs/SmallEnemyDeath
-  m_EditorClassIdentifier: 
-  Path: event:/SFXs/SmallEnemyDeath
-  Guid:
-    Data1: 2131727426
-    Data2: 1185492831
-    Data3: -662033247
-    Data4: 128381375
-  Banks:
-  - {fileID: -2883391217430847333}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 3844
---- !u!114 &5871373979312236551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/Menu.bank
-  m_EditorClassIdentifier: 
-  Path: FMOD Builds/Desktop/Menu.bank
-  Name: Desktop/Menu
-  StudioPath: bank:/Menu
-  lastModified: 638496018553860222
-  FileSizes: []
-  Exists: 1
 --- !u!114 &6259929993321151459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,57 +345,3 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &6417183724464737023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFXs/Dash
-  m_EditorClassIdentifier: 
-  Path: event:/SFXs/Dash
-  Guid:
-    Data1: 856358362
-    Data2: 1154773980
-    Data3: 437041045
-    Data4: -77941982
-  Banks:
-  - {fileID: -2883391217430847333}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1097
---- !u!114 &8311413499638551996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFXs/SmallEnemyDamage
-  m_EditorClassIdentifier: 
-  Path: event:/SFXs/SmallEnemyDamage
-  Guid:
-    Data1: -1004764690
-    Data2: 1128348692
-    Data3: -850688070
-    Data4: 1191136349
-  Banks:
-  - {fileID: -2883391217430847333}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 125

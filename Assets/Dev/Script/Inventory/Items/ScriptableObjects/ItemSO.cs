@@ -11,7 +11,7 @@ public class ItemSO : ScriptableObject
     public GameObject itemPrefab = null;
     public Inventory inventory=null;
    
-    public virtual void Use(object parameters=null)
+    public virtual void Use(GameObject user=null)
     {
         
     }

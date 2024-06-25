@@ -7,10 +7,10 @@ public class HealthPotion : ItemSO
 {
     
     
-    public override void Use(object parameters=null)
+    public override void Use(GameObject user=null)
     {
         Health health = null;
-        if (inventory.TryGetComponent<Health>(out health))
+        if (user.TryGetComponent<Health>(out health))
         {
             health.TakeHealth(30);
             inventory.RemoveItem(this);

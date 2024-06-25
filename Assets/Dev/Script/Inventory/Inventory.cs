@@ -10,7 +10,21 @@ public class Inventory : MonoBehaviour
     public int soulsCount;
     public List<ItemSO> items = new List<ItemSO>();
     [SerializeField] ItemSO healthPotion;
-   
+
+    void OnEnable()
+    {
+        Coin.OnCoinCollected += UpdateCoins;
+    }
+    void OnDisable()
+    {
+        Coin.OnCoinCollected -= UpdateCoins;
+    }
+
+    private void UpdateCoins()
+    {
+        soulsCount++;
+    }
+
     public virtual bool AddItem(ItemSO item)
     {
         if (items.Count < inventorySize)

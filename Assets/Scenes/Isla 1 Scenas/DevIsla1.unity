@@ -13588,7 +13588,7 @@ MonoBehaviour:
   - {fileID: 1598822455}
   dashBar: {fileID: 819578697}
   emptyImg: {fileID: 21300000, guid: 337e17fe3937bfa45b369f9c2ff9e8b0, type: 3}
-  playerInventory: {fileID: 0}
+  playerInventory: {fileID: 9143734258457091763}
   weaponGO: {fileID: 627909018}
   weaponSprite:
   - {fileID: 21300000, guid: 7c4d365a188ac894dbdf5fe1fcd32447, type: 3}
@@ -33328,8 +33328,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 747974862}
   - {fileID: 1541361655}
+  - {fileID: 747974862}
   m_Father: {fileID: 1340957790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -33350,9 +33350,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1541361654}
-  playerInventoryUI: {fileID: 0}
+  playerInventoryUI: {fileID: 1997815328}
   inventory: {fileID: 9143734258457091763}
-  player: {fileID: 0}
+  player: {fileID: 9143734258457091749}
   isUIOpen: 0
 --- !u!1001 &2001023870
 PrefabInstance:

@@ -85,7 +85,7 @@ public class PlayerInventoryUIManager : MonoBehaviour
 
     public void UseItem(ItemSO item)
     {
-        item.Use();
+        item.Use(player);
     }
     
 
