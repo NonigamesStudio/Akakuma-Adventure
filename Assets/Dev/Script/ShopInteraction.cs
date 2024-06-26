@@ -18,7 +18,6 @@ public class ShopInteraction :MonoBehaviour, Interactable
     }
     public void Interact()
     {
-        Debug.Log("Interaction");
         transactionManager.gameObject.SetActive(true);
         transactionManager.InitializeTransaction(inventory);
         isTransactionOpen=true;

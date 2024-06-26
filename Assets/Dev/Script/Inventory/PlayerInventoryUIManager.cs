@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,7 +36,7 @@ public class PlayerInventoryUIManager : MonoBehaviour
         UpdateInventory();
     }
 
-    private void InitializeButtons()
+    public void InitializeButtons()
     {
         buttons = new List<Button>();
         Transform parent = panel.transform;
@@ -71,22 +67,43 @@ public class PlayerInventoryUIManager : MonoBehaviour
                 inventoryButtons.slotImage.enabled = false;
             }
         }
-        List<ItemSO> items = inventory.items;
+        List<ItemSlot> items = inventory.items;
         for (int i = 0; i < items.Count; i++)
         {
             if (buttons[i].TryGetComponent(out InventoryButtons inventoryButtons))
             {
-                inventoryButtons.UpdateImage(items[i].itemSprite);
-                inventoryButtons.UpdateItem(items[i]);
-                inventoryButtons.slotImage.enabled = true;
+                if (items[i].item != null) 
+                {
+                    inventoryButtons.UpdateImage(items[i].item.itemSprite);
+                    inventoryButtons.UpdateItem(items[i].item);
+                    inventoryButtons.slotImage.enabled = true;
+                }else
+                {
+                    inventoryButtons.UpdateImage(null);
+                    inventoryButtons.UpdateItem(null);
+                    inventoryButtons.slotImage.enabled = false;
+                }
             }
         }
     }
 
-    public void UseItem(ItemSO item)
+    public void UseItem(Button slot=null)
     {
-        item.Use(player);
-    }
-    
+        if (slot == null)
+        {
+            Debug.LogError("No se proporcionó un botón.");
+            return;
+        }
 
+        int index = buttons.IndexOf(slot);
+
+        if (index == -1)
+        {
+            Debug.LogError("El botón no se encuentra en la lista de botones.");
+        }
+        else
+        {
+            inventory.UseItem(index);
+        }
+    }
 }

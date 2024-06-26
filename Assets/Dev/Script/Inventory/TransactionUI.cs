@@ -21,7 +21,7 @@ public class TransactionUI : MonoBehaviour
         //dimension 1: shop, 2: transaction, 3: player
         for (int i = 0; i < panels.Length; i++)
         {
-            Debug.Log("Panel: " + panels[i].name);
+            
             Transform parent = panels[i].transform;
             List<Button> panelButtonList = new List<Button>();
             buttons.Add(panelButtonList);
@@ -39,12 +39,20 @@ public class TransactionUI : MonoBehaviour
             }
         }
     }   
-    public void UpdateInventory(List<List<ItemSO>> itemsInTransaction)
-    {           
+    public void UpdateInventory(List<List<ItemSlot>> itemsInTransaction)
+    {
+        
+        if (itemsInTransaction == null)
+        {
+            Debug.LogWarning("itemsInTransaction is null");
+            return;
+        }
+
         for (int i = 0; i < buttons.Count; i++)
-        {   for (int j = 0; j < buttons[i].Count; j++)
+        {
+            for (int j = 0; j < buttons[i].Count; j++)
             {
-                if (buttons[i][j].TryGetComponent(out InventoryButtons inventoryButtons))
+                if (buttons[i][j] != null && buttons[i][j].TryGetComponent(out InventoryButtons inventoryButtons))
                 {
                     inventoryButtons.UpdateImage(null);
                     inventoryButtons.UpdateItem(null);
@@ -52,18 +60,25 @@ public class TransactionUI : MonoBehaviour
                 }
             }
         }
+
         for (int i = 0; i < itemsInTransaction.Count; i++)
-        {       
-            if (itemsInTransaction[i] == null) continue;
+        {
+            
+            if (itemsInTransaction[i] == null || i >= buttons.Count) continue;
+
             for (int j = 0; j < itemsInTransaction[i].Count; j++)
-            {   
-                if (buttons[i][j].TryGetComponent(out InventoryButtons inventoryButtons))
-                {
-                if (itemsInTransaction[i][j] == null) continue;
+            {
                 
-                inventoryButtons.UpdateImage(itemsInTransaction[i][j].itemSprite);
-                inventoryButtons.UpdateItem(itemsInTransaction[i][j]);
-                inventoryButtons.slotImage.enabled = true;
+                if (j >= buttons[i].Count) continue;
+
+                if (buttons[i][j] != null && buttons[i][j].TryGetComponent(out InventoryButtons inventoryButtons))
+                {
+                    if (itemsInTransaction[i][j] != null && itemsInTransaction[i][j].item != null)
+                    {
+                        inventoryButtons.UpdateImage(itemsInTransaction[i][j].item.itemSprite);
+                        inventoryButtons.UpdateItem(itemsInTransaction[i][j].item);
+                        inventoryButtons.slotImage.enabled = true;
+                    }
                 }
             }
         }
@@ -72,7 +87,7 @@ public class TransactionUI : MonoBehaviour
     public void MoveItem(ItemSO item, Button button)
     {
         
-        int listIndex = 0;
+        int listIndex = 0; //0: shop, 1 y 2: transaction, 3: player
         int buttonIndex = 0;
     
         for (int i = 0; i < buttons.Count; i++)
@@ -91,22 +106,22 @@ public class TransactionUI : MonoBehaviour
     
         if (listIndex == 0)
         {
-            transactionManager.MoveItem(item, 0);
+            transactionManager.MoveItem(buttonIndex, 0);
         }
         else if (listIndex == 1)
         {
             if (buttonIndex % 2 == 0)
             {
-                transactionManager.MoveItem(item, 1);
+                transactionManager.MoveItem(buttonIndex, 1);
             }
             else
             {
-                transactionManager.MoveItem(item, 2);
+                transactionManager.MoveItem(buttonIndex, 2);
             }
         }
         else if (listIndex == 2)
         {
-            transactionManager.MoveItem(item, 3);
+            transactionManager.MoveItem(buttonIndex, 3);
         }
     }
     
