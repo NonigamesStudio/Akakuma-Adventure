@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +15,7 @@ public class PlayerInventoryUIManager : MonoBehaviour
     [SerializeField] GameObject playerInventoryUI;
     [SerializeField] Inventory inventory;
     [SerializeField] GameObject player;
+    int slotOriginIndex;
     public bool isUIOpen=false;
     void OnEnable()
     {
@@ -23,12 +26,58 @@ public class PlayerInventoryUIManager : MonoBehaviour
         }   
         UpdateInventory();
         inventory.OnItemListChange += UpdateInventory;
+        InventoryButtons.OnItemDragged += ItemDragged;
+        InventoryButtons.OnItemDraggedStarts += OnItemDraggedStarts;
+
         
     }
-    void OnDisable()
+     void OnDisable()
     {
         inventory.OnItemListChange -= UpdateInventory;
+        InventoryButtons.OnItemDragged -= ItemDragged;
+        InventoryButtons.OnItemDraggedStarts -= OnItemDraggedStarts;
     }
+
+    private void OnItemDraggedStarts(GameObject slotButton)
+    {
+        if (slotButton.TryGetComponent(out Button inventoryButtons))
+        {
+            foreach (Button button in buttons)
+            {
+                if (button == inventoryButtons)
+                {
+                    slotOriginIndex=buttons.IndexOf(button);
+                }
+            }
+        }
+    }
+    private void  ItemDragged(GameObject slotButton)
+    {
+        int slotIndexFinal=-1;
+        if (slotButton.TryGetComponent(out Button inventoryButtons))
+        {
+            foreach (Button button in buttons)
+            {
+                if (button == inventoryButtons)
+                {
+                    slotIndexFinal=buttons.IndexOf(button);
+                }
+            }
+        }
+        if (slotIndexFinal != -1 && slotIndexFinal != slotOriginIndex) 
+        {
+            inventory.SwapItems(slotOriginIndex, slotIndexFinal);
+
+        }else if (slotIndexFinal == -1)
+        {
+            Debug.Log("No se encontró el botón en la lista de botones.");
+        }else if (slotIndexFinal == slotOriginIndex)
+        {
+            Debug.Log("Item Dragged to the same slot");
+        }
+    }
+
+   
 
     void Start()
     {
@@ -86,6 +135,8 @@ public class PlayerInventoryUIManager : MonoBehaviour
             }
         }
     }
+
+    
 
     public void UseItem(Button slot=null)
     {

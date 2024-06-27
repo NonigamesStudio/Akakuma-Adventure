@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Transactions;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class TransactionManager : MonoBehaviour
     [SerializeField] ItemSO item2;
     
     
-    void UpdateUI()
+    public void UpdateUI()
     {
         List<List<ItemSlot>> itemsInInventory = new List<List<ItemSlot>>();
 
@@ -104,113 +105,174 @@ public class TransactionManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void MoveItem(int slot, int list)
+    public void MoveItemBetweenLists(int buttonIndexOrigin, int listIndex, int buttonIndexDestiny=-1, int listDestinyIndex=-1)
     {
-        if (list == 0)
+        if (listIndex == 0)//De shop a transaction
         {
-            
-            if (CheckFreeSloInList(itemsInTransactionShop))
+            if (!CheckFreeSloInList(itemsInTransactionShop))return;
+            if (buttonIndexDestiny == -1)
             {
                 foreach (ItemSlot itemSlot in itemsInTransactionShop)
                 {
                     if (itemSlot.item == null)
                     {
-                        itemSlot.item = item;
+                        itemSlot.item = shopInventory.items[buttonIndexOrigin].item;
                         break;
                     }
                 }
                 foreach (ItemSlot itemSlot in shopInventory.items)
                 {
-                    if (itemSlot.slotNumber == slot)
+                    if (itemSlot.slotNumber == buttonIndexOrigin)
                     {
                         itemSlot.item = null;
                         break;
                     }
                 }
-            }
-            
-        }
-        else if (list == 1)//De transaccion a shop
-        {
-
-           
-
-            if (playerInventory.CheckFreeSlot())
+            }else
             {
-                
-                foreach (ItemSlot itemSlot in shopInventory.items)
-                {
-                    if (itemSlot.item == null)
-                    {
-                        itemSlot.item = item;
-                        break;
-                    }
-                }
-
                 foreach (ItemSlot itemSlot in itemsInTransactionShop)
                 {
-                    if (itemSlot.slotNumber == slot/2)
+                    if (itemSlot.item == null&&itemSlot.slotNumber==buttonIndexDestiny/2)
+                    {
+                        itemSlot.item = shopInventory.items[buttonIndexOrigin].item;
+                        foreach (ItemSlot _itemSlot in shopInventory.items)
+                        {
+                            if (_itemSlot.slotNumber == buttonIndexOrigin)
+                            {
+                                _itemSlot.item = null;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        else if (listIndex == 1)//De transaccion a shop
+        {
+            if (!shopInventory.CheckFreeSlot())return;
+            if (buttonIndexDestiny == -1)//es presionado
+            {
+                foreach (ItemSlot itemSlot in shopInventory.items)
+                {
+                    if (itemSlot.item == null)
+                    {
+                        itemSlot.item = itemsInTransactionShop[buttonIndexOrigin/2].item;
+                        break;
+                    }
+                }
+                foreach (ItemSlot itemSlot in itemsInTransactionShop)
+                {
+                    if (itemSlot.slotNumber == buttonIndexOrigin/2)
                     {
                         itemSlot.item = null;
+                        break;
+                    }
+                }
+            }else// es arrastrado
+            {
+                foreach (ItemSlot itemSlot in shopInventory.items)
+                {
+                    if (itemSlot.item == null&&itemSlot.slotNumber==buttonIndexDestiny&&listDestinyIndex==0)
+                    {
+                        itemSlot.item = itemsInTransactionShop[buttonIndexOrigin/2].item;
+                        foreach (ItemSlot _itemSlot in itemsInTransactionShop)
+                        {
+                            if (_itemSlot.slotNumber == buttonIndexOrigin/2)
+                            {
+                                _itemSlot.item = null;
+                                break;
+                            }
+                        }
                         break;
                     }
                 }
             }
             
         }
-        else if (list == 2)//De la transaccion al player
+        else if (listIndex == 2)//De la transaccion al player
         {
-
-            
-            
-            if (playerInventory.CheckFreeSlot())
+            if (!playerInventory.CheckFreeSlot())return;
+            if (buttonIndexDestiny == -1)
             {
-                
                 foreach (ItemSlot itemSlot in playerInventory.items)
                 {
                     if (itemSlot.item == null)
                     {
-                        itemSlot.item = item;
+                        itemSlot.item = itemsInTransactionPlayer[buttonIndexOrigin/2].item;
                         break;
                     }
                 }
-
                 foreach (ItemSlot itemSlot in itemsInTransactionPlayer)
                 {
-                    if (itemSlot.slotNumber == slot/2)
+                    if (itemSlot.slotNumber == buttonIndexOrigin/2)
                     {
                         itemSlot.item = null;
                         break;
                     }
                 }
+            }else
+            {
+                foreach (ItemSlot itemSlot in playerInventory.items)
+                {
+                    if (itemSlot.item == null&&itemSlot.slotNumber==buttonIndexDestiny&&listDestinyIndex==2)
+                    {
+                        itemSlot.item = itemsInTransactionPlayer[buttonIndexOrigin/2].item;
+                        foreach (ItemSlot _itemSlot in itemsInTransactionPlayer)
+                        {
+                            if (_itemSlot.slotNumber == buttonIndexOrigin/2)
+                            {
+                                _itemSlot.item = null;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
             }
         }
-        else if (list == 3)
+        else if (listIndex == 3)//De player a transaccion
         {
-            if (playerInventory == null) return;
-            
-            if (CheckFreeSloInList(itemsInTransactionPlayer))
+            if (!CheckFreeSloInList(itemsInTransactionPlayer))return;
+            if (buttonIndexDestiny == -1)
             {
                 foreach (ItemSlot itemSlot in itemsInTransactionPlayer)
                 {
                     if (itemSlot.item == null)
                     {
-                        itemSlot.item = item;
+                        itemSlot.item = playerInventory.items[buttonIndexOrigin].item;
                         break;
                     }
                 }
                 foreach (ItemSlot itemSlot in playerInventory.items)
                 {
-                    if (itemSlot.slotNumber == slot)
+                    if (itemSlot.slotNumber == buttonIndexOrigin)
                     {
                         itemSlot.item = null;
                         break;
                     }
                 }
+            }else
+            {
+                foreach (ItemSlot itemSlot in itemsInTransactionPlayer)
+                {
+                    if (itemSlot.item == null&&itemSlot.slotNumber==buttonIndexDestiny/2)
+                    {
+                        itemSlot.item = playerInventory.items[buttonIndexOrigin].item;
+                        foreach (ItemSlot _itemSlot in playerInventory.items)
+                        {
+                            if (_itemSlot.slotNumber == buttonIndexOrigin)
+                            {
+                                _itemSlot.item = null;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
             }
-           
         }
-
+        
         UpdateUI();
     }
 
@@ -224,6 +286,24 @@ public class TransactionManager : MonoBehaviour
             }
         } 
         return false;
+    }
+    public void CancellTransaction()
+    {
+        foreach (ItemSlot itemSlot in itemsInTransactionShop)
+        {
+            if (itemSlot.item != null)
+            {
+                MoveItemBetweenLists(itemSlot.slotNumber*2, 1);
+            }
+        }
+        foreach (ItemSlot itemSlot in itemsInTransactionPlayer)
+        {
+            if (itemSlot.item != null)
+            {
+               MoveItemBetweenLists(itemSlot.slotNumber*2, 2);
+            }
+        }
+        gameObject.SetActive(false);
     }
     
 

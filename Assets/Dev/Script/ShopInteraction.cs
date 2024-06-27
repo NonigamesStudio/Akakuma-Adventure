@@ -26,7 +26,8 @@ public class ShopInteraction :MonoBehaviour, Interactable
     {
         if (isTransactionOpen)
         {
-        transactionManager.gameObject.SetActive(false);
+        //transactionManager.gameObject.SetActive(false);
+        transactionManager.CancellTransaction();
         isTransactionOpen=false;
         OnCloseInteraction?.Invoke();
         }

@@ -1,12 +1,14 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class InventoryButtons : MonoBehaviour
+public class InventoryButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
 
+    public static event OnItemDropped OnItemDragged;
+    public static event OnItemDropped OnItemDraggedStarts;
+    public delegate void OnItemDropped(GameObject slotButton);
     public event Action OnClick;
     public Button slotButton;
     public Image slotImage;
@@ -39,7 +41,7 @@ public class InventoryButtons : MonoBehaviour
             if (transactionUI != null)
             {
               
-                transactionUI.MoveItem(item, slotButton);
+                transactionUI.MoveItemOnClick(item, slotButton);
             }
 
 
@@ -50,6 +52,26 @@ public class InventoryButtons : MonoBehaviour
             
         }
     }
-    
 
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        OnItemDraggedStarts?.Invoke(this.gameObject);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+       
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+       
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        
+        OnItemDragged?.Invoke(this.gameObject);
+
+    }
 }

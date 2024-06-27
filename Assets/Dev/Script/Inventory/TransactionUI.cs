@@ -8,11 +8,23 @@ public class TransactionUI : MonoBehaviour
     [SerializeField]List<List<Button>> buttons = new List<List<Button>>(); //dimension 1: shop, 2: transaction, 3: player
     [SerializeField] GameObject[] panels = new GameObject[3];
     [SerializeField] TransactionManager transactionManager;
+    Button slotOriginIndex;
     
     
     void Awake()
     {
         InitializeTransaction();
+    }
+
+    void OnEnable()
+    {
+        InventoryButtons.OnItemDragged += ItemDragged;
+        InventoryButtons.OnItemDraggedStarts += ItemDraggedStarts;
+    }
+    void OnDisable()
+    {
+        InventoryButtons.OnItemDragged -= ItemDragged;
+        InventoryButtons.OnItemDraggedStarts -= ItemDraggedStarts;
     }
 
 
@@ -84,12 +96,12 @@ public class TransactionUI : MonoBehaviour
         }
     }
 
-    public void MoveItem(ItemSO item, Button button)
+    public void MoveItemOnClick(ItemSO item, Button button)
     {
-        
+
         int listIndex = 0; //0: shop, 1 y 2: transaction, 3: player
         int buttonIndex = 0;
-    
+
         for (int i = 0; i < buttons.Count; i++)
         {
             for (int j = 0; j < buttons[i].Count; j++)
@@ -101,28 +113,112 @@ public class TransactionUI : MonoBehaviour
                     break;
                 }
             }
-    
+
         }
+
+        MoveObject(listIndex, buttonIndex);
+    }
+
+    public void ItemDraggedStarts(GameObject slotButton)
+    {
+        if (slotButton.TryGetComponent<Button>( out Button button))
+        {
+            slotOriginIndex = button;
+        }
+    }
+    public void ItemDragged(GameObject slotButton)
+    {
+        int originalListIndex=-1;
+        int originalButtonIndex=-1;
+        int destinyListIndex=-1;
+        int destinyButtonIndex=-1;
+
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            for (int j = 0; j < buttons[i].Count; j++)
+            {
+                if (slotOriginIndex == buttons[i][j])
+                {
+                    originalListIndex=i;
+                    originalButtonIndex=j;
+                    break;
+                }
+            }
+
+        }
+        if (slotButton.TryGetComponent<Button>(out Button button))
+        {
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                for (int j = 0; j < buttons[i].Count; j++)
+                {
+                    if (button == buttons[i][j])
+                    {
+                        destinyListIndex=i;
+                        destinyButtonIndex=j;
+                        break;
+                    }
+                }
+            }
+        }
+        if(destinyListIndex==-1||originalListIndex==-1||destinyButtonIndex==-1||originalButtonIndex==-1)return;
+
+        if(originalListIndex==0&&destinyListIndex==1)//De shop a transaction
+        {
+            MoveObject(0,originalButtonIndex,destinyButtonIndex);
+        }
+        if((originalListIndex==1&&destinyListIndex==0)||(originalListIndex==1&&destinyListIndex==2))//De transaccion a inventario
+        {
+            MoveObject(1,originalButtonIndex,destinyButtonIndex,destinyListIndex);
+        }
+        if(originalListIndex==2&&destinyListIndex==1)//De player a transaction
+        {
+            MoveObject(2,originalButtonIndex,destinyButtonIndex);
+        }
+        if ((originalListIndex ==  destinyListIndex)&&destinyListIndex!=1)//dentro del mismo inventario
+        {
+            if (originalListIndex==0)
+            {
+                transactionManager.shopInventory.SwapItems(originalButtonIndex, destinyButtonIndex);
+            }else if (originalListIndex==2)
+            {
+                transactionManager.playerInventory.SwapItems(originalButtonIndex, destinyButtonIndex);
+            }
+            transactionManager.UpdateUI();
+        }
+
+        Debug.Log("originalListIndex: "+originalListIndex+" destinyListIndex: "+destinyListIndex);
+
+    }
     
+    private void MoveObject(int listIndex, int buttonIndexOrigin, int buttonIndexDestiny = -1, int listDestinyIndex=-1)
+    {
         if (listIndex == 0)
         {
-            transactionManager.MoveItem(buttonIndex, 0);
+            if (buttonIndexDestiny % 2 == 0||buttonIndexDestiny==-1)
+            {
+            transactionManager.MoveItemBetweenLists(buttonIndexOrigin, 0, buttonIndexDestiny);
+            }
         }
         else if (listIndex == 1)
         {
-            if (buttonIndex % 2 == 0)
+            if (buttonIndexOrigin % 2 == 0)//De transaccion a shop
             {
-                transactionManager.MoveItem(buttonIndex, 1);
+                transactionManager.MoveItemBetweenLists(buttonIndexOrigin, 1, buttonIndexDestiny, listDestinyIndex);
             }
-            else
+            else//De transaccion a player
             {
-                transactionManager.MoveItem(buttonIndex, 2);
+                transactionManager.MoveItemBetweenLists(buttonIndexOrigin, 2, buttonIndexDestiny, listDestinyIndex);
             }
         }
         else if (listIndex == 2)
         {
-            transactionManager.MoveItem(buttonIndex, 3);
+            if (buttonIndexDestiny % 2 == 1||buttonIndexDestiny==-1)
+            {
+                transactionManager.MoveItemBetweenLists(buttonIndexOrigin, 3, buttonIndexDestiny);
+            }
+            
         }
+        
     }
-    
 }

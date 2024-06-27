@@ -87,6 +87,19 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+   public void SwapItems(int slotOriginIndex, int slotIndexFinal)
+   {
+        foreach (ItemSlot itemSlot in items)
+        {
+            if (itemSlot.slotNumber == slotIndexFinal && items[slotIndexFinal].item==null)
+            {
+                items[slotIndexFinal].item = items[slotOriginIndex].item;
+                items[slotOriginIndex].item = null;
+                OnItemListChange?.Invoke();
+            }
+        }
+   }
+
     [ContextMenu("Add Health Potion")]
     public void AddHealthPotion()
     {
@@ -97,7 +110,7 @@ public class Inventory : MonoBehaviour
 
 }
 
-[System.Serializable]
+//[System.Serializable]
 public class ItemSlot
 {
     public ItemSO item;
