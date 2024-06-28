@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Transactions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,6 +54,7 @@ public class TransactionManager : MonoBehaviour
         itemsInInventory.Add(playerInventory.items);
 
         transactionUI.UpdateInventory(itemsInInventory);
+        transactionUI.UpdateSoulsCount(GetTotalSoulsInTransaction());
     }
 
     void Update()
@@ -65,7 +67,7 @@ public class TransactionManager : MonoBehaviour
                 {
                     if (itemSlot.item == null)
                     {
-                        itemSlot.item = item;
+                        itemSlot.item = item2;
                         break;
                     }
                 }
@@ -80,7 +82,7 @@ public class TransactionManager : MonoBehaviour
                 {
                     if (itemSlot.item == null)
                     {
-                        itemSlot.item = item;
+                        itemSlot.item = item2;
                         break;
                     }
                 }
@@ -287,7 +289,7 @@ public class TransactionManager : MonoBehaviour
         } 
         return false;
     }
-    public void CancellTransaction()
+    public void CancelTransaction()
     {
         foreach (ItemSlot itemSlot in itemsInTransactionShop)
         {
@@ -303,8 +305,30 @@ public class TransactionManager : MonoBehaviour
                MoveItemBetweenLists(itemSlot.slotNumber*2, 2);
             }
         }
+        
         gameObject.SetActive(false);
     }
+    public int GetTotalSoulsInTransaction()
+    {
+        int totalSouls = 0;
+        foreach (ItemSlot itemSlot in itemsInTransactionPlayer)
+        {
+            if (itemSlot.item != null)
+            {
+                totalSouls += (int)(itemSlot.item.price*0.75f);
+            }
+            
+        }
+        foreach (ItemSlot itemSlot in itemsInTransactionShop)
+        {
+            if (itemSlot.item != null)
+            {
+                totalSouls -= itemSlot.item.price;
+            }
+            
+        }
+        return totalSouls;
     
+    }
 
 }

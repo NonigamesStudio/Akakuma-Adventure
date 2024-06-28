@@ -13,6 +13,7 @@ public class HealthPotion : ItemSO
         if (user.TryGetComponent<Health>(out health))
         {
             health.TakeHealth(30);
+            Debug.Log("used");
         }
     }
 }

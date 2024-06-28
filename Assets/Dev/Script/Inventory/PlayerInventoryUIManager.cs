@@ -1,15 +1,8 @@
-using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
-
-
 public class PlayerInventoryUIManager : MonoBehaviour
 {
-
-    
-   
     List <Button> buttons; 
     [SerializeField] GameObject panel;
     [SerializeField] GameObject playerInventoryUI;
@@ -70,10 +63,10 @@ public class PlayerInventoryUIManager : MonoBehaviour
 
         }else if (slotIndexFinal == -1)
         {
-            Debug.Log("No se encontró el botón en la lista de botones.");
+            //Debug.Log("No se encontró el botón en la lista de botones.");
         }else if (slotIndexFinal == slotOriginIndex)
         {
-            Debug.Log("Item Dragged to the same slot");
+            //Debug.Log("Item Dragged to the same slot");
         }
     }
 

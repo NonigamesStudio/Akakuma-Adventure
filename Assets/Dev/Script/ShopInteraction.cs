@@ -27,10 +27,17 @@ public class ShopInteraction :MonoBehaviour, Interactable
         if (isTransactionOpen)
         {
         //transactionManager.gameObject.SetActive(false);
-        transactionManager.CancellTransaction();
+        transactionManager.CancelTransaction();
         isTransactionOpen=false;
-        OnCloseInteraction?.Invoke();
+        StartCoroutine(CallCloseInteraction(0.1f));
         }
+        
+    }
+
+    private IEnumerator CallCloseInteraction(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        OnCloseInteraction?.Invoke();   
         
     }
 

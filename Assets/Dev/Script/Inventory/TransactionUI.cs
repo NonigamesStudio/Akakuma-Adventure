@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TransactionUI : MonoBehaviour
 {
     [SerializeField]List<List<Button>> buttons = new List<List<Button>>(); //dimension 1: shop, 2: transaction, 3: player
     [SerializeField] GameObject[] panels = new GameObject[3];
     [SerializeField] TransactionManager transactionManager;
+    [SerializeField] Button closeButton;
+    [SerializeField] Button acceptButton;
+    [SerializeField] TMP_Text soulsCount;
     Button slotOriginIndex;
     
     
@@ -20,11 +24,20 @@ public class TransactionUI : MonoBehaviour
     {
         InventoryButtons.OnItemDragged += ItemDragged;
         InventoryButtons.OnItemDraggedStarts += ItemDraggedStarts;
+        if (transactionManager.playerInventory.gameObject.TryGetComponent<Player>(out Player player))
+        {   
+            closeButton.onClick.AddListener(player.ClosUIInteraction);
+        }
+        
     }
     void OnDisable()
     {
         InventoryButtons.OnItemDragged -= ItemDragged;
         InventoryButtons.OnItemDraggedStarts -= ItemDraggedStarts;
+        if (transactionManager.playerInventory.gameObject.TryGetComponent<Player>(out Player player))
+        {   
+            closeButton.onClick.RemoveListener(player.ClosUIInteraction);
+        }
     }
 
 
@@ -187,8 +200,6 @@ public class TransactionUI : MonoBehaviour
             transactionManager.UpdateUI();
         }
 
-        Debug.Log("originalListIndex: "+originalListIndex+" destinyListIndex: "+destinyListIndex);
-
     }
     
     private void MoveObject(int listIndex, int buttonIndexOrigin, int buttonIndexDestiny = -1, int listDestinyIndex=-1)
@@ -220,5 +231,9 @@ public class TransactionUI : MonoBehaviour
             
         }
         
+    }
+    public void UpdateSoulsCount(int souls=0)
+    {
+        soulsCount.text = souls.ToString();
     }
 }
