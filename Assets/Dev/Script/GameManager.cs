@@ -38,9 +38,9 @@ public class GameManager : MonoBehaviour
         loadingScreen.SetActive(true);
 
         scenesLoading.Add(SceneManager.UnloadSceneAsync(Enum.GetName(typeof(scenes),0)));
-        scenesLoading.Add(SceneManager.LoadSceneAsync(Enum.GetName(typeof(scenes),1), LoadSceneMode.Additive));
         scenesLoading.Add(SceneManager.LoadSceneAsync(Enum.GetName(typeof(scenes),2), LoadSceneMode.Additive));
-        
+        scenesLoading.Add(SceneManager.LoadSceneAsync(Enum.GetName(typeof(scenes),1), LoadSceneMode.Additive));
+       
 
         StartCoroutine(GetSceneLoadProgress());
 

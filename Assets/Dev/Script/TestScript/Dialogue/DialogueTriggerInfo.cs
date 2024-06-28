@@ -8,7 +8,7 @@ public class DialogueTriggerInfo : MonoBehaviour, Interactable
     [SerializeField] int idDialogue;
     [SerializeField] Transform t;
 
-    public InteractableType interactableType => throw new NotImplementedException();
+    public InteractableType interactableType => InteractableType.NPC;
 
     public event Action OnCloseInteraction;
 
@@ -18,3 +18,4 @@ public class DialogueTriggerInfo : MonoBehaviour, Interactable
     }
 
 }
+

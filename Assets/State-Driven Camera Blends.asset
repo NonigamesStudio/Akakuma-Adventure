@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: State-Driven Camera Blends
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: NormalCamera
-    m_To: Virtual Camera
+  - m_From: PlayerCam
+    m_To: Dialogue Camera
     m_Blend:
       m_Style: 1
       m_Time: 1
@@ -24,8 +24,8 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: Virtual Camera
-    m_To: NormalCamera
+  - m_From: Dialogue Camera
+    m_To: PlayerCam
     m_Blend:
       m_Style: 1
       m_Time: 1

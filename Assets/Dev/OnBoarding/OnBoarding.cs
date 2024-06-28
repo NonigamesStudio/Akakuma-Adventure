@@ -7,6 +7,9 @@ public class OnBoarding : MonoBehaviour
     private int currentStep;
     GameObject currentPanel;
 
+    [SerializeField] bool test;
+
+    [Space(10)]
     [Header("UI Refs")]
     public GameObject asdwStep_Panel;
     public GameObject attackStep_Panel;
@@ -25,6 +28,13 @@ public class OnBoarding : MonoBehaviour
     bool onBoardingEventFinished;
     private IEnumerator Start()
     {
+       if(test)
+        {
+            AnimDoor();
+            onBoardingEventFinished = true;
+            yield break;
+        }
+
         yield return new WaitForSeconds(0.5f);
 
 
@@ -106,43 +116,6 @@ public class OnBoarding : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        //if (onBoardingEventFinished) return;
-        //if (animReady) return;
-
-        //switch ((OnBoardingSteps)currentStep)
-        //{
-        //    case OnBoardingSteps.Move:
-        //        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W)) { NextStep(); }
-
-        //        break;
-        //    case OnBoardingSteps.Attack:
-        //        if(Input.GetMouseButtonDown(0)) { NextStep(); }
-                
-        //        break;
-        //    case OnBoardingSteps.Arrow:
-        //        if (Input.GetMouseButtonDown(1)) { NextStep(); }
-
-        //        break;
-        //    case OnBoardingSteps.ChangeWeapon:
-        //        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)) { NextStep(); }
-                
-        //        break;
-        //    case OnBoardingSteps.Skill:
-        //        if(Input.GetKeyDown(KeyCode.F)) { NextStep(); }
-                
-        //        break;
-        //    case OnBoardingSteps.Dash:
-        //        if (Input.GetKeyDown(KeyCode.Space)) { NextStep(); }
-                
-        //        break;
-        //    default:
-        //        AnimDoor();
-        //        onBoardingEventFinished = true;
-        //        break;
-        //}
-    }
 
     void NextStep()
     {
