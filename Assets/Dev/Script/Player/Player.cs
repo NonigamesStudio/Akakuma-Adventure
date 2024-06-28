@@ -85,9 +85,9 @@ public class Player : MonoBehaviour
 
     private void Update()//Input Detection
     {
-        AttackSecondaryWeaponInput();
         InventoryInput();
         if (isStuned) return;
+        AttackSecondaryWeaponInput();
         playerMovement.Rotate();
         //MovementInput();
         DashInput();
@@ -131,6 +131,40 @@ public class Player : MonoBehaviour
             PlayWeaponChangeSound();
         }
     }
+    private void AttackPrincipalWeaponInput()
+    {
+        if (usingyWeapon) return;
+        if (Input.GetMouseButtonDown(0)) usingyWeapon = false;
+        if (Input.GetMouseButton(0)) chargeTime += Time.deltaTime;
+        if (Input.GetMouseButtonUp(0))
+        {
+            Ray rayMouse = cam.ScreenPointToRay(Input.mousePosition);
+            if(Physics.Raycast(rayMouse, out RaycastHit hit,100,interactableLayer))
+            {
+                this.hit = hit;
+            }
+            int interactionDistance = 3;
+            if (hit.transform != null && Vector3.Distance(hit.transform.position, this.transform.position)<interactionDistance && hit.transform.TryGetComponent(out Interactable interactable))
+            {
+                interactable.Interact();
+                if (interactable.interactableType == InteractableType.Shop)
+                {
+                    
+                    GetStuned();
+                    //interactable.OnCloseInteraction += RemoveStun;
+                    interactingObject = interactable;
+                }
+            }else{
+
+            currentWeaponFirstHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
+            chargeTime = 0;
+            usingyWeapon = false;
+            }
+            
+            
+        }
+    }
+    
     public void InventoryInput()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -167,14 +201,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (playerInventoryUIManager.isUIOpen)
-                {
-                playerInventoryUIManager.gameObject.SetActive(false);
-                playerInventoryUIManager.isUIOpen=false;
-                RemoveStun();
-                }
-        
-            OnSCPPress?.Invoke();
+            ClosUIInteraction();
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -219,39 +246,7 @@ public class Player : MonoBehaviour
         }
             
     }
-    private void AttackPrincipalWeaponInput()
-    {
-        if (usingyWeapon) return;
-        if (Input.GetMouseButtonDown(0)) usingyWeapon = false;
-        if (Input.GetMouseButton(0)) chargeTime += Time.deltaTime;
-        if (Input.GetMouseButtonUp(0))
-        {
-            Ray rayMouse = cam.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(rayMouse, out RaycastHit hit,100,interactableLayer))
-            {
-                this.hit = hit;
-            }
-            int interactionDistance = 3;
-            if (hit.transform != null && Vector3.Distance(hit.transform.position, this.transform.position)<interactionDistance && hit.transform.TryGetComponent(out Interactable interactable))
-            {
-                interactable.Interact();
-                if (interactable.interactableType == InteractableType.Shop)
-                {
-                    
-                    GetStuned();
-                    interactable.OnCloseInteraction += RemoveStun;
-                    interactingObject = interactable;
-                }
-            }else{
-
-            currentWeaponFirstHand.Attack(Mathf.Round(stats.attack + chargeTime * bonusDamageToCharge));
-            chargeTime = 0;
-            usingyWeapon = false;
-            }
-            
-            
-        }
-    }
+    
     private void AttackSecondaryWeaponInput()
     {
         chargeTime += Time.deltaTime;
@@ -306,7 +301,7 @@ public class Player : MonoBehaviour
         isStuned = false;
         if (interactingObject != null)
         {
-            interactingObject.OnCloseInteraction -= RemoveStun;
+            //interactingObject.OnCloseInteraction -= RemoveStun;
             interactingObject = null;
         }
     }
@@ -335,5 +330,23 @@ public class Player : MonoBehaviour
         boolCharging=false;
         shooting = false ;
     }
+    public void ClosUIInteraction()
+    {
+        if (playerInventoryUIManager.isUIOpen)
+        {
+        playerInventoryUIManager.gameObject.SetActive(false);
+        playerInventoryUIManager.isUIOpen=false;
+        }
+        StartCoroutine(CallCloseInteraction(0.1f));
+       OnSCPPress?.Invoke();
+    }
+
+    private IEnumerator CallCloseInteraction(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        RemoveStun();   
+        
+    }
+   
 
 }

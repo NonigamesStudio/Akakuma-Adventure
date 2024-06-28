@@ -18,7 +18,6 @@ public class ShopInteraction :MonoBehaviour, Interactable
     }
     public void Interact()
     {
-        Debug.Log("Interaction");
         transactionManager.gameObject.SetActive(true);
         transactionManager.InitializeTransaction(inventory);
         isTransactionOpen=true;
@@ -27,10 +26,18 @@ public class ShopInteraction :MonoBehaviour, Interactable
     {
         if (isTransactionOpen)
         {
-        transactionManager.gameObject.SetActive(false);
+        //transactionManager.gameObject.SetActive(false);
+        transactionManager.CancelTransaction();
         isTransactionOpen=false;
-        OnCloseInteraction?.Invoke();
+        StartCoroutine(CallCloseInteraction(0.1f));
         }
+        
+    }
+
+    private IEnumerator CallCloseInteraction(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        OnCloseInteraction?.Invoke();   
         
     }
 
