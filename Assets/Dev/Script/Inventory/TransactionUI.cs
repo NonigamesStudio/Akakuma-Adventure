@@ -26,8 +26,9 @@ public class TransactionUI : MonoBehaviour
         InventoryButtons.OnItemDraggedStarts += ItemDraggedStarts;
         if (transactionManager.playerInventory.gameObject.TryGetComponent<Player>(out Player player))
         {   
-            closeButton.onClick.AddListener(player.ClosUIInteraction);
+            closeButton.onClick.AddListener(player.CloseUIInteraction);
         }
+        acceptButton.onClick.AddListener(transactionManager.AcceptTansaction);
         
     }
     void OnDisable()
@@ -36,8 +37,9 @@ public class TransactionUI : MonoBehaviour
         InventoryButtons.OnItemDraggedStarts -= ItemDraggedStarts;
         if (transactionManager.playerInventory.gameObject.TryGetComponent<Player>(out Player player))
         {   
-            closeButton.onClick.RemoveListener(player.ClosUIInteraction);
+            closeButton.onClick.RemoveListener(player.CloseUIInteraction);
         }
+        acceptButton.onClick.RemoveListener(transactionManager.AcceptTansaction);
     }
 
 
@@ -234,6 +236,7 @@ public class TransactionUI : MonoBehaviour
     }
     public void UpdateSoulsCount(int souls=0)
     {
-        soulsCount.text = souls.ToString();
+        
+        soulsCount.text = $"Total: {souls} souls";
     }
 }

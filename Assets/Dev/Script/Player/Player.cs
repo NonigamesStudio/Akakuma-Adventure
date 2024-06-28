@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
                 {
                     
                     GetStuned();
-                    //interactable.OnCloseInteraction += RemoveStun;
+                    interactable.OnCloseInteraction += CloseUIInteraction;
                     interactingObject = interactable;
                 }
             }else{
@@ -201,7 +201,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ClosUIInteraction();
+            CloseUIInteraction();
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -301,7 +301,7 @@ public class Player : MonoBehaviour
         isStuned = false;
         if (interactingObject != null)
         {
-            //interactingObject.OnCloseInteraction -= RemoveStun;
+            interactingObject.OnCloseInteraction -= CloseUIInteraction;
             interactingObject = null;
         }
     }
@@ -330,7 +330,7 @@ public class Player : MonoBehaviour
         boolCharging=false;
         shooting = false ;
     }
-    public void ClosUIInteraction()
+    public void CloseUIInteraction()
     {
         if (playerInventoryUIManager.isUIOpen)
         {

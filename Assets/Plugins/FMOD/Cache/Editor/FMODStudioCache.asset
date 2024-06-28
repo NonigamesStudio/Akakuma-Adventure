@@ -178,7 +178,7 @@ MonoBehaviour:
   Path: FMOD Builds/Desktop/Master.bank
   Name: Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 638491455028020474
+  lastModified: 638551870805575480
   FileSizes: []
   Exists: 1
 --- !u!114 &-2883391217430847333
@@ -196,7 +196,7 @@ MonoBehaviour:
   Path: FMOD Builds/Desktop/SFXs.bank
   Name: Desktop/SFXs
   StudioPath: bank:/SFXs
-  lastModified: 638549488736609109
+  lastModified: 638551870806753453
   FileSizes: []
   Exists: 1
 --- !u!114 &-2405329381077524472
@@ -290,12 +290,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/Master.strings.bank
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
   Path: FMOD Builds/Desktop/Master.strings.bank
-  Name: Desktop/Master.strings
+  Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638493993180473775
+  lastModified: 638551870805584612
   FileSizes:
   - Name: 
     Value: 1264
@@ -330,7 +330,7 @@ MonoBehaviour:
   - {fileID: -3887771404170638216}
   StringsBanks:
   - {fileID: -906064499171964831}
-  cacheTime: 638549488736609109
+  cacheTime: 638551870806753453
   cacheVersion: 131605
 --- !u!114 &447679084122535217
 MonoBehaviour:
@@ -446,7 +446,7 @@ MonoBehaviour:
   Path: FMOD Builds/Desktop/Menu.bank
   Name: Desktop/Menu
   StudioPath: bank:/Menu
-  lastModified: 638495886404232387
+  lastModified: 638551870806411204
   FileSizes: []
   Exists: 1
 --- !u!114 &6259929993321151459

@@ -8,10 +8,12 @@ using UnityEngine.UI;
 
 public class TransactionManager : MonoBehaviour
 {
+    public static event Action OnTransactionEnds;
     public Inventory shopInventory=null;
     public Inventory playerInventory;
     [SerializeField] TransactionUI transactionUI;
     int transactionListSize = 4;
+    [SerializeField] UIManager uiManager;
     [SerializeField]List<ItemSlot> itemsInTransactionPlayer; 
     [SerializeField]List<ItemSlot> itemsInTransactionShop;
     [SerializeField] ItemSO item;
@@ -67,7 +69,7 @@ public class TransactionManager : MonoBehaviour
                 {
                     if (itemSlot.item == null)
                     {
-                        itemSlot.item = item2;
+                        itemSlot.item = item;
                         break;
                     }
                 }
@@ -329,6 +331,47 @@ public class TransactionManager : MonoBehaviour
         }
         return totalSouls;
     
+    }
+
+    public void AcceptTansaction()
+    {
+        if ((GetTotalSoulsInTransaction()*-1)>playerInventory.soulsCount)
+        {
+            Debug.LogWarning("Not enough souls");
+            return;
+        }else if (shopInventory == null)
+        {
+            Debug.LogWarning("No shop selected");
+        }
+        else
+        {
+            foreach (ItemSlot itemSlot in itemsInTransactionPlayer)
+            {
+                if (itemSlot.item != null)
+                {
+                    shopInventory.AddItem(itemSlot.item);
+
+                }
+            }
+            
+            foreach (ItemSlot itemSlot in itemsInTransactionShop)
+            {
+                if (itemSlot.item != null)
+                {
+                    playerInventory.AddItem(itemSlot.item);
+                    
+                }
+            }
+            playerInventory.soulsCount+=GetTotalSoulsInTransaction();
+            Debug.Log(playerInventory.soulsCount);
+            itemsInTransactionPlayer.Clear();
+            itemsInTransactionShop.Clear();
+            OnTransactionEnds?.Invoke();
+            if (shopInventory.TryGetComponent<ShopInteraction>(out ShopInteraction shopInteraction))
+            {
+                shopInteraction.CloseInteraction();
+            }
+        }
     }
 
 }

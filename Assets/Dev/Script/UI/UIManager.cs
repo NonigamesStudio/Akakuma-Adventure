@@ -32,8 +32,8 @@ public class UIManager : MonoBehaviour
         bossH.OnDeath += WinPanel;
         playerH.OnDeath += LosePanel;
         playerH.OnTakeDmg += LoseHealth;
-
         Coin.OnCoinCollected += UpdateCoinsUI;
+        TransactionManager.OnTransactionEnds += UpdateCoinsUI;
 
         
     }
@@ -48,8 +48,9 @@ public class UIManager : MonoBehaviour
         EnemyController.OnChangeWave -= RestarBarProgressWave;
         bossH.OnDeath -= WinPanel;
         playerH.OnDeath -= LosePanel;
-
         Coin.OnCoinCollected -= UpdateCoinsUI;
+        TransactionManager.OnTransactionEnds -= UpdateCoinsUI;
+
     }
 
     void UpdateBarProgressWave(float enemiesSpawned,float enemiesStillAlive)

@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     private enum scenes
     {
         MainMenu,
-        DevMainGame,
-        ArtMainGame
+        DevIsla1,
+        ArtIsla1
     }
    
 
@@ -36,14 +36,11 @@ public class GameManager : MonoBehaviour
     public void LoadGame()
     { 
         loadingScreen.SetActive(true);
-
         scenesLoading.Add(SceneManager.UnloadSceneAsync(Enum.GetName(typeof(scenes),0)));
-        scenesLoading.Add(SceneManager.LoadSceneAsync(Enum.GetName(typeof(scenes),2), LoadSceneMode.Additive));
         scenesLoading.Add(SceneManager.LoadSceneAsync(Enum.GetName(typeof(scenes),1), LoadSceneMode.Additive));
-       
-
+        scenesLoading.Add(SceneManager.LoadSceneAsync(Enum.GetName(typeof(scenes),2), LoadSceneMode.Additive));
+        
         StartCoroutine(GetSceneLoadProgress());
-
     }
 
     public IEnumerator GetSceneLoadProgress()
