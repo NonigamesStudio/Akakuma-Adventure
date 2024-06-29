@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     [SerializeField] public float maxHealth;
     [SerializeField] public float actualHealth;
     public System.Action OnDeath;
-    public System.Action <Transform> OnTakeDmg;
+    public System.Action <Transform> OnLifeChange;
 
     private void OnEnable()
     {
@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
     {
         actualHealth -= dmg;
         CheckIfIsDeath();
-        OnTakeDmg?.Invoke(attacker);
+        OnLifeChange?.Invoke(attacker);
         if (TryGetComponent<EnemyAI>(out EnemyAI enemyAI))
         {
             enemyAI.SwitchToAttackState();
@@ -40,6 +40,7 @@ public class Health : MonoBehaviour
     public void TakeHealth(float health)
     {
         actualHealth += health;
+        OnLifeChange?.Invoke(null);
         
     }
     public void CheckIfIsDeath()

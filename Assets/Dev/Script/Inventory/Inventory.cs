@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour
     private void UpdateCoins()
     {
         soulsCount++;
+        OnItemListChange?.Invoke();
     }
 
     public virtual bool AddItem(ItemSO item)

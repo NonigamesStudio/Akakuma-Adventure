@@ -12,7 +12,7 @@ public class PlayerAnimations : MonoBehaviour
 
     private void OnEnable()
     {
-        playerH.OnTakeDmg += (Transform player)=> { playerAnimator.SetTrigger("onHit"); };
+        playerH.OnLifeChange += (Transform player)=> { playerAnimator.SetTrigger("onHit"); };
         playerH.OnDeath += () => { playerAnimator.SetBool("onDeath",true); Debug.Log("Llamada muerte"); };
         playerW.OnWeaponAttack += () => { playerAnimator.SetTrigger("onAttack"); };
         playerW.OnBowReady += () => { playerAnimator.SetTrigger("bowWindUp"); };

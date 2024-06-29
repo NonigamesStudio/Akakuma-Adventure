@@ -69,7 +69,7 @@ public class EnemyAI : MonoBehaviour
         currentState = State.Idle;
         agent.enabled = true;
         health.OnDeath += Dead;
-        health.OnTakeDmg += Knockback;
+        health.OnLifeChange += Knockback;
         RestartParticles();
         walkingIdlePoints.Clear();
         InvokeRepeating ("RestarEnemy", 0, 0.5f);
@@ -80,7 +80,7 @@ public class EnemyAI : MonoBehaviour
     {
         agent.enabled = false;
         health.OnDeath -= Dead;
-        health.OnTakeDmg -= Knockback;
+        health.OnLifeChange -= Knockback;
     }
 
 

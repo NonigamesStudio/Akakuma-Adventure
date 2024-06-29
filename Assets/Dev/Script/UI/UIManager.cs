@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     private int listHealth;
     [SerializeField] GameObject dashBar;
     [SerializeField] Sprite emptyImg;
+    [SerializeField] Sprite fullImg;
     [SerializeField] Inventory playerInventory;
     [SerializeField] GameObject weaponGO;
     [SerializeField] List<Sprite> weaponSprite;
@@ -31,8 +32,9 @@ public class UIManager : MonoBehaviour
         EnemyController.OnChangeWave += RestarBarProgressWave;
         bossH.OnDeath += WinPanel;
         playerH.OnDeath += LosePanel;
-        playerH.OnTakeDmg += LoseHealth;
-        Coin.OnCoinCollected += UpdateCoinsUI;
+        playerH.OnLifeChange += UpdateHealthUI;
+        //Coin.OnCoinCollected -= UpdateCoinsUI;
+        playerInventory.OnItemListChange += UpdateCoinsUI;
         TransactionManager.OnTransactionEnds += UpdateCoinsUI;
 
         
@@ -48,7 +50,8 @@ public class UIManager : MonoBehaviour
         EnemyController.OnChangeWave -= RestarBarProgressWave;
         bossH.OnDeath -= WinPanel;
         playerH.OnDeath -= LosePanel;
-        Coin.OnCoinCollected -= UpdateCoinsUI;
+        //Coin.OnCoinCollected -= UpdateCoinsUI;
+        playerInventory.OnItemListChange += UpdateCoinsUI;
         TransactionManager.OnTransactionEnds -= UpdateCoinsUI;
 
     }
@@ -85,16 +88,28 @@ public class UIManager : MonoBehaviour
 
     }
 
-    void LoseHealth(Transform player)
+    void UpdateHealthUI(Transform player)
     {
 
-        for (int i = 0; i < (5-Mathf.RoundToInt(playerH.actualHealth * 5 / 100)); i++)
+        // for (int i = 0; i < (5-Mathf.RoundToInt(playerH.actualHealth * 5 / 100)); i++)
+        // {
+        //     healthBar[i].GetComponent<Image>().sprite = emptyImg;
+        // }
+        foreach (GameObject health in healthBar)
         {
-            healthBar[i].GetComponent<Image>().sprite = emptyImg;
+            health.GetComponent<Image>().sprite = emptyImg;
+        }
+        float lifePercentageLeft = playerH.actualHealth / playerH.maxHealth;
+        int lifeBarIndex = Mathf.RoundToInt(lifePercentageLeft * healthBar.Count);
+        if (lifeBarIndex > healthBar.Count) lifeBarIndex = healthBar.Count; 
+        for (int i = healthBar.Count - 1; i >= healthBar.Count - lifeBarIndex; i--)
+        {
+            healthBar[i].GetComponent<Image>().sprite = fullImg;
         }
 
 
     }
+   
 
     public void ChangeWeaponSpriteAbility(int weaponNumber)
     {

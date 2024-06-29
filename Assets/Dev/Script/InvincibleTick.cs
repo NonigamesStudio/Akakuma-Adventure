@@ -18,12 +18,12 @@ public class InvincibleTick : MonoBehaviour
 
     private void OnEnable()
     {
-        health.OnTakeDmg += StartInvincible;
+        health.OnLifeChange += StartInvincible;
     }
 
     private void OnDisable()
     {
-        health.OnTakeDmg -= StartInvincible;
+        health.OnLifeChange -= StartInvincible;
     }
 
     void StartInvincible(Transform player)

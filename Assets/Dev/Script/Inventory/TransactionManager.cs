@@ -47,10 +47,7 @@ public class TransactionManager : MonoBehaviour
             itemsInInventory.Add(shopInventory.items);
             
         }
-        else
-        {
-            itemsInInventory.Add(null);
-        }
+        
 
         itemsInInventory.Add(itemsInTransaction);
         itemsInInventory.Add(playerInventory.items);
