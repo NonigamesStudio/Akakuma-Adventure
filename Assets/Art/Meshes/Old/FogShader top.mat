@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FogShader
+  m_Name: FogShader top
   m_Shader: {fileID: -6465566751694194690, guid: bab242d155379e444ba711ad8c8f471b,
     type: 3}
   m_Parent: {fileID: 0}
@@ -42,17 +42,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Degradado: 3
-    - _DistanciaDegradado: 4
+    - _Alpha: 0.5
+    - _Degradado: 18.5
+    - _DistanciaDegradado: 2.62
     - _Float: 7.9
     - _Float_1: 0.3
     - _Float_2: 65.9
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Speed: 0.08
+    - _Speed: 0.05
     m_Colors:
-    - _Color: {r: 0.78431374, g: 0.65597653, b: 0.13725491, a: 0}
-    - _ColorBase: {r: 0.3490566, g: 0.03488153, b: 0.0049394714, a: 0}
+    - _Color: {r: 0.21440013, g: 0.27563637, b: 0.6226415, a: 1}
+    - _ColorBase: {r: 0.13207546, g: 0.08671319, b: 0, a: 1}
     - _Color_1: {r: 0, g: 0, b: 0, a: 0}
     - _Offset: {r: -0.06, g: -1.03, b: 0, a: 0}
     - _Tiling: {r: 0.4, g: -0.79, b: 0, a: 0}
