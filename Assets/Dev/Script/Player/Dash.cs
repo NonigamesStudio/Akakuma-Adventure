@@ -78,7 +78,7 @@ public class Dash : MonoBehaviour
             if (canDash)
             {
              
-                t.position = Vector3.MoveTowards(t.position, posToMove, step);
+                t.position = Vector3.MoveTowards(t.position, posToMove, step* speedDash* Time.deltaTime);
                
                 if (!Physics.Raycast(transform.position, Vector3.down, 1.5f, LayerMask.GetMask("Ground")))
                 {
@@ -89,7 +89,7 @@ public class Dash : MonoBehaviour
             }
             else
             {
-                t.position = Vector3.MoveTowards(t.position, posToMove, step);
+                t.position = Vector3.MoveTowards(t.position, posToMove, step* speedDash* Time.deltaTime);
                 
                 if (!Physics.Raycast(transform.position, Vector3.down, 1.5f, LayerMask.GetMask("Ground")))
                 {
