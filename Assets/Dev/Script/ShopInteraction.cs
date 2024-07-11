@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ShopInteraction :MonoBehaviour, Interactable
 {
+    public event System.Action OnOpenInteraction;
     public event System.Action OnCloseInteraction;
     [SerializeField] TransactionManager transactionManager;
     [SerializeField] Inventory inventory;
@@ -12,14 +13,30 @@ public class ShopInteraction :MonoBehaviour, Interactable
     [SerializeField] Player player;
     public InteractableType interactableType {get =>InteractableType.Shop; }
 
-    public void Start()
+    public void OnEnable()
     {
         player.OnSCPPress += CloseInteraction;
+
+        if (player.TryGetComponent<PlayerInventory>(out PlayerInventory playerInventory))    
+        {
+            OnOpenInteraction += playerInventory.HideQuickAccessInventory;
+            OnCloseInteraction += playerInventory.ShowQuickAccessInventory;
+        }
+    }
+    public void OnDisable()
+    {
+        player.OnSCPPress -= CloseInteraction;
+        if (player.TryGetComponent<PlayerInventory>(out PlayerInventory playerInventory))    
+        {
+            OnOpenInteraction -= playerInventory.HideQuickAccessInventory;
+            OnCloseInteraction -= playerInventory.ShowQuickAccessInventory;
+        }
     }
     public void Interact()
     {
         transactionManager.gameObject.SetActive(true);
         transactionManager.InitializeTransaction(inventory);
+        OnOpenInteraction?.Invoke();
         isTransactionOpen=true;
     }
     public void CloseInteraction()
@@ -30,6 +47,7 @@ public class ShopInteraction :MonoBehaviour, Interactable
         transactionManager.CancelTransaction();
         isTransactionOpen=false;
         StartCoroutine(CallCloseInteraction(0.1f));
+
         }
         
     }

@@ -8,8 +8,6 @@ public class Inventory : MonoBehaviour
     public int inventorySize=20;
     public int soulsCount;
     public List<ItemSlot> items = new List<ItemSlot>();
-    
-    [SerializeField] ItemSO healthPotion;
 
     void OnEnable()
     {
@@ -100,15 +98,6 @@ public class Inventory : MonoBehaviour
             }
         }
    }
-
-    [ContextMenu("Add Health Potion")]
-    public void AddHealthPotion()
-    {
-        AddItem(healthPotion);
-    }   
-
-
-
 }
 
 //[System.Serializable]

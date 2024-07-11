@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class PlayerInventory : Inventory
 {
-   
+    
+    [SerializeField] GameObject quickAccessInventory;
     void Start()
     {
-        inventorySize=20;
+        inventorySize=22;
         InitializeSlots();
     }
+    public void HideQuickAccessInventory()
+    {
+        quickAccessInventory.SetActive(false);
+    }
+    public void ShowQuickAccessInventory()
+    {
+        quickAccessInventory.SetActive(true);
+    }
+
 }

@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] UIManager uIManager;
     [SerializeField] List <GameObject>  shields;
     [SerializeField] PlayerInventoryUIManager playerInventoryUIManager;
+    [SerializeField] GameObject inventoryUI;
     [SerializeField] Camera cam;
     private RaycastHit hit;
     private Interactable interactingObject=null;
@@ -41,9 +42,9 @@ public class Player : MonoBehaviour
     public bool onSkill;
 
     public float chargeTime;
-    public bool boolCharging = false;
+    public bool boolCharging=false;
     public bool shooting;
-    public bool canClick;
+    bool canClick=true;
     public bool isStuned=false;
     bool usingyWeapon;
 
@@ -75,7 +76,6 @@ public class Player : MonoBehaviour
         currentWeaponFirstHand = currentWeaponFirstHandObj.GetComponent<IWeapon>();
         currentWeaponSecondHand = currentWeaponSecondHandObj.GetComponent<IWeapon>();
         if (cam == null) cam = Camera.main;
-
     }
 
     void OnDeathPlayer()
@@ -134,6 +134,7 @@ public class Player : MonoBehaviour
     private void AttackPrincipalWeaponInput()
     {
         if (usingyWeapon) return;
+        if (!canClick) return;
         if (Input.GetMouseButtonDown(0)) usingyWeapon = false;
         if (Input.GetMouseButton(0)) chargeTime += Time.deltaTime;
         if (Input.GetMouseButtonUp(0))
@@ -171,13 +172,14 @@ public class Player : MonoBehaviour
         {
             if (!playerInventoryUIManager.isUIOpen)
             {
-            playerInventoryUIManager.gameObject.SetActive(true);
+            inventoryUI.gameObject.SetActive(true);
+            playerInventoryUIManager.UpdateInventory();
             playerInventoryUIManager.isUIOpen=true;
             GetStuned();
             
             }else
             {
-            playerInventoryUIManager.gameObject.SetActive(false);
+            inventoryUI.gameObject.SetActive(false);
             playerInventoryUIManager.isUIOpen=false;
             RemoveStun();
             }
@@ -187,18 +189,40 @@ public class Player : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            currentWeaponFirstHand = inventory.GetWeaponSelected(0);
-            foreach (GameObject shield in shields)
-            {shield.SetActive(false);}
-            uIManager.ChangeWeaponSpriteAbility(0);
-            if (currentWeapon!=0) 
-            {
+            // currentWeaponFirstHand = inventory.GetWeaponSelected(0);
+            // foreach (GameObject shield in shields)
+            // {shield.SetActive(false);}
+            // uIManager.ChangeWeaponSpriteAbility(0);
+            // if (currentWeapon!=0) 
+            // {
             
-            currentWeapon = 0;
-            PlayWeaponChangeAnimation(AnimNamesPlayer.DrawSword);
-            PlayWeaponChangeSound();
+            // currentWeapon = 0;
+            // PlayWeaponChangeAnimation(AnimNamesPlayer.DrawSword);
+            // PlayWeaponChangeSound();
+            // }
+            if (TryGetComponent<PlayerInventory>(out PlayerInventory playerInventory))
+            {
+                int slot = 21;
+                try {
+                playerInventory.UseItem(slot);
+                }catch{
+                Debug.Log("No item in slot");
+                }
             }
         }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (TryGetComponent<PlayerInventory>(out PlayerInventory playerInventory))
+            {
+                int slot = 20;
+                try {
+                playerInventory.UseItem(slot);
+                }catch{
+                Debug.Log("No item in slot");
+                }
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             CloseUIInteraction();
@@ -334,7 +358,7 @@ public class Player : MonoBehaviour
     {
         if (playerInventoryUIManager.isUIOpen)
         {
-        playerInventoryUIManager.gameObject.SetActive(false);
+        inventoryUI.gameObject.SetActive(false);
         playerInventoryUIManager.isUIOpen=false;
         }
         StartCoroutine(CallCloseInteraction(0.1f));
@@ -347,6 +371,16 @@ public class Player : MonoBehaviour
         RemoveStun();   
         
     }
+    public void DisableClick()
+    {
+        canClick = false;
+    }
+    public void EnableClick()
+    {
+        canClick = true;
+    }
+
+
    
 
 }

@@ -6,6 +6,7 @@ public class PlayerInventoryUIManager : MonoBehaviour
     List <Button> buttons; 
     [SerializeField] GameObject panel;
     [SerializeField] GameObject playerInventoryUI;
+    [SerializeField] GameObject quickAcessInventory;
     [SerializeField] Inventory inventory;
     [SerializeField] GameObject player;
     int slotOriginIndex;
@@ -82,7 +83,7 @@ public class PlayerInventoryUIManager : MonoBehaviour
     {
         buttons = new List<Button>();
         Transform parent = panel.transform;
-
+        
         for (int i = 0; i < parent.childCount; i++)
         {
             Transform child = parent.GetChild(i);
@@ -93,6 +94,17 @@ public class PlayerInventoryUIManager : MonoBehaviour
                 inventoryButtons.UpdateImage(null);
                 inventoryButtons.slotImage.enabled = false;
             }
+        }
+        for (int i = 0; i < quickAcessInventory.transform.childCount; i++)
+        {
+            Transform child = quickAcessInventory.transform.GetChild(i);
+            Button button = child.GetComponent<Button>();
+            buttons.Add(button);
+            if (button.TryGetComponent(out InventoryButtons inventoryButtons))
+            {
+                inventoryButtons.UpdateImage(null);
+                inventoryButtons.slotImage.enabled = false;
+            }   
         }
     }
 
