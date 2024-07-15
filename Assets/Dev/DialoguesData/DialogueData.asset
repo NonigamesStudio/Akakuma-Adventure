@@ -16,15 +16,16 @@ MonoBehaviour:
   - id: 0
     dialogos:
     - idOfWhoTalk: 125
-      conversationString: Hola
+      conversationString: OUCH...
     - idOfWhoTalk: 20
-      conversationString: Hola como estas?
+      conversationString: Is... Is someone in there?
     - idOfWhoTalk: 125
-      conversationString: Bien y vos?
+      conversationString: Ouch... eh... hey! Welcome to your training.
     - idOfWhoTalk: 20
-      conversationString: Bien que contas de nuevo
+      conversationString: Are you ok? I didn't see you there.
     - idOfWhoTalk: 125
-      conversationString: No se nada a re loco alsdjkfhalsdhjf
+      conversationString: I'm used to it! Follow the instructions to get ready for
+        your missions!
   - id: 1
     dialogos:
     - idOfWhoTalk: 125
