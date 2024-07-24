@@ -206,7 +206,7 @@ public class Player : MonoBehaviour
                 try {
                 playerInventory.UseItem(slot);
                 }catch{
-                Debug.Log("No item in slot");
+              
                 }
             }
         }
@@ -218,7 +218,7 @@ public class Player : MonoBehaviour
                 try {
                 playerInventory.UseItem(slot);
                 }catch{
-                Debug.Log("No item in slot");
+               
                 }
             }
         }
@@ -319,15 +319,17 @@ public class Player : MonoBehaviour
         if (sec == 0) return;
         LeanTween.delayedCall(sec, () => { isStuned = false; });
     }
-    public void RemoveStun()
+    public void RemoveStun(float afterSeconds=0)
     {
+        LeanTween.delayedCall(afterSeconds, () => { 
         rb.velocity = Vector2.zero;
         isStuned = false;
         if (interactingObject != null)
         {
             interactingObject.OnCloseInteraction -= CloseUIInteraction;
             interactingObject = null;
-        }
+        } });
+        
     }
     private void PlayWeaponChangeSound()
     {

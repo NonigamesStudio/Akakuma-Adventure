@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.79245806, g: 0.79244775, b: 0.7924447, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276788, g: 0.21589147, b: 0.29782534, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.1341472, b: 0.121078566, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1011,6 +1011,16 @@ MonoBehaviour:
   loadingScreen: {fileID: 1998026073}
   loadingBar: {fileID: 1683916867}
   managerCamera: {fileID: 815208792}
+  inventories:
+  - inventoryStart: {fileID: 11400000, guid: 8fddd3c00cdae49a690356b450513b0b, type: 2}
+    inventoryRutimeBackup: {fileID: 11400000, guid: 776b19f3863aa41b1839f6fa90e93324,
+      type: 2}
+  - inventoryStart: {fileID: 11400000, guid: a19aca8b5ef2d4b0ca68db773aece011, type: 2}
+    inventoryRutimeBackup: {fileID: 11400000, guid: 2656583754a4044dfa7cc894c0d8fe15,
+      type: 2}
+  - inventoryStart: {fileID: 11400000, guid: 2f293461533514432934266f0ff10065, type: 2}
+    inventoryRutimeBackup: {fileID: 11400000, guid: f121971d58ba44282a335f4a5ab0ab6d,
+      type: 2}
 --- !u!4 &1904410285
 Transform:
   m_ObjectHideFlags: 0

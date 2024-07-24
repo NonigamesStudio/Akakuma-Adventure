@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515ef50b4700141209ac8b504efc2de7, type: 3}
+  m_Name: ShopDev1Start
+  m_EditorClassIdentifier: 
+  inventorySize: 20
+  soulsCount: 100
+  items:
+  - item: {fileID: 11400000, guid: 58b73a4f978fd49b6946fec47a8b0c27, type: 2}
+    slotNumber: 0
+  - item: {fileID: 11400000, guid: 58b73a4f978fd49b6946fec47a8b0c27, type: 2}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0
+  - item: {fileID: 0}
+    slotNumber: 0

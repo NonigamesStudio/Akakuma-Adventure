@@ -121,7 +121,7 @@ public class DayAndNightCycle : MonoBehaviour
     void CheckShadowStatus()
     {
         float currentSunRotation = currentTime;
-         if (isRaining)
+        if (isRaining)
         {
             float lerpTime = 0;
             float lerpSpeed = 1f;

@@ -30,7 +30,10 @@ public class UIManager : MonoBehaviour
     {
         EnemyController.OnEnemyDeath += UpdateBarProgressWave;
         EnemyController.OnChangeWave += RestarBarProgressWave;
-        bossH.OnDeath += WinPanel;
+        if (bossH != null)
+        {
+            bossH.OnDeath += WinPanel;
+        }
         playerH.OnDeath += LosePanel;
         playerH.OnLifeChange += UpdateHealthUI;
         //Coin.OnCoinCollected -= UpdateCoinsUI;
@@ -48,7 +51,10 @@ public class UIManager : MonoBehaviour
     {
         EnemyController.OnEnemyDeath -= UpdateBarProgressWave;
         EnemyController.OnChangeWave -= RestarBarProgressWave;
-        bossH.OnDeath -= WinPanel;
+        if (bossH != null)
+        {
+            bossH.OnDeath -= WinPanel;
+        }
         playerH.OnDeath -= LosePanel;
         //Coin.OnCoinCollected -= UpdateCoinsUI;
         playerInventory.OnItemListChange += UpdateCoinsUI;
