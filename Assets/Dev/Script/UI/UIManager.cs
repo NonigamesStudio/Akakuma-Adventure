@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject weaponGO;
     [SerializeField] List<Sprite> weaponSprite;
 
+    [SerializeField] GameObject pruebaPortal;
+
     int hpThreshold;
     //int score;
 
@@ -80,18 +82,16 @@ public class UIManager : MonoBehaviour
 
     void WinPanel()
     {
-        panelWin.SetActive(true);
-        Time.timeScale = 0;
+        //panelWin.SetActive(true); descomentar luego prueba portal
+        // Time.timeScale = 0;
+        pruebaPortal.SetActive(true);
     }
     void LosePanel()
     {
-       
         LeanTween.delayedCall(3, () => {
             panelLose.SetActive(true);
             Time.timeScale = 0;
         });
-        
-
     }
 
     void UpdateHealthUI(Transform player)

@@ -29,8 +29,8 @@ public class MainMenuUI : MonoBehaviour, SceneChanger
             AudioManager.instance.SetMenuMusicEnd();
             animCutOff.Play("RTransitionImgAnim");
             LeanTween.delayedCall(2f, () => { 
-            ChangeScenes(GameManager.scenes.DevIsla2, new List<GameManager.scenes> {
-                GameManager.scenes.DevIsla2,GameManager.scenes.ArtIsla2}/*, new List<GameManager.scenes> {
+            ChangeScenes(GameManager.scenes.DevIsla1, new List<GameManager.scenes> {
+                GameManager.scenes.DevIsla1,GameManager.scenes.ArtIsla1}/*, new List<GameManager.scenes> {
                 GameManager.scenes.MainMenu}*/);
             });
         }
