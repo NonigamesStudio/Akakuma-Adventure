@@ -6,10 +6,10 @@ public class PlayerInventory : Inventory
 {
     
     [SerializeField] GameObject quickAccessInventory;
-    void Start()
+    
+    void Awake()
     {
-        inventorySize=22;
-        InitializeSlots();
+        inventorySize=22;   
     }
     public void HideQuickAccessInventory()
     {
@@ -19,5 +19,5 @@ public class PlayerInventory : Inventory
     {
         quickAccessInventory.SetActive(true);
     }
-
+    
 }

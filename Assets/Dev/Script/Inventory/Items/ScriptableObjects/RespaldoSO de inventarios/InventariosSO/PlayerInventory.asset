@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515ef50b4700141209ac8b504efc2de7, type: 3}
+  m_Name: PlayerInventory
+  m_EditorClassIdentifier: 
+  inventorySize: 22
+  soulsCount: 4
+  items:
+  - item: {fileID: 11400000, guid: 9757ec74621384d72ab66fd1ec061290, type: 2}
+    slotNumber: 0
+  - item: {fileID: 11400000, guid: 5f5969af8981a4b63b028a336196fbf3, type: 2}
+    slotNumber: 1
+  - item: {fileID: 0}
+    slotNumber: 2
+  - item: {fileID: 0}
+    slotNumber: 3
+  - item: {fileID: 0}
+    slotNumber: 4
+  - item: {fileID: 0}
+    slotNumber: 5
+  - item: {fileID: 0}
+    slotNumber: 6
+  - item: {fileID: 0}
+    slotNumber: 7
+  - item: {fileID: 0}
+    slotNumber: 8
+  - item: {fileID: 0}
+    slotNumber: 9
+  - item: {fileID: 0}
+    slotNumber: 10
+  - item: {fileID: 0}
+    slotNumber: 11
+  - item: {fileID: 0}
+    slotNumber: 12
+  - item: {fileID: 0}
+    slotNumber: 13
+  - item: {fileID: 0}
+    slotNumber: 14
+  - item: {fileID: 0}
+    slotNumber: 15
+  - item: {fileID: 0}
+    slotNumber: 16
+  - item: {fileID: 0}
+    slotNumber: 17
+  - item: {fileID: 0}
+    slotNumber: 18
+  - item: {fileID: 0}
+    slotNumber: 19
+  - item: {fileID: 0}
+    slotNumber: 20
+  - item: {fileID: 0}
+    slotNumber: 21

@@ -11,6 +11,7 @@ public class ShopInteraction :MonoBehaviour, Interactable
     [SerializeField] Inventory inventory;
     private bool isTransactionOpen;
     [SerializeField] Player player;
+    PlayerInventory playerInventory;
     public InteractableType interactableType {get =>InteractableType.Shop; }
 
     public void OnEnable()
@@ -19,18 +20,17 @@ public class ShopInteraction :MonoBehaviour, Interactable
 
         if (player.TryGetComponent<PlayerInventory>(out PlayerInventory playerInventory))    
         {
-            OnOpenInteraction += playerInventory.HideQuickAccessInventory;
-            OnCloseInteraction += playerInventory.ShowQuickAccessInventory;
+            this.playerInventory=playerInventory;   
         }
+        OnOpenInteraction += playerInventory.HideQuickAccessInventory;
+        OnCloseInteraction += playerInventory.ShowQuickAccessInventory;
     }
     public void OnDisable()
     {
         player.OnSCPPress -= CloseInteraction;
-        if (player.TryGetComponent<PlayerInventory>(out PlayerInventory playerInventory))    
-        {
-            OnOpenInteraction -= playerInventory.HideQuickAccessInventory;
-            OnCloseInteraction -= playerInventory.ShowQuickAccessInventory;
-        }
+        OnOpenInteraction -= playerInventory.HideQuickAccessInventory;
+        OnCloseInteraction -= playerInventory.ShowQuickAccessInventory;
+        
     }
     public void Interact()
     {

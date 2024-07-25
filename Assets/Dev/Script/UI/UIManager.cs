@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject weaponGO;
     [SerializeField] List<Sprite> weaponSprite;
 
+    [SerializeField] GameObject pruebaPortal;
+
     int hpThreshold;
     //int score;
 
@@ -30,7 +32,10 @@ public class UIManager : MonoBehaviour
     {
         EnemyController.OnEnemyDeath += UpdateBarProgressWave;
         EnemyController.OnChangeWave += RestarBarProgressWave;
-        bossH.OnDeath += WinPanel;
+        if (bossH != null)
+        {
+            bossH.OnDeath += WinPanel;
+        }
         playerH.OnDeath += LosePanel;
         playerH.OnLifeChange += UpdateHealthUI;
         //Coin.OnCoinCollected -= UpdateCoinsUI;
@@ -48,7 +53,10 @@ public class UIManager : MonoBehaviour
     {
         EnemyController.OnEnemyDeath -= UpdateBarProgressWave;
         EnemyController.OnChangeWave -= RestarBarProgressWave;
-        bossH.OnDeath -= WinPanel;
+        if (bossH != null)
+        {
+            bossH.OnDeath -= WinPanel;
+        }
         playerH.OnDeath -= LosePanel;
         //Coin.OnCoinCollected -= UpdateCoinsUI;
         playerInventory.OnItemListChange += UpdateCoinsUI;
@@ -74,18 +82,16 @@ public class UIManager : MonoBehaviour
 
     void WinPanel()
     {
-        panelWin.SetActive(true);
-        Time.timeScale = 0;
+        //panelWin.SetActive(true); descomentar luego prueba portal
+        // Time.timeScale = 0;
+        pruebaPortal.SetActive(true);
     }
     void LosePanel()
     {
-       
         LeanTween.delayedCall(3, () => {
             panelLose.SetActive(true);
             Time.timeScale = 0;
         });
-        
-
     }
 
     void UpdateHealthUI(Transform player)

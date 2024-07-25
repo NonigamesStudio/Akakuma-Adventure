@@ -14,7 +14,7 @@ public class DialogueTest : MonoBehaviour
 {
     public static DialogueTest instance;
 
-    public DialogueScriptable dialogueScriptable;
+    [SerializeField] DialogueScriptable dialogueScriptable;
     [SerializeField] List<SpriteByIdData> spriteDic;
     [SerializeField] Player player;
 
@@ -197,10 +197,7 @@ public class SpriteByIdData
     public Sprite sprite;
 }
 
-public class DialogueScriptable:ScriptableObject
-{
-    public List<DialogueData> dialogueDataList = new List<DialogueData>();
-}
+
 
 
 

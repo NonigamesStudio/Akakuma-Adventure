@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Isla 1 Scenas/DevIsla1.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Isla 2 Scenas/ArtIsla2.unity
+    guid: eea9b4649f7ed41a0ba1cc9e984e0916
+  - enabled: 1
+    path: Assets/Scenes/Isla 2 Scenas/DevIsla2.unity
+    guid: 6bf25f7e59ab5384496b7323ead7abfe
   m_configObjects: {}

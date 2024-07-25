@@ -1,22 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class Inventory : MonoBehaviour
 {
-    public event Action OnItemListChange;
+    [SerializeField] InventorySO inventoryData;
+    public Action OnItemListChange;
+    public Action<Inventory> OnItemListChangeToSO;
     public int inventorySize=20;
     public int soulsCount;
     public List<ItemSlot> items = new List<ItemSlot>();
+    
 
     void OnEnable()
     {
         Coin.OnCoinCollected += UpdateCoins;
+        OnItemListChangeToSO += inventoryData.CopyItemsFromInventory;
+        GameManager.instance.OnSceneChange += WriteSO;
         InitializeSlots();
+        
     }
     void OnDisable()
     {
         Coin.OnCoinCollected -= UpdateCoins;
+        OnItemListChangeToSO -= inventoryData.CopyItemsFromInventory;
+        GameManager.instance.OnSceneChange -= WriteSO;
     }
     public void InitializeSlots()
     {
@@ -24,6 +33,12 @@ public class Inventory : MonoBehaviour
         {
             items.Add(new ItemSlot(null, i));
         }
+        if (items.Count==inventorySize)
+        {
+            
+           CopyItemsFromSO(inventoryData);
+        }
+        
     }
     private void UpdateCoins()
     {
@@ -69,9 +84,10 @@ public class Inventory : MonoBehaviour
         OnItemListChange?.Invoke();
     }
 
-    public void RemoveSouls(int souls)
+    public void AddSouls(int souls)
     {
-        soulsCount -= souls;
+        soulsCount += souls;
+        OnItemListChange?.Invoke();
     }
 
     public bool CheckFreeSlot()
@@ -98,9 +114,56 @@ public class Inventory : MonoBehaviour
             }
         }
    }
+
+    private void WriteSO()
+    {
+        OnItemListChangeToSO?.Invoke(this);
+    }
+
+    public void CopyItemsFromSO(InventorySO inventoryData)
+    {
+       
+        if (inventoryData == null) return;
+       
+        if (soulsCount != inventoryData.soulsCount) soulsCount = inventoryData.soulsCount;
+        if (!(this is PlayerInventory))
+        {
+            
+        }
+
+        if (inventoryData.items != null && inventoryData.items.Length == items.Count)
+        {
+            
+            for (int i = 0; i < inventoryData.items.Length; i++)
+            {
+                
+                if (inventoryData.items[i] != null)
+                {
+                    items[i].item = inventoryData.items[i].item;
+                    
+                }
+                else
+                {
+                    items[i].item = null;
+                }
+            }
+        }else{
+           
+            Debug.LogError("Para " + this.ToString()+ "El inventario tiene "+items.Count+" slots y el SO tiene "+inventoryData.items.Length+" slots");
+        }
+        OnItemListChange?.Invoke();
+    }
+
+    [ContextMenu("Save Inventory")]
+    void SaveInventory()
+    {
+        inventoryData.CopyItemsFromInventory(this);
+    }
+
+
 }
 
-//[System.Serializable]
+[System.Serializable]
 public class ItemSlot
 {
     public ItemSO item;
@@ -111,3 +174,5 @@ public class ItemSlot
         this.slotNumber = slotNumber;
     }
 }
+
+

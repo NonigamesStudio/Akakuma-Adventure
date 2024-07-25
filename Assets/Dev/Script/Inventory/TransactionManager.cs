@@ -359,8 +359,12 @@ public class TransactionManager : MonoBehaviour
                     
                 }
             }
-            playerInventory.soulsCount+=GetTotalSoulsInTransaction();
-            Debug.Log(playerInventory.soulsCount);
+            // playerInventory.soulsCount+=GetTotalSoulsInTransaction();
+            playerInventory.AddSouls(GetTotalSoulsInTransaction());
+            if (shopInventory != null)
+            {
+                shopInventory.AddSouls(GetTotalSoulsInTransaction()*-1);
+            }
             itemsInTransactionPlayer.Clear();
             itemsInTransactionShop.Clear();
             OnTransactionEnds?.Invoke();
