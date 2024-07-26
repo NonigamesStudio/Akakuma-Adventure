@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.79245806, g: 0.79244775, b: 0.7924447, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.7242346, g: 0.8168212, b: 0.8773585, a: 1}
   m_AmbientGroundColor: {r: 0.24528301, g: 0.1901329, b: 0.07983268, a: 1}
   m_AmbientIntensity: 1
@@ -9365,7 +9365,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.99993247
+    m_Strength: 0.99994546
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -21583,7 +21583,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cf2ff787cfe6eac49a1c794fdc9ced8b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf2ff787cfe6eac49a1c794fdc9ced8b,
         type: 3}
@@ -26734,6 +26734,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: efb6c8dafac311a48bd0c2625d3f0a77, type: 3}
   - {fileID: 21300000, guid: 5275b6b99d1f7dd4a8f7aae74a3ed6e3, type: 3}
   - {fileID: 21300000, guid: 6c23a369c03a61c468cde6d1bc1b528f, type: 3}
+  pruebaPortal: {fileID: 0}
   transitionUI: {fileID: 1656518355}
 --- !u!1 &1187116099
 GameObject:
@@ -35205,7 +35206,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f3d5a958f0f6af14494ca15cb90c50ad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3d5a958f0f6af14494ca15cb90c50ad,
         type: 3}
@@ -42528,16 +42529,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758398442}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.08, y: -1.47, z: 109.14819}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: -0.26891974, z: 0, w: 0.9631626}
+  m_LocalPosition: {x: -36.4, y: 3.4, z: 84.1}
+  m_LocalScale: {x: 0.76, y: 0.76, z: 0.76}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 314686045}
   - {fileID: 1718501997}
   - {fileID: 1755881407}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -31.2, z: 0}
 --- !u!1 &1799277080
 GameObject:
   m_ObjectHideFlags: 0
