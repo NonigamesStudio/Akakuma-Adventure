@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
+using System.Threading;
 using System.Threading.Tasks;
 using Cinemachine;
 using UnityEditor;
@@ -33,7 +34,9 @@ public class DialogueTest : MonoBehaviour
 
 
     int indexLastTalked;
-    
+
+
+    CancellationTokenSource ct;
 
     private void Awake()
     {
@@ -85,6 +88,11 @@ public class DialogueTest : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) ct.Cancel();
+    }
+
 
     public void PlayDialogue(int Id, Transform npctransform)
     {
@@ -109,9 +117,10 @@ public class DialogueTest : MonoBehaviour
         
         int index = 0;
 
-        while(index != dialogue.dialogos.Count)
+        
+        while (index != dialogue.dialogos.Count)
         {
-
+            ct = new CancellationTokenSource();
             if (dialogue.dialogos[index].idOfWhoTalk != indexLastTalked)
             {
                 if (dialogue.dialogos[index].idOfWhoTalk == 1) //1 es akakuma
@@ -120,7 +129,7 @@ public class DialogueTest : MonoBehaviour
                     spriteDialogue.sprite = FindSpriteById(dialogue.dialogos[index].idOfWhoTalk);
             }//Busca por id el sprite que se va a mostrar en la UI
 
-            await AnimMovingText(dialogue.dialogos[index].conversationString); //Hace que el texto se vaya escribiendo solo
+            await AnimMovingText(dialogue.dialogos[index].conversationString, ct.Token); //Hace que el texto se vaya escribiendo solo
 
             index++; //Indice necesario para pasar a la siguiente conversacion
 
@@ -172,14 +181,17 @@ public class DialogueTest : MonoBehaviour
 
     }
 
-   async Task AnimMovingText(string conversation)
+   async Task AnimMovingText(string conversation,  CancellationToken token)
     {
         conversation_txt.text = "";
         foreach (char item in conversation)
         {
+            if (token.IsCancellationRequested) break;
             conversation_txt.text += item;
             await Task.Delay (50);
         }
+
+        if (token.IsCancellationRequested) conversation_txt.text = conversation;
     }
 
 }
