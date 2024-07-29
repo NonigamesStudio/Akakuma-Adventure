@@ -1,15 +1,46 @@
 *,
 0,
-
-125,OUCH...
-20,Is... Is someone in there?
-125,Ouch... eh... hey! Welcome to your training.
-20,Are you ok? I didn't see you there.
-125,I'm used to it! Follow the instructions to get ready for your missions!
+1,"Aku: ¡Hola! Oye, mira. Encontré estos objetos y quisiera saber su valor. (pone sobre la mesa unos cristales de Luz Lunar)"
+2,Mercader: Oh! ¡Pero si son cristales de Luz Lunar! (elevó su voz)
+1,"Aku: Ah, si?"
+2,Mercader: (empieza a tocarse los bolsillos) ¿Cu - cuánto quieres por ellos? (preguntó tembloroso).
+1,Aku: Eh.. no lo sé… esperaba que tú me dijeras (se ríe tímidamente)
+2,Mercader: ¡¡TE OFREZCO 20 “RENS” !! (grita)
+1,Aku: Qu-que queee?? Si!! acepto!
 ,
 *,
 1,
-125,Ese bizcocho estaba rancio 
-20,Pinta mi cerca
-125,Obligame
-20,kajsdfhajksdfhakdsf
+3,Guardian: (completamente dormido) Zzzz…
+1,Aku: O - oye! Con permiso.
+3,Guardian: Zzz- - - eh.. eh ¿Quién anda ahí?
+1,Aku: (mira sorprendido y un poco risueño)
+3,"Guardián: (salta del susto) Pe - pero si es Aku! (se pone en posición firme, como un soldado) ¿Ya emprendes hacia tu aventura? (preguntó tímidamente)"
+1,Aku: Si! Ya estoy listo
+3,Guardian: Mucha suerte Aku!
+,
+*,
+2,
+1,"Aku: Buenos días, señor herrero. He venido a encargarle una espada."
+4,"Herrero: (Observa a Aku con detenimiento) Buenos días, joven. ¿Para qué tipo de aventura necesitas una espada?"
+1,"Aku: Emprendo un viaje a los Viejos Bosques, un lugar lleno de peligros y criaturas fantásticas. Necesito un arma que me proteja y me ayude a superar los obstáculos que me esperan."
+4,"Herrero: (Asiente con la cabeza) Entiendo. Los Viejos Bosques es un lugar temido, incluso por los guerreros más experimentados. Para forjar una espada digna de tal desafío, necesito conocer tu estilo de combate y las características que deseas."
+1,"Aku: Soy rápido y ágil. Me gustaría una espada liviana, pero que no sacrifique su resistencia."
+4,"Herrero: (Sonríe) De acuerdo, joven Aku. Utilizaré el mejor acero que tengo y le daré forma a una espada que se adapte perfectamente a tu estilo. Pero ten en cuenta que una espada no solo es un arma, sino también un símbolo de tu valor y tu espíritu."
+0,-- Un rato despues--
+4,"Herrero: (Le muestra una hermosa espada, con una empuñadura de cuero y una hoja reluciente) Aquí está, Aku. Esta espada ha sido forjada con el fuego de mi pasión y el temple de tu determinación. Que te proteja en tus batallas y te lleve a la victoria."
+1,"Aku: (Toma la espada con reverencia) Es perfecta, señor herrero. Gracias por su trabajo."
+4,"Herrero: (Sonríe) No hay de qué, Aku. Recuerda que la verdadera fuerza reside en tu corazón, no en tu espada. Úsala con sabiduría y justicia."
+0,"(Aku sale de la herrería, empuñando su nueva espada con orgullo y决心, listo para enfrentar los desafíos que le esperan en la Isla Perdida)"
+,
+*,
+3,
+0,"(Aku pasea por el bullicioso mercado de su pueblo sin rumbo, proximo a el, un tendero regordete lo saluda con una sonrisa, buscando ofrecerle algo llamativo)"
+5,"Tendero: ¡Bienvenido a mi tienda, joven aventurero! ¿En qué puedo ayudarte?"
+1,"Aku: Busco provisiones para mi viaje a los Viejs Bosques. Un lugar salvaje y desconocido, donde dicen que la comida escasea."
+5,"Tendero: (Frotándose las manos con entusiasmo) ¡Ah, Los Viejos Bosques! Un lugar lleno de misterios y peligros. No te preocupes, tengo todo lo que necesitas para sobrevivir en tu travesía."
+1,"Aku: Me alegro de escucharlo. Necesito alimentos que no se echen a perder fácilmente, como conservas, frutos secos y pan duro. También necesito agua potable y algunos utensilios para cocinar."
+5,"Tendero: (Comienza a llenar una bolsa con los productos que Aku solicita) ¡Excelente elección! Además, te recomiendo llevar algunas especias para darle sabor a tu comida, y un botiquín de primeros auxilios por si acaso."
+1,Aku: Buena idea. ¿Tiene algo más que me pueda ser útil?
+5,"Tendero: (Le muestra un mapa antiguo) Mira este mapa, joven Aku. Aunque los Viejos Bosques pueden ser un lugar poco conocido, este mapa te ayudará a orientarte y evitar algunos peligros."
+1,Aku: (Examina el mapa con atención) ¡Es perfecto! Muchas gracias por su ayuda!!!
+5,"Tendero: (Sonríe) No hay de qué, joven aventurero. Espero que tengas un viaje seguro y exitoso. Y recuerda, si necesitas algo más en tu regreso, no dudes en visitarme.(rie abiertamente)"
