@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
+using System.Threading;
 using System.Threading.Tasks;
 using Cinemachine;
 using UnityEditor;
@@ -22,6 +23,7 @@ public class DialogueTest : MonoBehaviour
     [Header("Refs UI")]
     [SerializeField] GameObject panelDialogue;
     [SerializeField] Image spriteDialogue;
+    [SerializeField] Image spriteDialoguePlayer;
     [SerializeField] TextMeshProUGUI conversation_txt;
     [Space(10)]
     [Header("Refs Camera")]
@@ -30,7 +32,11 @@ public class DialogueTest : MonoBehaviour
     CinemachineOrbitalTransposer transposer;
     [SerializeField] CinemachineTargetGroup targetGroup;
 
-    
+
+    int indexLastTalked;
+
+
+    CancellationTokenSource ct;
 
     private void Awake()
     {
@@ -40,12 +46,15 @@ public class DialogueTest : MonoBehaviour
         transposer = dialogueCamera.GetCinemachineComponent<CinemachineOrbitalTransposer>();
     }
 
+    private void Start()
+    {
+        dialogueScriptable = Resources.Load<DialogueScriptable>("DialogueScriptable");
+    }
+
     [ContextMenu("Create Dialogue Data Scriptable")]
     void LoadDialogues() //Crea el ScriptableObject con la info de las conversaciones, esto va a servir para crear un scriptable por escena 
     {
-        dialogueScriptable = (DialogueScriptable)ScriptableObject.CreateInstance<DialogueScriptable>();
         ConvertCsvFile("Assets/Resources/Dialogos.csv");
-        AssetDatabase.CreateAsset(dialogueScriptable, "Assets/Dev/DialoguesData/DialogueData.asset");
     }
 
     public void ConvertCsvFile(string path)
@@ -79,7 +88,10 @@ public class DialogueTest : MonoBehaviour
         }
     }
 
-
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) ct.Cancel();
+    }
 
 
     public void PlayDialogue(int Id, Transform npctransform)
@@ -105,22 +117,28 @@ public class DialogueTest : MonoBehaviour
         
         int index = 0;
 
-        while(index != dialogue.dialogos.Count)
+        
+        while (index != dialogue.dialogos.Count)
         {
+            ct = new CancellationTokenSource();
+            if (dialogue.dialogos[index].idOfWhoTalk != indexLastTalked)
+            {
+                if (dialogue.dialogos[index].idOfWhoTalk == 1) //1 es akakuma
+                    spriteDialoguePlayer.sprite = FindSpriteById(dialogue.dialogos[index].idOfWhoTalk);
+                else
+                    spriteDialogue.sprite = FindSpriteById(dialogue.dialogos[index].idOfWhoTalk);
+            }//Busca por id el sprite que se va a mostrar en la UI
 
-            spriteDialogue.sprite = FindSpriteById(dialogue.dialogos[index].idOfWhoTalk); //Busca por id el sprite que se va a mostrar en la UI
-
-            await AnimMovingText(dialogue.dialogos[index].conversationString); //Hace que el texto se vaya escribiendo solo
+            await AnimMovingText(dialogue.dialogos[index].conversationString, ct.Token); //Hace que el texto se vaya escribiendo solo
 
             index++; //Indice necesario para pasar a la siguiente conversacion
 
             await WaitToClickToCotinueDialogue(); //espera el click y pasar al siguiente texto
 
-            //Esto no va aca, es la aniacion de la camara para se mueva cuando hablan
-            if (transposer.m_XAxis.Value == -20) LeanTween.value(gameObject, -20, 160, 0.5f).setEaseOutQuint().setOnUpdate((float value) => { transposer.m_XAxis.Value = value; });
-            else LeanTween.value(gameObject, 160, -20, 0.5f).setEaseOutQuint().setOnUpdate((float value) => { transposer.m_XAxis.Value = value; });
-        }
+            // es la aniacion de la camara para se mueva cuando hablan
+            AnimCamera(dialogue, index);
 
+        }
         //End of dialogue
         player.enabled = true;// cambiar esto
         cameraAnimator.Play("NormalCamera");
@@ -128,13 +146,25 @@ public class DialogueTest : MonoBehaviour
         ToggleDialoguePanelAnim(false);
     }
 
-     async Task WaitToClickToCotinueDialogue()
+    private void AnimCamera(DialogueData dialogue, int index)
+    {
+        if (index > dialogue.dialogos.Count - 1) index = dialogue.dialogos.Count - 1;
+        if (dialogue.dialogos[index].idOfWhoTalk != indexLastTalked)
+        {
+            if (transposer.m_XAxis.Value == -20) LeanTween.value(gameObject, -20, -80, 0.5f).setEaseOutQuint().setOnUpdate((float value) => { transposer.m_XAxis.Value = value; });
+            else LeanTween.value(gameObject, -120, -20, 0.5f).setEaseOutQuint().setOnUpdate((float value) => { transposer.m_XAxis.Value = value; });
+        }
+    }
+
+    async Task WaitToClickToCotinueDialogue()
      {
         while (!Input.GetMouseButtonDown(0)) await Task.Yield();
      }
 
     Sprite FindSpriteById(int id)
     {
+        indexLastTalked = id;
+
         foreach (var item in spriteDic)
         {
             if (item.id == id) return item.sprite;
@@ -151,14 +181,17 @@ public class DialogueTest : MonoBehaviour
 
     }
 
-   async Task AnimMovingText(string conversation)
+   async Task AnimMovingText(string conversation,  CancellationToken token)
     {
         conversation_txt.text = "";
         foreach (char item in conversation)
         {
+            if (token.IsCancellationRequested) break;
             conversation_txt.text += item;
             await Task.Delay (50);
         }
+
+        if (token.IsCancellationRequested) conversation_txt.text = conversation;
     }
 
 }

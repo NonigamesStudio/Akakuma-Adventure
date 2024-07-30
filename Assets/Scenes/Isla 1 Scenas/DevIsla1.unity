@@ -14053,51 +14053,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 790110181883886470, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3342573227837360736, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3495250135734883518, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3495250135734883518, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3495250135734883518, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3495250135734883518, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -1430.5585
-      objectReference: {fileID: 0}
-    - target: {fileID: 3495250135734883518, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3495250135734883518, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -715.27924
-      objectReference: {fileID: 0}
-    - target: {fileID: 3495250135734883518, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
         type: 3}
       propertyPath: player
@@ -14118,58 +14073,10 @@ PrefabInstance:
       propertyPath: dialogueCamera
       value: 
       objectReference: {fileID: 1483648877}
-    - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: dialogueScriptable
-      value: 
-      objectReference: {fileID: 11400000, guid: 8167435c681ecba4aa3479f747612de4,
-        type: 2}
-    - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: spriteDic.Array.data[0].sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ea14367178af14b709ac93df65fef569,
-        type: 3}
-    - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: spriteDic.Array.data[1].sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cfcb57c71c2ff462b8e11f529573a2e8,
-        type: 3}
-    - target: {fileID: 4679048862459263173, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 363.8959
-      objectReference: {fileID: 0}
     - target: {fileID: 4884046496442015159, guid: 876b54393a84e0948ae1579411c63265,
         type: 3}
       propertyPath: m_Name
       value: DialogueSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 8922064362856852208, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8922064362856852208, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8922064362856852208, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8922064362856852208, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -460.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8922064362856852208, guid: 876b54393a84e0948ae1579411c63265,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
