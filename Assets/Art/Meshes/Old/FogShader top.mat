@@ -42,9 +42,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.5
+    - _Alpha: 0.6
     - _Degradado: 18.5
-    - _DistanciaDegradado: 2.62
+    - _DistanciaDegradado: 1.27
     - _Float: 7.9
     - _Float_1: 0.3
     - _Float_2: 65.9
