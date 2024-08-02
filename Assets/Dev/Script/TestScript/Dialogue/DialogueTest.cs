@@ -31,6 +31,7 @@ public class DialogueTest : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera dialogueCamera;
     CinemachineOrbitalTransposer transposer;
     [SerializeField] CinemachineTargetGroup targetGroup;
+    public bool isDialogueOpen;
 
 
     int indexLastTalked;
@@ -90,12 +91,14 @@ public class DialogueTest : MonoBehaviour
 
     private void Update()
     {
+        if (!isDialogueOpen)return;
         if (Input.GetMouseButtonDown(0)) ct.Cancel();
     }
 
 
     public void PlayDialogue(int Id, Transform npctransform)
     {
+        isDialogueOpen=true;
         targetGroup.AddMember(npctransform,1,2);
 
         ToggleDialoguePanelAnim(true);
@@ -140,6 +143,7 @@ public class DialogueTest : MonoBehaviour
 
         }
         //End of dialogue
+        isDialogueOpen = false;
         player.enabled = true;// cambiar esto
         cameraAnimator.Play("NormalCamera");
         targetGroup.RemoveMember(npctransform);

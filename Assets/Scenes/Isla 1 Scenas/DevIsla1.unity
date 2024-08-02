@@ -4154,7 +4154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RequiresOpaqueTextureOption: 1
   m_CameraType: 0
   m_Cameras: []
   m_RendererIndex: -1
@@ -22995,7 +22995,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483648875}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21991171, y: 0.00000003122951, z: -0.000000007040078, w: 0.9755198}
+  m_LocalRotation: {x: 0.21991171, y: 0.000000031238518, z: -0.0000000070421082, w: 0.9755198}
   m_LocalPosition: {x: -36.48, y: 9.049999, z: -258.02002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
