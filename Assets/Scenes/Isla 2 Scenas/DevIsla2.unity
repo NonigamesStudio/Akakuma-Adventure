@@ -2736,7 +2736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3b29dcd0af8634b82b713fe94eaba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idDialogue: 0
+  idDialogue: 1
   t: {fileID: 173810274}
   playedAlready: 0
 --- !u!1 &177664286
@@ -10299,7 +10299,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.9999959
+    m_Strength: 0.99999595
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -23807,6 +23807,11 @@ PrefabInstance:
       propertyPath: t
       value: 
       objectReference: {fileID: 4729107840061979899}
+    - target: {fileID: 4785120475736729349, guid: 2086f78d05309c14287845175fac9f24,
+        type: 3}
+      propertyPath: idDialogue
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7127166925921672395, guid: 2086f78d05309c14287845175fac9f24,
         type: 3}
       propertyPath: m_Size.x
