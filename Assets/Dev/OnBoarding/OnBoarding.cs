@@ -189,6 +189,7 @@ public class OnBoarding : MonoBehaviour
 
     public void AnimDoor()
     {
+        if (door == null) return;
         LeanTween.rotateY(door, 28, 0.5f).setOnComplete(()=> { gameObject.SetActive(false); });
     }
     #endregion
