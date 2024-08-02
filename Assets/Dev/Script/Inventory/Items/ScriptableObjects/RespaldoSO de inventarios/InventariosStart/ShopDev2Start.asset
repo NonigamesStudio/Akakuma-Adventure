@@ -17,9 +17,9 @@ MonoBehaviour:
   items:
   - item: {fileID: 0}
     slotNumber: 0
-  - item: {fileID: 11400000, guid: 9757ec74621384d72ab66fd1ec061290, type: 2}
+  - item: {fileID: 0}
     slotNumber: 0
-  - item: {fileID: 11400000, guid: 58b73a4f978fd49b6946fec47a8b0c27, type: 2}
+  - item: {fileID: 0}
     slotNumber: 0
   - item: {fileID: 0}
     slotNumber: 0

@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     public int inventorySize=20;
     public int soulsCount;
     public List<ItemSlot> items = new List<ItemSlot>();
+    [SerializeField] PortalTicket portalTicket;
     
 
     void OnEnable()
@@ -125,10 +126,7 @@ public class Inventory : MonoBehaviour
         if (inventoryData == null) return;
        
         if (soulsCount != inventoryData.soulsCount) soulsCount = inventoryData.soulsCount;
-        if (!(this is PlayerInventory))
-        {
-            
-        }
+        
 
         if (inventoryData.items != null && inventoryData.items.Length == items.Count)
         {
@@ -149,6 +147,24 @@ public class Inventory : MonoBehaviour
         }else{
            
             Debug.LogError("Para " + this.ToString()+ "El inventario tiene "+items.Count+" slots y el SO tiene "+inventoryData.items.Length+" slots");
+        }
+        //agrega portal tierra si no tiene despues de copiar del SO
+        if (!(this is PlayerInventory))
+        {
+            bool hasPortalTicket = false;
+            foreach (ItemSlot itemSlot in items)
+            {
+                
+                if (itemSlot.item is PortalTicket)
+                {
+                    hasPortalTicket = true;
+                    break;
+                }
+            }
+            if (!hasPortalTicket)
+            {
+                AddItem(portalTicket);
+            }
         }
         OnItemListChange?.Invoke();
     }
