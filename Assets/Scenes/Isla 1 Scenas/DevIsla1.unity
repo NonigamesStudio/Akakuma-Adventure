@@ -14172,6 +14172,12 @@ PrefabInstance:
       propertyPath: dialogueCamera
       value: 
       objectReference: {fileID: 1483648877}
+    - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
+        type: 3}
+      propertyPath: dialogueScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: 0fad88df51b3a37489b5cfe4fc050a02,
+        type: 2}
     - target: {fileID: 4884046496442015159, guid: 876b54393a84e0948ae1579411c63265,
         type: 3}
       propertyPath: m_Name
@@ -14601,6 +14607,7 @@ MonoBehaviour:
   transactionManager: {fileID: 721598452}
   inventory: {fileID: 1186753919}
   player: {fileID: 9143734258457091764}
+  dialogueTriggerInfo: {fileID: 0}
 --- !u!114 &1186753919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22995,7 +23002,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483648875}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21991171, y: 0.000000031238518, z: -0.0000000070421082, w: 0.9755198}
+  m_LocalRotation: {x: 0.21991174, y: -0.000000011435485, z: 0.0000000025779043, w: 0.9755198}
   m_LocalPosition: {x: -36.48, y: 9.049999, z: -258.02002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
