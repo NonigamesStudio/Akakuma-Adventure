@@ -98,7 +98,9 @@ public class DialogueTest : MonoBehaviour
 
     public void PlayDialogue(int Id, Transform npctransform)
     {
-        isDialogueOpen=true;
+        spriteDialogue.sprite = null;
+        spriteDialoguePlayer.sprite = null;
+        isDialogueOpen =true;
         targetGroup.AddMember(npctransform,1,2);
 
         ToggleDialoguePanelAnim(true);
