@@ -7,6 +7,7 @@ public class DialogueTriggerInfo : MonoBehaviour, Interactable
 {
     [SerializeField] int idDialogue;
     [SerializeField] Transform t;
+    public bool playedAlready = false;
 
     public InteractableType interactableType => InteractableType.NPC;
 
@@ -15,6 +16,7 @@ public class DialogueTriggerInfo : MonoBehaviour, Interactable
     public void Interact()
     {
         DialogueTest.instance.PlayDialogue(idDialogue, t);
+        playedAlready=true;
     }
 
 }

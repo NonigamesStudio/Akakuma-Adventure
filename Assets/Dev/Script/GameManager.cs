@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         
     }
     
+    
 
     public void ChangeScenes(scenes sceneToSetActive, List<scenes> scenesLoad, List<scenes> scenesUnload=null)
     {

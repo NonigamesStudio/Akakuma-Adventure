@@ -17,9 +17,8 @@ public class Inventory : MonoBehaviour
     {
         Coin.OnCoinCollected += UpdateCoins;
         OnItemListChangeToSO += inventoryData.CopyItemsFromInventory;
-        GameManager.instance.OnSceneChange += WriteSO;
+        LeanTween.delayedCall(0.1f, () => { GameManager.instance.OnSceneChange += WriteSO; });
         InitializeSlots();
-        
     }
     void OnDisable()
     {
@@ -35,8 +34,8 @@ public class Inventory : MonoBehaviour
         }
         if (items.Count==inventorySize)
         {
-            
-           CopyItemsFromSO(inventoryData);
+            LeanTween.delayedCall(0.1f, () => { CopyItemsFromSO(inventoryData); });
+            //CopyItemsFromSO(inventoryData);
         }
         
     }
@@ -159,8 +158,6 @@ public class Inventory : MonoBehaviour
     {
         inventoryData.CopyItemsFromInventory(this);
     }
-
-
 }
 
 [System.Serializable]
@@ -174,5 +171,3 @@ public class ItemSlot
         this.slotNumber = slotNumber;
     }
 }
-
-

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class ShopInteraction :MonoBehaviour, Interactable
     private bool isTransactionOpen;
     [SerializeField] Player player;
     PlayerInventory playerInventory;
+    [SerializeField] DialogueTriggerInfo dialogueTriggerInfo=null;
     public InteractableType interactableType {get =>InteractableType.Shop; }
 
     public void OnEnable()
@@ -34,10 +36,28 @@ public class ShopInteraction :MonoBehaviour, Interactable
     }
     public void Interact()
     {
+        if (dialogueTriggerInfo!=null)
+        {
+            if(dialogueTriggerInfo.playedAlready)
+            {
+                dialogueTriggerInfo=null;
+                Interact();
+            }else
+            {
+            dialogueTriggerInfo.Interact();
+            StartCoroutine(CheckForDialogueCoroutine());
+            return;
+
+            }
+            
+        }else
+        {
         transactionManager.gameObject.SetActive(true);
         transactionManager.InitializeTransaction(inventory);
         OnOpenInteraction?.Invoke();
         isTransactionOpen=true;
+        }
+       
     }
     public void CloseInteraction()
     {
@@ -57,6 +77,15 @@ public class ShopInteraction :MonoBehaviour, Interactable
         yield return new WaitForSeconds(sec);
         OnCloseInteraction?.Invoke();   
         
+    }
+
+    IEnumerator CheckForDialogueCoroutine()
+    {
+        while(DialogueTest.instance.isDialogueOpen)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        Interact();
     }
 
 
