@@ -37,7 +37,9 @@ public class DialogueTest : MonoBehaviour
     int indexLastTalked;
 
 
-    CancellationTokenSource ct;
+    bool ct;
+
+    Coroutine coroutine;
 
     private void Awake()
     {
@@ -92,14 +94,13 @@ public class DialogueTest : MonoBehaviour
     private void Update()
     {
         if (!isDialogueOpen)return;
-        if (Input.GetMouseButtonDown(0)) ct.Cancel();
+        if (Input.GetMouseButtonDown(0)) ct = true;
     }
 
 
     public void PlayDialogue(int Id, Transform npctransform)
     {
-        spriteDialogue.sprite = null;
-        spriteDialoguePlayer.sprite = null;
+        
         isDialogueOpen =true;
         targetGroup.AddMember(npctransform,1,2);
 
@@ -107,25 +108,27 @@ public class DialogueTest : MonoBehaviour
 
         foreach (var item in dialogueScriptable.dialogueDataList)
         {
-            if (item.id == Id) { PlayDialogue(item, npctransform); return; }
+            if (item.id == Id) { StartCoroutine(PlayDialogue(item, npctransform)); return; }
             
         }
     }
 
-    async void  PlayDialogue(DialogueData dialogue, Transform npctransform)
+    IEnumerator  PlayDialogue(DialogueData dialogue, Transform npctransform)
     {
+        spriteDialogue.color = new Color32(255, 255, 255, 255);
+        spriteDialoguePlayer.color = new Color32(255, 255, 255, 255);
         player.enabled = false; // cambiar esto
         cameraAnimator.Play("DialogueCamera"); //Cambia la camera a la camara de dialogo
         transposer.m_XAxis.Value = -20;
 
-        await Task.Delay(300);
+        yield return new WaitForSeconds(0.3f);
         
         int index = 0;
 
         
         while (index != dialogue.dialogos.Count)
         {
-            ct = new CancellationTokenSource();
+            ct = false;
             if (dialogue.dialogos[index].idOfWhoTalk != indexLastTalked)
             {
                 if (dialogue.dialogos[index].idOfWhoTalk == 1) //1 es akakuma
@@ -133,18 +136,32 @@ public class DialogueTest : MonoBehaviour
                 else
                     spriteDialogue.sprite = FindSpriteById(dialogue.dialogos[index].idOfWhoTalk);
             }//Busca por id el sprite que se va a mostrar en la UI
+            //yield return new WaitForSeconds(0.1f);
+            yield return new WaitWhile(() => !Input.GetMouseButtonDown(0));
 
-            await AnimMovingText(dialogue.dialogos[index].conversationString, ct.Token); //Hace que el texto se vaya escribiendo solo
+            coroutine =  StartCoroutine(AnimMovingText(dialogue.dialogos[index].conversationString, ct));
+
+            yield return new WaitForSeconds(0.1f);
+            yield return new WaitWhile(()=> !Input.GetMouseButtonDown(0)); //Hace que el texto se vaya escribiendo solo
+
+            if (coroutine != null) StopCoroutine(coroutine);
+            conversation_txt.text = dialogue.dialogos[index].conversationString;
 
             index++; //Indice necesario para pasar a la siguiente conversacion
+            yield return new WaitForSeconds(0.1f);
+            yield return new WaitWhile(() => !Input.GetMouseButtonDown(0));
 
-            await WaitToClickToCotinueDialogue(); //espera el click y pasar al siguiente texto
+            /*await WaitToClickToCotinueDialogue(); *///espera el click y pasar al siguiente texto
 
             // es la aniacion de la camara para se mueva cuando hablan
             AnimCamera(dialogue, index);
 
         }
+
+        yield return new WaitForSeconds(0.5f);
         //End of dialogue
+        spriteDialogue.color = new Color32(0, 0, 0, 0);
+        spriteDialoguePlayer.color = new Color32(0, 0, 0, 0);
         isDialogueOpen = false;
         player.enabled = true;// cambiar esto
         cameraAnimator.Play("NormalCamera");
@@ -162,7 +179,7 @@ public class DialogueTest : MonoBehaviour
         }
     }
 
-    async Task WaitToClickToCotinueDialogue()
+        async Task WaitToClickToCotinueDialogue()
      {
         while (!Input.GetMouseButtonDown(0)) await Task.Yield();
      }
@@ -187,17 +204,14 @@ public class DialogueTest : MonoBehaviour
 
     }
 
-   async Task AnimMovingText(string conversation,  CancellationToken token)
+   IEnumerator AnimMovingText(string conversation,bool asd)
     {
         conversation_txt.text = "";
         foreach (char item in conversation)
         {
-            if (token.IsCancellationRequested) break;
             conversation_txt.text += item;
-            await Task.Delay (50);
+            yield return new WaitForSeconds(0.05f);
         }
-
-        if (token.IsCancellationRequested) conversation_txt.text = conversation;
     }
 
 }

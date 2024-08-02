@@ -10299,7 +10299,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.9999894
+    m_Strength: 0.9999959
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -29336,7 +29336,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -38203,7 +38203,7 @@ RectTransform:
   m_GameObject: {fileID: 1656518350}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.024, y: 0.024, z: 0.024}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 214224187}
@@ -46733,6 +46733,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0fad88df51b3a37489b5cfe4fc050a02,
         type: 2}
+    - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
+        type: 3}
+      propertyPath: spriteDic.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
+        type: 3}
+      propertyPath: spriteDic.Array.data[3].id
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
+        type: 3}
+      propertyPath: spriteDic.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b01fbc60ae02d84d82a9cda9922e6bb,
+        type: 3}
+    - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
+        type: 3}
+      propertyPath: spriteDic.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 255ce78566c1513408be53a702d843b5,
+        type: 3}
+    - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
+        type: 3}
+      propertyPath: spriteDic.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6da1e7feff95874796e5e5d6697361d,
+        type: 3}
+    - target: {fileID: 4218754836679320239, guid: 876b54393a84e0948ae1579411c63265,
+        type: 3}
+      propertyPath: spriteDic.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0466692a96d17a04db641a1acc7bf260,
+        type: 3}
     - target: {fileID: 4884046496442015159, guid: 876b54393a84e0948ae1579411c63265,
         type: 3}
       propertyPath: m_Name

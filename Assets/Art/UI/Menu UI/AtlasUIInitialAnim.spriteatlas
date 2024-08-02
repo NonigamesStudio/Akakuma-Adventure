@@ -73,7 +73,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 94e1562eb9ae46941b6959d39000bbfc, type: 3}
     - {fileID: 2800000, guid: ac6932462888766498b906fb4857999d, type: 3}
     - {fileID: 2800000, guid: 9ef7e585e69c7f144b611e66e59aba0b, type: 3}
-    - {fileID: 2800000, guid: 1092dfa93a7f5b7438ac40e954d53140, type: 3}
+    - {fileID: 2800000, guid: 37e74198ed4f10f4e9664d3bc21f86ee, type: 3}
     - {fileID: 2800000, guid: 6deadcb3f262e714fb4a36e8180b6dd7, type: 3}
     - {fileID: 2800000, guid: aed9b1bbf6acae3418855372403bd5b6, type: 3}
     - {fileID: 2800000, guid: 9a1924392983f8d48afea300e18fdecb, type: 3}
@@ -98,7 +98,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 9c2684c73dbda59488f51ecc9c78956b, type: 3}
     - {fileID: 2800000, guid: d3f36624063b3ed4193217f40368d1bd, type: 3}
     - {fileID: 2800000, guid: d1b76c0ca1431d04e977410299647dbb, type: 3}
-    - {fileID: 2800000, guid: 37e74198ed4f10f4e9664d3bc21f86ee, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -123,7 +122,6 @@ SpriteAtlas:
     - 857618092ddc46642a2e54610cd90f12: 21300000
     - 9a1924392983f8d48afea300e18fdecb: 21300000
     - 6c23a369c03a61c468cde6d1bc1b528f: 21300000
-    - 1092dfa93a7f5b7438ac40e954d53140: 21300000
     - 5275b6b99d1f7dd4a8f7aae74a3ed6e3: 21300000
     - 7c4d365a188ac894dbdf5fe1fcd32447: 21300000
     - efb6c8dafac311a48bd0c2625d3f0a77: 21300000
@@ -165,7 +163,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 857618092ddc46642a2e54610cd90f12, type: 3}
   - {fileID: 21300000, guid: 9a1924392983f8d48afea300e18fdecb, type: 3}
   - {fileID: 21300000, guid: 6c23a369c03a61c468cde6d1bc1b528f, type: 3}
-  - {fileID: 21300000, guid: 1092dfa93a7f5b7438ac40e954d53140, type: 3}
   - {fileID: 21300000, guid: 5275b6b99d1f7dd4a8f7aae74a3ed6e3, type: 3}
   - {fileID: 21300000, guid: 7c4d365a188ac894dbdf5fe1fcd32447, type: 3}
   - {fileID: 21300000, guid: efb6c8dafac311a48bd0c2625d3f0a77, type: 3}
@@ -206,7 +203,6 @@ SpriteAtlas:
   - s_reaper
   - boss icon
   - s_shield2
-  - Asset_2-1
   - s_shield
   - s_sword
   - s_reaper2
