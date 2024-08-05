@@ -52,6 +52,8 @@ public class DialogueTest : MonoBehaviour
     private void Start()
     {
         dialogueScriptable = Resources.Load<DialogueScriptable>("DialogueScriptable");
+        dialogueScriptable.dialogueDataList = new List<DialogueData>();
+        LoadDialogues();
     }
 
     [ContextMenu("Create Dialogue Data Scriptable")]
@@ -136,8 +138,9 @@ public class DialogueTest : MonoBehaviour
                 else
                     spriteDialogue.sprite = FindSpriteById(dialogue.dialogos[index].idOfWhoTalk);
             }//Busca por id el sprite que se va a mostrar en la UI
-            //yield return new WaitForSeconds(0.1f);
-            yield return new WaitWhile(() => !Input.GetMouseButtonDown(0));
+            
+            ////yield return new WaitForSeconds(0.1f);
+            //yield return new WaitWhile(() => !Input.GetMouseButtonDown(0));
 
             coroutine =  StartCoroutine(AnimMovingText(dialogue.dialogos[index].conversationString, ct));
 
@@ -158,12 +161,13 @@ public class DialogueTest : MonoBehaviour
 
         }
 
-        yield return new WaitForSeconds(0.5f);
+       
         //End of dialogue
         spriteDialogue.color = new Color32(0, 0, 0, 0);
         spriteDialoguePlayer.color = new Color32(0, 0, 0, 0);
         isDialogueOpen = false;
         player.enabled = true;// cambiar esto
+        yield return new WaitForSeconds(0.5f);
         cameraAnimator.Play("NormalCamera");
         targetGroup.RemoveMember(npctransform);
         ToggleDialoguePanelAnim(false);

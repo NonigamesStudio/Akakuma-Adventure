@@ -12,4 +12,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de028d398c7b446a89ca795cf1b040cd, type: 3}
   m_Name: DialogueScriptable
   m_EditorClassIdentifier: 
-  dialogueDataList: []
+  dialogueDataList:
+  - id: 0
+    dialogos:
+    - idOfWhoTalk: 1
+      conversationString: '"Aku: Good morning! My name is Aku'
+    - idOfWhoTalk: 2
+      conversationString: 'Merchant: Oh! But they are Moonlight crystals! (raised
+        his voice)'
+    - idOfWhoTalk: 1
+      conversationString: '"Aku: Oh'
+    - idOfWhoTalk: 2
+      conversationString: '"Merchant: (starts touching his pockets) choose what you
+        want from the store'
+    - idOfWhoTalk: 1
+      conversationString: 'Aku: Thank you very much!! (Smiles happily)'
+  - id: 1
+    dialogos:
+    - idOfWhoTalk: 3
+      conversationString: "Guardian: (completely asleep) Zzzz\u2026"
+    - idOfWhoTalk: 1
+      conversationString: 'Aku: O - hey! Excuse me.'
+    - idOfWhoTalk: 3
+      conversationString: 'Guardian: Zzz- - - eh.. eh Who''s there?'
+    - idOfWhoTalk: 1
+      conversationString: 'Aku: (looks surprised and a little laughing)'
+    - idOfWhoTalk: 3
+      conversationString: '"Guardian: (jumps in shock) Pe - but it''s Aku! (stands
+        at attention'
+    - idOfWhoTalk: 1
+      conversationString: 'Aku: Yes! I''m ready now'
+    - idOfWhoTalk: 3
+      conversationString: 'Guardian: Good luck Aku!'
+  - id: 2
+    dialogos:
+    - idOfWhoTalk: 1
+      conversationString: '"Aku: Good morning'
+    - idOfWhoTalk: 4
+      conversationString: '"Blacksmith: (Looks at Aku carefully) Good morning'
+    - idOfWhoTalk: 1
+      conversationString: '"Aku: I embark on a journey to the Old Woods'
+    - idOfWhoTalk: 4
+      conversationString: '"Blacksmith: (Nods his head) I understand. The Old Woods
+        are a place feared by even the most experienced warriors. The sword that
+        you now carry is perfect to defend yourself from the dangers that lie in
+        wait for you! Wait'
+    - idOfWhoTalk: 1
+      conversationString: '"Aku: If his name was Kiato'
+    - idOfWhoTalk: 4
+      conversationString: '"Blacksmith: (Smiles) Oh'
+  - id: 3
+    dialogos:
+    - idOfWhoTalk: 0
+      conversationString: '"(Aku walks aimlessly through the bustling market of his
+        town'
+    - idOfWhoTalk: 5
+      conversationString: '"Shopkeeper: Welcome to my store'
+    - idOfWhoTalk: 1
+      conversationString: '"Aku: I''m looking for information for my trip to the
+        Old Forests. A wild and unknown place'
+    - idOfWhoTalk: 5
+      conversationString: '"Shopkeeper: (Rubbing his hands enthusiastically) Ah'
+    - idOfWhoTalk: 1
+      conversationString: 'Aku: I''m glad to hear it! Thanks for helping.'
+    - idOfWhoTalk: 5
+      conversationString: '"Shopkeeper: (Starts filling a bag with the products Aku
+        requests) No problem'
+    - idOfWhoTalk: 1
+      conversationString: 'Aku: Good idea. Do you have anything else that could be
+        useful to me?'
+    - idOfWhoTalk: 5
+      conversationString: '"Shopkeeper: (Shows him an old map) Look at this map'
+    - idOfWhoTalk: 1
+      conversationString: 'Aku: (Examines the map carefully) It''s perfect! Thank
+        you very much for your help!!!'
+    - idOfWhoTalk: 5
+      conversationString: '"Shopkeeper: (Smiles) You''re welcome'
