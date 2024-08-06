@@ -182,7 +182,7 @@ public class OnBoarding : MonoBehaviour
         }
         else { 
            
-            LeanTween.moveY(panel, -400, 1f).setEaseInBack();  
+            LeanTween.moveY(panel, -600, 1f).setEaseInBack();  
         }
 
     }

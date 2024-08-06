@@ -27,10 +27,8 @@ public class NPCController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-
-    }
+    Coroutine co;
+    NPCstate laststate;
     void OnEnable()
     {
         OnNpcStateChange+=animController.SetAnimation;
@@ -46,22 +44,38 @@ public class NPCController : MonoBehaviour
     {
         switch (npcState)
         {
-            
             case NPCstate.Idle:
                 agent.isStopped = true;
-                StartCoroutine (CheckForRandomStateChange());
+                co= StartCoroutine (CheckForRandomStateChange());
                 OnNpcStateChange?.Invoke(NPCAnimState.Idle);
                 break;
             case NPCstate.Working:
-                StartCoroutine(GoToPoint(GetRandomDestination(workStations), NPCstate.Working));
+                co =StartCoroutine(GoToPoint(GetRandomDestination(workStations), NPCstate.Working));
                 break;
             case NPCstate.ComingBackToIdle:
-                StartCoroutine(GoToPoint(GetRandomDestination(idlePositions), NPCstate.Idle));
+                co =StartCoroutine(GoToPoint(GetRandomDestination(idlePositions), NPCstate.Idle));
                 break;
             case NPCstate.Interacting:
+                Debug.Log("Interacting");
                 break;
 
         }
+    }
+    public void OnDialogue(bool isOnDialoge)
+    {
+        if (isOnDialoge)
+        {
+            StopCoroutine(co);
+            agent.isStopped = true;
+            animController.SetAnimation(NPCAnimState.Idle);
+            laststate = npcState;
+            npcState = NPCstate.Interacting;
+        }
+        else
+        {
+            npcState = laststate; agent.isStopped = false;
+        }
+
     }
     
     void FollowState(Vector3 target)
@@ -93,7 +107,6 @@ public class NPCController : MonoBehaviour
         
     }
 
-    
 
     IEnumerator CheckDistanceCoroutine(float maxStoppedTime = 1f)
     {

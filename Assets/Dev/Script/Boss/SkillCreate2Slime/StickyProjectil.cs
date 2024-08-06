@@ -24,7 +24,7 @@ public class StickyProjectil : MonoBehaviour
     {
         if (other.CompareTag("Ground"))
         {
-            transform.position = new Vector3(transform.position.x, 4.01f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 23.9f, transform.position.z);
             rb.isKinematic = true; // repos la el objeto para que calce justo con el piso
             col.isTrigger = true;
             meshRenderer.enabled = false;
