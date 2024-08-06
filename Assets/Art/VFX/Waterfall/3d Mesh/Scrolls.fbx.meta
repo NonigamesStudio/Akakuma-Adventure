@@ -1,15 +1,9 @@
 fileFormatVersion: 2
-guid: 1f15eb34d3cf87548b88e70c9ea9c3b0
+guid: 81f6a7d8c7e44bd428693a6a5ebe2611
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atlas
-    second: {fileID: -4586444591600750072, guid: bd62f44ed5817074dbf2b974bd9d058c,
-      type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -96,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 4
+    globalScale: 0.04
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
