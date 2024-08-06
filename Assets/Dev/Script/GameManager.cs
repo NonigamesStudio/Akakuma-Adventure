@@ -29,8 +29,14 @@ public class GameManager : MonoBehaviour
    
 
     void Awake()
-    {
+    {   if (instance == null)
+        {
         instance = this;
+        }else
+        {
+            Destroy(gameObject);
+        }
+
         if (ItsOnlySceneLoaded())
         {
             SceneManager.LoadSceneAsync(scenes.MainMenu.ToString(), LoadSceneMode.Additive);
@@ -42,12 +48,14 @@ public class GameManager : MonoBehaviour
             pair.inventoryRutimeBackup.CopyItemsFromSO(pair.inventoryStart);
         }
         
+        
     }
     
     
 
     public void ChangeScenes(scenes sceneToSetActive, List<scenes> scenesLoad, List<scenes> scenesUnload=null)
     {
+        
 
         OnSceneChange?.Invoke();
 
