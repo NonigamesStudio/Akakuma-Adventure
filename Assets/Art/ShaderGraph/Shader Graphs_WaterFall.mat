@@ -48,7 +48,7 @@ Material:
     - _QueueOffset: 0
     - _RefractionStrnght: 0.0889
     - _Speed: 0.8
-    - _WaveHeight: 1
+    - _WaveHeight: 0.627
     - _WaveSpeed: 0.239
     - _foamScale: 125
     - _maskScale: 0.031
