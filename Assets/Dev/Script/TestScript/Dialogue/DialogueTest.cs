@@ -15,6 +15,9 @@ public class DialogueTest : MonoBehaviour
 {
     public static DialogueTest instance;
 
+    public static Action OnStartDialogue;
+    public static Action OnEndDialogue;
+
     [SerializeField] DialogueScriptable dialogueScriptable;
     [SerializeField] List<SpriteByIdData> spriteDic;
     [SerializeField] Player player;
@@ -41,6 +44,8 @@ public class DialogueTest : MonoBehaviour
 
     Coroutine coroutine;
 
+
+
     private void Awake()
     {
         if (instance != null) Destroy(this);
@@ -52,6 +57,8 @@ public class DialogueTest : MonoBehaviour
     private void Start()
     {
         dialogueScriptable = Resources.Load<DialogueScriptable>("DialogueScriptable");
+        dialogueScriptable.dialogueDataList = new List<DialogueData>();
+        LoadDialogues();
     }
 
     [ContextMenu("Create Dialogue Data Scriptable")]
@@ -100,7 +107,7 @@ public class DialogueTest : MonoBehaviour
 
     public void PlayDialogue(int Id, Transform npctransform)
     {
-        
+        OnStartDialogue?.Invoke();
         isDialogueOpen =true;
         targetGroup.AddMember(npctransform,1,2);
 
@@ -115,8 +122,7 @@ public class DialogueTest : MonoBehaviour
 
     IEnumerator  PlayDialogue(DialogueData dialogue, Transform npctransform)
     {
-        spriteDialogue.color = new Color32(255, 255, 255, 255);
-        spriteDialoguePlayer.color = new Color32(255, 255, 255, 255);
+        
         player.enabled = false; // cambiar esto
         cameraAnimator.Play("DialogueCamera"); //Cambia la camera a la camara de dialogo
         transposer.m_XAxis.Value = -20;
@@ -132,12 +138,19 @@ public class DialogueTest : MonoBehaviour
             if (dialogue.dialogos[index].idOfWhoTalk != indexLastTalked)
             {
                 if (dialogue.dialogos[index].idOfWhoTalk == 1) //1 es akakuma
+                {
                     spriteDialoguePlayer.sprite = FindSpriteById(dialogue.dialogos[index].idOfWhoTalk);
+                    spriteDialoguePlayer.color = new Color32(255, 255, 255, 255);
+                }
                 else
+                {   
                     spriteDialogue.sprite = FindSpriteById(dialogue.dialogos[index].idOfWhoTalk);
+                    spriteDialogue.color = new Color32(255, 255, 255, 255);
+                }
             }//Busca por id el sprite que se va a mostrar en la UI
-            //yield return new WaitForSeconds(0.1f);
-            yield return new WaitWhile(() => !Input.GetMouseButtonDown(0));
+            
+            ////yield return new WaitForSeconds(0.1f);
+            //yield return new WaitWhile(() => !Input.GetMouseButtonDown(0));
 
             coroutine =  StartCoroutine(AnimMovingText(dialogue.dialogos[index].conversationString, ct));
 
@@ -158,12 +171,14 @@ public class DialogueTest : MonoBehaviour
 
         }
 
-        yield return new WaitForSeconds(0.5f);
+       
         //End of dialogue
         spriteDialogue.color = new Color32(0, 0, 0, 0);
         spriteDialoguePlayer.color = new Color32(0, 0, 0, 0);
         isDialogueOpen = false;
         player.enabled = true;// cambiar esto
+        OnEndDialogue?.Invoke();
+        yield return new WaitForSeconds(0.5f);
         cameraAnimator.Play("NormalCamera");
         targetGroup.RemoveMember(npctransform);
         ToggleDialoguePanelAnim(false);
@@ -179,10 +194,6 @@ public class DialogueTest : MonoBehaviour
         }
     }
 
-        async Task WaitToClickToCotinueDialogue()
-     {
-        while (!Input.GetMouseButtonDown(0)) await Task.Yield();
-     }
 
     Sprite FindSpriteById(int id)
     {
