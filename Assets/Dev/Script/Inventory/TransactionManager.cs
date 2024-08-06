@@ -58,36 +58,9 @@ public class TransactionManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            if (CheckFreeSloInList(itemsInTransactionShop))
-            {
-                foreach (ItemSlot itemSlot in itemsInTransactionShop)
-                {
-                    if (itemSlot.item == null)
-                    {
-                        itemSlot.item = item;
-                        break;
-                    }
-                }
-            }
-            UpdateUI();
-        }
-         if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            if (CheckFreeSloInList(itemsInTransactionPlayer))
-            {
-                foreach (ItemSlot itemSlot in itemsInTransactionPlayer)
-                {
-                    if (itemSlot.item == null)
-                    {
-                        itemSlot.item = item2;
-                        break;
-                    }
-                }
-            }
-            UpdateUI();
-        }
+        
+        // UpdateUI();
+        
     }
 
     public void InitializeTransaction(Inventory shopInventory)

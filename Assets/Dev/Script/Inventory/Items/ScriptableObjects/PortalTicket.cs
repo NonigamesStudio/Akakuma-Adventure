@@ -6,6 +6,11 @@ public class PortalTicket : ItemSO
 {
     public PortalType validForPortalType;
 
+    void OnEnable()
+    {
+        canBeUsedFromInventory=false;
+    }
+
     public override void Use(GameObject user=null)
     {
         

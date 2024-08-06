@@ -46,6 +46,8 @@ public class EarthPortal : Portal
                     {
                         if (ticket.validForPortalType==PortalType.Earth)
                         {
+                            PortalTicket portalTicket = itemSlot.item as PortalTicket;
+                            portalTicket.canBeUsedFromInventory = true;
                             inventory.UseItem(itemSlot.slotNumber);
                         }
                     }  

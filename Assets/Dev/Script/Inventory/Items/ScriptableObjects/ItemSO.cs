@@ -10,6 +10,7 @@ public class ItemSO : ScriptableObject
     public Sprite itemSprite = null;
     public GameObject itemPrefab = null;
     public Inventory inventory=null;
+    public bool canBeUsedFromInventory = true;
    
     public virtual void Use(GameObject user=null)
     {

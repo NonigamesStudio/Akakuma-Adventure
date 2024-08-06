@@ -178,7 +178,7 @@ MonoBehaviour:
   Path: FMOD Builds/Desktop/Master.bank
   Name: Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 638567433732790414
+  lastModified: 638551870805575480
   FileSizes: []
   Exists: 1
 --- !u!114 &-2883391217430847333
@@ -196,7 +196,7 @@ MonoBehaviour:
   Path: FMOD Builds/Desktop/SFXs.bank
   Name: Desktop/SFXs
   StudioPath: bank:/SFXs
-  lastModified: 638567433732850411
+  lastModified: 638551870806753453
   FileSizes: []
   Exists: 1
 --- !u!114 &-2405329381077524472
@@ -295,7 +295,7 @@ MonoBehaviour:
   Path: FMOD Builds/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638567433732790414
+  lastModified: 638551870805584612
   FileSizes:
   - Name: 
     Value: 1264
@@ -330,7 +330,7 @@ MonoBehaviour:
   - {fileID: -3887771404170638216}
   StringsBanks:
   - {fileID: -906064499171964831}
-  cacheTime: 638567433732850411
+  cacheTime: 638551870806753453
   cacheVersion: 131605
 --- !u!114 &447679084122535217
 MonoBehaviour:
@@ -446,7 +446,7 @@ MonoBehaviour:
   Path: FMOD Builds/Desktop/Menu.bank
   Name: Desktop/Menu
   StudioPath: bank:/Menu
-  lastModified: 638567433732830410
+  lastModified: 638551870806411204
   FileSizes: []
   Exists: 1
 --- !u!114 &6259929993321151459
