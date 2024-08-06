@@ -121,4 +121,11 @@ public class UIManager : MonoBehaviour
     {
         weaponGO.GetComponent<Image>().sprite = weaponSprite[weaponNumber];
     }
+
+
+    public void ContinueButton()// Send to the main island when the player lose
+    {
+        GameManager.instance.ChangeScenes(GameManager.scenes.DevIsla2, new List<GameManager.scenes> {
+            GameManager.scenes.DevIsla2,GameManager.scenes.ArtIsla2});
+    }
 }
