@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, SceneChanger
 {
     [SerializeField] Slider barEnemiesStillAlive;
     [SerializeField] TextMeshProUGUI coinText_text;
@@ -125,7 +125,13 @@ public class UIManager : MonoBehaviour
 
     public void ContinueButton()// Send to the main island when the player lose
     {
-        GameManager.instance.ChangeScenes(GameManager.scenes.DevIsla2, new List<GameManager.scenes> {
-            GameManager.scenes.DevIsla2,GameManager.scenes.ArtIsla2});
+       Time.timeScale=1;
+       ChangeScenes(GameManager.scenes.DevIsla2, new List<GameManager.scenes> {
+                GameManager.scenes.ArtIsla2,GameManager.scenes.DevIsla2});
+    }
+
+    public void ChangeScenes(GameManager.scenes sceneToSetActive, List<GameManager.scenes> scenesLoad, List<GameManager.scenes> scenesUnload = null)
+    {
+        GameManager.instance.ChangeScenes(sceneToSetActive, scenesLoad, scenesUnload);
     }
 }
