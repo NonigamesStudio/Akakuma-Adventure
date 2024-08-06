@@ -38,7 +38,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.972
+    - _Alpha: 1
     - _InterDepth: 0.33
     - _LinesIntensity: 6.82
     - _NoiseSize: 7.86
@@ -48,7 +48,7 @@ Material:
     - _QueueOffset: 0
     - _RefractionStrnght: 0.0889
     - _Speed: 0.8
-    - _WaveHeight: 0.382
+    - _WaveHeight: 1
     - _WaveSpeed: 0.239
     - _foamScale: 125
     - _maskScale: 0.031

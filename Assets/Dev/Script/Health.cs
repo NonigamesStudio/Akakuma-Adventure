@@ -16,14 +16,7 @@ public class Health : MonoBehaviour
     {
         actualHealth = maxHealth;
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            if (tag!="Player") TakeDamage(actualHealth);
-        }
-    }
-
+    
     public void TakeDamage(float dmg, Transform attacker=null)
     {
         actualHealth -= dmg;

@@ -68,8 +68,11 @@ public class Inventory : MonoBehaviour
 
     public virtual void UseItem(int slot)
     {
+        if (items[slot].item.canBeUsedFromInventory)
+        {
         items[slot].item.Use(gameObject);
         RemoveItem(slot);
+        }
     }
 
     public virtual void RemoveItem(int slot)
