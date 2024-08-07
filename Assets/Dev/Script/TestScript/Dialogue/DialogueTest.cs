@@ -6,8 +6,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
-using System.Threading;
-using System.Threading.Tasks;
 using Cinemachine;
 using UnityEditor;
 
@@ -56,9 +54,9 @@ public class DialogueTest : MonoBehaviour
 
     private void Start()
     {
-        dialogueScriptable = Resources.Load<DialogueScriptable>("DialogueScriptable");
-        dialogueScriptable.dialogueDataList = new List<DialogueData>();
-        LoadDialogues();
+        //dialogueScriptable = Resources.Load<DialogueScriptable>("DialogueScriptable");
+        //dialogueScriptable.dialogueDataList = new List<DialogueData>();
+        //LoadDialogues();
     }
 
     [ContextMenu("Create Dialogue Data Scriptable")]

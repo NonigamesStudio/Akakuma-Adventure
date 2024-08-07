@@ -19,10 +19,7 @@ public class PlayerAnimations : MonoBehaviour
         playerW.OnBowRealese += () => { playerAnimator.SetTrigger("bowRealese"); };
         playerW.OnWeaponSkill += SkillUse;
     }
-    void Start()
-    {
-        
-    }
+
 
     private void Update()
     {

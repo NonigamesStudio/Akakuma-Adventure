@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour, SceneChanger
         //Coin.OnCoinCollected -= UpdateCoinsUI;
         playerInventory.OnItemListChange += UpdateCoinsUI;
         TransactionManager.OnTransactionEnds -= UpdateCoinsUI;
+        playerH.OnLifeChange -= UpdateHealthUI;
 
     }
 
