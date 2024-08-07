@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OnBoarding : MonoBehaviour
 {
+    public SOSaveData saveData;
     private int currentStep;
     GameObject currentPanel;
 
@@ -26,6 +27,10 @@ public class OnBoarding : MonoBehaviour
 
 
     bool onBoardingEventFinished;
+    void OnEnable()
+    {
+        test = saveData.onBoading;
+    }
     private IEnumerator Start()
     {
        if(test)
@@ -113,7 +118,7 @@ public class OnBoarding : MonoBehaviour
         yield return new WaitForSeconds(1f);
         AnimDoor();
         onBoardingEventFinished = true;
-
+        saveData.onBoading = true;
     }
 
 

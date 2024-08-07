@@ -22357,6 +22357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938707d830b9df542919c1c37fd93376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveData: {fileID: 11400000, guid: 426444b2224814b04a8ada168ad0cf78, type: 2}
   test: 0
   asdwStep_Panel: {fileID: 477675994}
   attackStep_Panel: {fileID: 629146355}

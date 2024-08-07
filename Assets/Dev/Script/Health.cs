@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     public System.Action OnDeath;
     public System.Action <Transform> OnLifeChange;
 
+    
     private void OnEnable()
     {
         actualHealth = maxHealth;
